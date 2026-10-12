@@ -1,0 +1,165 @@
+{
+    "key": "group_62c2d291bcc5a",
+    "title": "Completion Status",
+    "fields": [
+        {
+            "key": "field_62c2d5d3ddb05",
+            "label": "Status",
+            "name": "status",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "choices": {
+                "completed": "Completed",
+                "under_construction": "Under Construction"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2d61bddb06",
+            "label": "Year Of Completion",
+            "name": "year_of_completion",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2d634ddb07",
+            "label": "Est. Date Of Completion",
+            "name": "est_date_of_completion",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2d65eddb08",
+            "label": "Est. Cost Of Completion",
+            "name": "est_cost_of_completion",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "wpml_cf_preferences": 1,
+            "sub_fields": [
+                {
+                    "key": "field_62c2d66fddb09",
+                    "label": "Price",
+                    "name": "price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_62c2d676ddb0a",
+                    "label": "Currency",
+                    "name": "currency",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "AED": "AED",
+                        "CNY": "CNY",
+                        "EUR": "EUR",
+                        "GBP": "GBP",
+                        "JPY": "JPY",
+                        "KRW": "KRW",
+                        "RUB": "RUB",
+                        "THB": "THB",
+                        "USD": "USD"
+                    },
+                    "default_value": "EUR",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "These fields will not be displayed anywhere else.",
+    "show_in_rest": 0,
+    "modified": 1673536327
+}

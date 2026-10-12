@@ -1,0 +1,192 @@
+{
+    "key": "group_62c2ce25e50a7",
+    "title": "Purchase Details",
+    "fields": [
+        {
+            "key": "field_62c2ce4fd85ca",
+            "label": "Purchase Date",
+            "name": "purchase_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1,
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2ce5fd85cb",
+            "label": "Purchase Price",
+            "name": "purchase_price",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "wpml_cf_preferences": 1,
+            "sub_fields": [
+                {
+                    "key": "field_62c2ce9bd85cc",
+                    "label": "Price",
+                    "name": "price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_62c2cea3d85cd",
+                    "label": "Currency",
+                    "name": "currency",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "AED": "AED",
+                        "CNY": "CNY",
+                        "EUR": "EUR",
+                        "GBP": "GBP",
+                        "JPY": "JPY",
+                        "KRW": "KRW",
+                        "RUB": "RUB",
+                        "THB": "THB",
+                        "USD": "USD"
+                    },
+                    "default_value": "EUR",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_62c2d17a7b90b",
+            "label": "Current Est. Valuation",
+            "name": "current_est_valuation",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "wpml_cf_preferences": 1,
+            "sub_fields": [
+                {
+                    "key": "field_62c2d19b7b90c",
+                    "label": "Price",
+                    "name": "price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_62c2d1a37b90d",
+                    "label": "Currency",
+                    "name": "currency",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "AED": "AED",
+                        "CNY": "CNY",
+                        "EUR": "EUR",
+                        "GBP": "GBP",
+                        "JPY": "JPY",
+                        "KRW": "KRW",
+                        "RUB": "RUB",
+                        "THB": "THB",
+                        "USD": "USD"
+                    },
+                    "default_value": "EUR",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "These fields will not be displayed anywhere else.",
+    "show_in_rest": 0,
+    "modified": 1673536326
+}

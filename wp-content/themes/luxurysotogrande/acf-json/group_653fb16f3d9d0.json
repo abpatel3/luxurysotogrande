@@ -1,0 +1,68 @@
+{
+    "key": "group_653fb16f3d9d0",
+    "title": "Categories Text",
+    "fields": [
+        {
+            "key": "field_653fb16f9e457",
+            "label": "Content",
+            "name": "categories_content",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/template-prorepty.php"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "224"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/template-sale_property.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/template-rental_property.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "TMPL:  Property Page",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "translation",
+    "modified": 1735901229
+}

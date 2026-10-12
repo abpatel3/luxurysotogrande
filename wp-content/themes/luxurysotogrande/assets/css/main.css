@@ -1,0 +1,224 @@
+@import url("https://use.typekit.net/vml6itj.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    min-height: 100%;
+    font-family: gill-sans-nova, sans-serif;
+    @apply font-light;
+}
+
+[x-cloak] { display: none !important; }
+
+p {
+    text-align: justify;
+}
+
+.single-property-video iframe {
+    @apply w-full aspect-video;
+}
+
+/* Menu Items */
+.primary-menu > li > a {
+    @apply block text-xl font-thin uppercase p-9;
+}
+
+.primary-menu > li a:hover {
+    @apply bg-lsg-gold-hover/50;
+}
+
+.primary-menu .menu-item-has-children {
+    @apply relative;
+}
+
+.primary-menu .menu-item-has-children .sub-menu {
+    @apply absolute left-0 z-40 hidden bg-stone-800 w-60;
+}
+
+.primary-menu .menu-item-has-children:hover .sub-menu {
+    @apply block;
+}
+
+.primary-menu .menu-item-has-children:hover .sub-menu li a {
+    @apply block p-4;
+}
+
+.primary-menu .menu-item-has-children:hover .sub-menu li:hover {
+    @apply hover:bg-slate-700/50;
+}
+
+dialog::backdrop {
+    @apply bg-stone-900/50;
+}
+
+.filtered-properties {
+    @apply grid max-w-6xl grid-cols-1 gap-8 mx-auto lg:grid-cols-2;
+}
+
+.alm-btn-wrap .alm-load-more-btn {
+    @apply bg-lsg-gold rounded-none mt-10 !important;
+}
+
+.glide__bullet img {
+    filter: grayscale(1);
+    transition: all .25s;
+}
+
+.glide__bullet--active img,
+.glide__bullet:hover img {
+    filter: grayscale(0);
+}
+
+.glide__slide {
+    height: auto !important;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    @apply p-5 bg-white shadow-xl;
+}
+
+.contact-form form input[type="button"] {
+    @apply w-1/3 text-white bg-lsg-gold;
+}
+
+.contact-form form input[type="button"]:hover {
+    @apply cursor-pointer bg-lsg-gold-hover;
+}
+
+.nf-before-form-content {
+    @apply mb-10;
+}
+
+.nf-field input,
+.nf-field textarea {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px 15px 10px 15px !important;
+    font-size: 16px !important;
+    height: 38px;
+    line-height: 38px !important;
+    font-family: inherit !important;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    outline: 0 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-transition: border-color .2s ease;
+    -webkit-transition: border-color .2s ease;
+    -o-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+}
+
+.nf-field textarea {
+    height: 120px;
+}
+
+.nf-field input[type="button"] {
+    background: #aaaaaa !important;
+    color: #ffffff !important;
+    width: auto !important;
+    padding: 10px 15px 10px 15px !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+    height: auto !important;
+    line-height: 24px !important;
+    font-family: inherit !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    background-color: #aaa !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 2px !important;
+    outline: 0 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.wpbs-form-field-total,
+.wpbs-form-selected-dates {
+    display: none;
+    padding: 0 !important;
+}
+
+.bg-lsg-gold {
+    background: rgb(176,157,118);
+    background: linear-gradient(90deg, rgba(176,157,118,1) 0%, rgba(217,202,170,1) 30%, rgba(176,157,118,1) 100%); 
+}
+
+#sidebar-contact .textwidget {
+    @apply space-y-4;
+}
+
+.property-card__controls {
+    @apply px-5 top-1/2 -translate-y-1/2
+}
+
+.post-password-form {
+    @apply grid gap-5;
+}
+
+.post-password-form p:first-child {
+    @apply text-xl;
+}
+
+.post-password-form label {
+    @apply block;
+}
+
+.post-password-form input {
+    @apply block mx-auto;
+}
+
+.post-password-form input[type="password"] {
+    @apply p-2 border;
+}
+
+.post-password-form input[type="submit"] {
+    background: rgb(176,157,118);
+    background: linear-gradient(90deg, rgba(176,157,118,1) 0%, rgba(217,202,170,1) 30%, rgba(176,157,118,1) 100%); 
+    @apply px-4 py-2 mt-5 text-white;
+}
+
+.mobile-menu a {
+    @apply block p-5 text-lg font-thin uppercase;
+}
+
+.mobile-menu a:hover {
+    @apply bg-gray-900/75;
+}
+
+/* || Pagination */
+.page-numbers {
+    @apply block px-4 py-2 font-medium;
+}
+
+.page-numbers.current{
+    @apply text-white bg-lsg-gold;
+}
+
+/* Ninja Forms */
+.nf-field-label label {
+    @apply font-medium !important;
+}
+
+/* Footer */
+footer a:hover {
+    @apply text-lsg-gold;
+}
+
+

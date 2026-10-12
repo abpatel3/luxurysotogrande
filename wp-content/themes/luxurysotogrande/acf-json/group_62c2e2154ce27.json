@@ -1,0 +1,420 @@
+{
+    "key": "group_62c2e2154ce27",
+    "title": "Property Features Blocks",
+    "fields": [
+        {
+            "key": "field_62c2e225e7a8c",
+            "label": "Show Property Features Blocks",
+            "name": "show_property_features_blocks",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_62c2e265e7a8d",
+            "label": "Block 1",
+            "name": "block_1",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62c2e225e7a8c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_62c2e280e7a8e",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_62c2e28ee7a8f",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62c2e297e7a90",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_62c2e2a8e7a91",
+                    "label": "Features",
+                    "name": "features",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "Basement": "Basement",
+                        "Automatic Irrigation System": "Automatic Irrigation System",
+                        "Chimenea": "Chimenea",
+                        "Cerca de la playa": "Cerca de la playa",
+                        "Air conditioning": "Air conditioning",
+                        "Berth": "Berth",
+                        "Central Heating": "Central Heating",
+                        "Close to international Golf course": "Close to international Golf course",
+                        "Close to International Polo Fields": "Close to International Polo Fields",
+                        "Close to international schools": "Close to international schools"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 1,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_62c2e3c7edf8d",
+            "label": "Block 2",
+            "name": "block_2",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62c2e225e7a8c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_62c2e3c7edf8e",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "return_format": "",
+                    "preview_size": "medium",
+                    "library": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_62c2e3c7edf8f",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62c2e3c7edf90",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_62c2e3c7edf91",
+                    "label": "Features",
+                    "name": "features",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "Basement": "Basement",
+                        "Automatic Irrigation System": "Automatic Irrigation System",
+                        "Chimenea": "Chimenea",
+                        "Cerca de la playa": "Cerca de la playa",
+                        "Air conditioning": "Air conditioning",
+                        "Berth": "Berth",
+                        "Central Heating": "Central Heating",
+                        "Close to international Golf course": "Close to international Golf course",
+                        "Close to International Polo Fields": "Close to International Polo Fields",
+                        "Close to international schools": "Close to international schools"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_62c2e3d1edf92",
+            "label": "Block 3",
+            "name": "block_3",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62c2e225e7a8c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_62c2e3d1edf93",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_62c2e3d1edf94",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62c2e3d1edf95",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_62c2e3d1edf96",
+                    "label": "Features",
+                    "name": "features",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "choices": {
+                        "Basement": "Basement",
+                        "Automatic Irrigation System": "Automatic Irrigation System",
+                        "Chimenea": "Chimenea",
+                        "Cerca de la playa": "Cerca de la playa",
+                        "Air conditioning": "Air conditioning",
+                        "Berth": "Berth",
+                        "Central Heating": "Central Heating",
+                        "Close to international Golf course": "Close to international Golf course",
+                        "Close to International Polo Fields": "Close to International Polo Fields",
+                        "Close to international schools": "Close to international schools"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1673536324
+}

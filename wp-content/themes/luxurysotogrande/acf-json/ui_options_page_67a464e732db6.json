@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_67a464e732db6",
+    "title": "Search",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Search",
+    "menu_slug": "search",
+    "parent_slug": "theme-options",
+    "advanced_configuration": false,
+    "icon_url": "",
+    "menu_title": "",
+    "position": null,
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": false,
+    "modified": 1738826983
+}

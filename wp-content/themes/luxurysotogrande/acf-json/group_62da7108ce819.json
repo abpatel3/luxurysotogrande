@@ -1,0 +1,67 @@
+{
+    "key": "group_62da7108ce819",
+    "title": "Property Calendar",
+    "fields": [
+        {
+            "key": "field_62da711151f7e",
+            "label": "Calendar",
+            "name": "calendar",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "choices": {
+                "1": "Spectacular Villa 5",
+                "2": "Spectacular Villa 4",
+                "3": "LS99495",
+                "4": "LS99495",
+                "5": "LS99491",
+                "6": "LS4444",
+                "7": "LS99482",
+                "8": "LS99468",
+                "9": "LS99467",
+                "10": "LS99489",
+                "11": "LS26840",
+                "12": "LS8772"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": "",
+            "wpml_cf_preferences": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "property_status:holiday-rental"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1673536322
+}

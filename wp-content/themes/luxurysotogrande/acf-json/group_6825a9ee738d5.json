@@ -1,0 +1,64 @@
+{
+    "key": "group_6825a9ee738d5",
+    "title": "Properties Order (Long Term Rentals)",
+    "fields": [
+        {
+            "key": "field_6825a9ee84f38",
+            "label": "Properties",
+            "name": "properties_order",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "post_type": [
+                "property"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [
+                "property_status:long-term-rental"
+            ],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "elements": [
+                "featured_image"
+            ],
+            "bidirectional": 0,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/template-long_rentals.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "TMPL: Property Page",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "translation",
+    "modified": 1747298826
+}

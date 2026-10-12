@@ -1,0 +1,257 @@
+{
+    "key": "group_62c2a5f52e94a",
+    "title": "Property Details",
+    "fields": [
+        {
+            "key": "field_62c2aa3dcf9d3",
+            "label": "Property Address",
+            "name": "property_address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Avenida de la Marina, San Roque, España",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2aa73cf9d5",
+            "label": "Property Location",
+            "name": "property_location",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "Drag the google map marker to point your property location. You can also use the address field above to search for your property.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62d7c2e297941",
+            "label": "Related Properties",
+            "name": "related_properties",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Select related properties",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "property"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1,
+            "wpml_cf_preferences": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_62c2afd3cf9dc",
+            "label": "Private Note",
+            "name": "private_note",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2afe5cf9dd",
+            "label": "Owners Name",
+            "name": "owners_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "This field will not be displayed anywhere else.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_62c2aff4cf9df",
+            "label": "Owners Email Address",
+            "name": "owners_email_address",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "This field will not be displayed anywhere else.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2afffcf9e0",
+            "label": "Owners Phone Numbers",
+            "name": "owners_phone_numbers",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "This field will not be displayed anywhere else.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_62c2afb8cf9db",
+            "label": "Attachments",
+            "name": "attachments",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "You can attach PDF files, Map images OR other documents to provide further details related to property.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_64f9d2c8b5c98",
+            "label": "Property Video",
+            "name": "property_video",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67dd28091bdd8",
+            "label": "Property Video (Youtube)",
+            "name": "youtube",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "width": "",
+            "height": "",
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_6673e34347a8c",
+            "label": "Property Video File",
+            "name": "property_video_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "advanced",
+    "modified": 1742546999
+}

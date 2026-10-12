@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Eyesome Script';
+    src: url('EyesomeScript.woff2') format('woff2'),
+        url('EyesomeScript.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Eyesome';
+    src: url('EyesomeRegular.woff2') format('woff2'),
+        url('EyesomeRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Eyesome';
+    src: url('EyesomeItalic.woff2') format('woff2'),
+        url('EyesomeItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+

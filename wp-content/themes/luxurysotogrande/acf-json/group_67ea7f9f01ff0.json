@@ -1,0 +1,106 @@
+{
+    "key": "group_67ea7f9f01ff0",
+    "title": "Holidays Date",
+    "fields": [
+        {
+            "key": "field_67ea7f9e6b341",
+            "label": "Start Date",
+            "name": "start_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67ea7fcc6b342",
+            "label": "End Date",
+            "name": "end_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67ea90cc1084b",
+            "label": "Rented From",
+            "name": "rented_from",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67ea90e41084c",
+            "label": "Rented To",
+            "name": "rented_to",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "display_format": "F j, Y",
+            "return_format": "F j, Y",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "translation",
+    "modified": 1743493689
+}

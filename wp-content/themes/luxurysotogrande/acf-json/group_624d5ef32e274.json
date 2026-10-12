@@ -1,0 +1,99 @@
+{
+    "key": "group_624d5ef32e274",
+    "title": "SEO",
+    "fields": [
+        {
+            "key": "field_624d63b0d687c",
+            "label": "Social Media Title",
+            "name": "social_media_title",
+            "type": "text",
+            "instructions": "Used for open graph and twitter card title meta tags.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "default_value": "",
+            "placeholder": "Leave blank to use default title",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_624d6401d687d",
+            "label": "Social Media Image",
+            "name": "social_media_image",
+            "type": "image",
+            "instructions": "Used for the open graph and twitter image meta tags. Uses the featured image by default.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "wpml_cf_preferences": 1
+        },
+        {
+            "key": "field_624d5ef839ec7",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea",
+            "instructions": "Content displayed in the description meta tag",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 160,
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1673536323
+}

@@ -1,0 +1,147 @@
+{
+    "key": "group_62c2d96d4f481",
+    "title": "Descriptors",
+    "fields": [
+        {
+            "key": "field_62c2d977dd8cf",
+            "label": "Internal Size",
+            "name": "internal_size",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "wpml_cf_preferences": 1,
+            "sub_fields": [
+                {
+                    "key": "field_62c2d9ccdd8d1",
+                    "label": "Size",
+                    "name": "size",
+                    "type": "text",
+                    "instructions": "Provide size ( Please only provide digits ) Example Value: 2500",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_62c2d9d5dd8d2",
+                    "label": "Postfix Text",
+                    "name": "postfix_text",
+                    "type": "text",
+                    "instructions": "Text provided here will appear after size. Example Value: Sq Ft (not required).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_62c2da0cdd8d3",
+            "label": "Plot Size",
+            "name": "plot_size",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "layout": "block",
+            "wpml_cf_preferences": 1,
+            "sub_fields": [
+                {
+                    "key": "field_62c2da1bdd8d4",
+                    "label": "Size",
+                    "name": "size",
+                    "type": "text",
+                    "instructions": "Provide size ( Please only provide digits ) Example Value: 2500",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_62c2da28dd8d5",
+                    "label": "Postfix Text",
+                    "name": "postfix_text",
+                    "type": "text",
+                    "instructions": "Text provided here will appear after size. Example Value: Sq Ft (not required).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "aria-label": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1674647036
+}
