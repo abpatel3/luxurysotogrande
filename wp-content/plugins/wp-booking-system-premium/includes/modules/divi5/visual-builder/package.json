@@ -1,0 +1,26 @@
+{
+  "name": "wpbs-divi5-modules",
+  "version": "1.0.0",
+  "description": "WP Booking System embed modules for Divi5",
+  "main": "src/index.jsx",
+  "author": "WP Booking System",
+  "license": "GPL2",
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "thread-loader": "^3.0.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --progress"
+  },
+  "optionalDependencies": {
+    "win-node-dev": "npm:null@^2.0.0",
+    "win-node-env": "^0.6.1"
+  }
+}

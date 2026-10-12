@@ -1,0 +1,399 @@
+# Translation of Plugins - Yoast Test Helper - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - Yoast Test Helper - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-06-19 13:03:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - Yoast Test Helper - Stable (latest release)\n"
+
+#. translators: %1$s is Yoast SEO, %2$s is the version number it was downgraded
+#. to.
+#: src/downgrader.php:70
+msgid "%1$s has been succesfully downgraded to version %2$s."
+msgstr "%1$s has been succesfully downgraded to version %2$s."
+
+#: src/downgrader.php:141
+msgid "A migration is already in progress. Please try again later."
+msgstr "A migration is already in progress. Please try again later."
+
+#: src/downgrader.php:98
+msgid "An invalid version number was passed."
+msgstr "An invalid version number was passed."
+
+#: src/wordpress-plugins/yoast-seo.php:86
+msgid "Cornerstone flags"
+msgstr "Cornerstone flags"
+
+#: src/downgrader.php:190
+msgid "Could not install the requested version."
+msgstr "Could not install the requested version."
+
+#: src/downgrader.php:174
+msgid "Could not unpack the requested version."
+msgstr "Could not unpack the requested version."
+
+#. translators: %1$s is Yoast SEO.
+#: src/downgrader.php:41
+msgid "Downgrade %1$s"
+msgstr "Downgrade %1$s"
+
+#: src/downgrader.php:36
+msgid "Downgrade to version: "
+msgstr "Downgrade to version: "
+
+#: src/downgrader.php:102
+msgid "Downgrading to below 14.1 is not supported"
+msgstr "Downgrading to below 14.1 is not supported"
+
+#: src/wordpress-plugins/yoast-seo.php:83
+msgid "First time configuration progress"
+msgstr "First time configuration progress"
+
+#: src/wordpress-plugins/yoast-seo.php:81
+msgid "Free installation success page"
+msgstr "Free installation success page"
+
+#. translators: %1$s is the class name of the migration that failed, %2$s is
+#. the message given by the failure.
+#: src/downgrader.php:160
+msgid "Migration %1$s failed with the message: %2$s"
+msgstr "Migration %1$s failed with the message: %2$s"
+
+#: src/wordpress-plugins/yoast-seo.php:85
+msgid "Options"
+msgstr "Options"
+
+#: src/wordpress-plugins/yoast-seo.php:82
+msgid "Premium installation success page"
+msgstr "Premium installation success page"
+
+#: src/wordpress-plugins/yoast-seo.php:84
+msgid "Premium workouts progress"
+msgstr "Premium workouts progress"
+
+#: src/downgrader.php:112
+msgid "The requested version could not be downloaded"
+msgstr "The requested version could not be downloaded"
+
+#: src/wordpress-plugins/yoast-seo.php:80
+msgid "SEO roles & capabilities"
+msgstr "SEO roles & capabilities"
+
+#. translators: %1$s expands to the plugin name, %2$s to the feature name.
+#: src/wordpress-plugin-features.php:135
+msgid "%1$s feature %2$s could not be reset."
+msgstr "%1$s feature %2$s could not be reset."
+
+#. translators: %1$s expands to the plugin name, %2$s to the feature name.
+#: src/wordpress-plugin-features.php:146
+msgid "%1$s feature %2$s has been reset."
+msgstr "%1$s feature %2$s has been reset."
+
+#. translators: %1$s expands to the plugin name.
+#: src/plugin-version-control.php:128
+msgid "%1$s options were saved."
+msgstr "%1$s options were saved."
+
+#. translators: %1$s expands to the plugin name, %2$s to the version.
+#: src/plugin-version-control.php:113
+msgid "%1$s version was set to %2$s."
+msgstr "%1$s version was set to %2$s."
+
+#: src/post-types.php:158
+msgid "Add new book"
+msgstr "Add new book"
+
+#: src/taxonomies.php:92
+msgid "Add New Genre"
+msgstr "Add New Genre"
+
+#: src/post-types.php:183
+msgid "Add new movie"
+msgstr "Add new movie"
+
+#: src/inline-script.php:59
+msgid "Add the inline script specified below after the script selected here."
+msgstr "Add the inline script specified below after the script selected here."
+
+#. translators: %1$s and %2$s expand to link to debug bar.
+#: src/admin-debug-info.php:66
+msgid "Add Yoast SEO panel to %1$sDebug Bar%2$s."
+msgstr "Add Yoast SEO panel to %1$sDebug Bar%2$s."
+
+#: src/inline-script.php:63
+msgid "After script"
+msgstr "After script"
+
+#: src/taxonomies.php:89
+msgid "All Genres"
+msgstr "All Genres"
+
+#: src/schema.php:106
+msgid "Always include"
+msgstr "Always include"
+
+#: src/post-types.php:156
+msgid "Book"
+msgstr "Book"
+
+#: src/post-types.php:153 src/post-types.php:155
+msgid "Books"
+msgstr "Books"
+
+#: src/taxonomies.php:61 src/taxonomies.php:63
+msgid "Categories"
+msgstr "Categories"
+
+#: src/taxonomies.php:64
+msgid "Category"
+msgstr "Category"
+
+#: src/plugin-version-control.php:69
+msgid "DB Version"
+msgstr "DB Version"
+
+#: src/admin-debug-info.php:70
+msgid "Debug Bar integration"
+msgstr "Debug Bar integration"
+
+#: src/admin-bar-panel.php:27
+msgid "Debug Information"
+msgstr "Debug Information"
+
+#: src/xml-sitemaps.php:71
+msgid "Disable the XML sitemaps cache."
+msgstr "Disable the XML sitemaps cache."
+
+#: src/domain-dropdown.php:138
+msgid "Domain Dropdown"
+msgstr "Domain Dropdown"
+
+#: src/schema.php:105
+msgid "Don't influence"
+msgstr "Don't influence"
+
+#: src/taxonomies.php:90
+msgid "Edit Genre"
+msgstr "Edit Genre"
+
+#. translators: %s expands to the label.
+#: src/feature-toggler.php:64
+msgid "Enable %s"
+msgstr "Enable %s"
+
+#: src/post-types.php:84
+msgid "Enable block editor for Books."
+msgstr "Enable block editor for Books."
+
+#: src/post-types.php:90
+msgid "Enable block editor for Videos."
+msgstr "Enable block editor for Videos."
+
+#: src/development-mode.php:50
+msgid "Enable development mode."
+msgstr "Enable development mode."
+
+#: src/post-types.php:78
+msgid "Enable post types & taxonomies."
+msgstr "Enable post types & taxonomies."
+
+#: src/feature-toggler.php:69
+msgid "Feature toggler"
+msgstr "Feature toggler"
+
+#: src/taxonomies.php:87 src/taxonomies.php:94
+msgid "Genre"
+msgstr "Genre"
+
+#: src/taxonomies.php:84 src/taxonomies.php:86
+msgid "Genres"
+msgstr "Genres"
+
+#: src/wordpress-plugins/yoast-seo.php:79
+msgid "Indexables tables & migrations"
+msgstr "Indexables tables & migrations"
+
+#: src/schema.php:112
+msgid "Influence the Breadcrumb Graph piece: "
+msgstr "Influence the Breadcrumb Graph piece: "
+
+#: src/schema.php:119
+msgid "Influence the WebPage Graph piece: "
+msgstr "Influence the WebPage Graph piece: "
+
+#: src/inline-script.php:75
+msgid "Inline script"
+msgstr "Inline script"
+
+#: src/wordpress-plugins/yoast-seo.php:74
+msgid "Internal link counter"
+msgstr "Internal link counter"
+
+#: src/xml-sitemaps.php:74
+msgid "Maximum entries per XML sitemap:"
+msgstr "Maximum entries per XML sitemap:"
+
+#: src/post-types.php:181
+msgid "Movie"
+msgstr "Movie"
+
+#: src/post-types.php:178 src/post-types.php:180
+msgid "Movies"
+msgstr "Movies"
+
+#: src/schema.php:107
+msgid "Never include"
+msgstr "Never include"
+
+#: src/taxonomies.php:93
+msgid "New Genre Name"
+msgstr "New Genre Name"
+
+#: src/wordpress-plugins/local-seo.php:81 src/wordpress-plugins/news-seo.php:83
+#: src/wordpress-plugins/video-seo.php:81
+#: src/wordpress-plugins/woocommerce-seo.php:83
+#: src/wordpress-plugins/yoast-seo-premium.php:83
+#: src/wordpress-plugins/yoast-seo.php:146
+msgid "not active"
+msgstr "not active"
+
+#: src/wordpress-plugins/yoast-seo.php:76
+msgid "Notifications"
+msgstr "Notifications"
+
+#: src/admin-bar-panel.php:35
+msgid "Option"
+msgstr "Option"
+
+#. translators: %1$s expands to date, %2$s to plugin name, %3$s and %4$s to
+#. HTML strong tags.
+#: src/plugin-version-control.php:217
+msgid "Options from %1$s for %2$s have %3$snot%4$s been restored."
+msgstr "Options from %1$s for %2$s have %3$snot%4$s been restored."
+
+#. translators: %1$s expands to date, %2$s to plugin name.
+#: src/plugin-version-control.php:230
+msgid "Options from %1$s for %2$s have been restored."
+msgstr "Options from %1$s for %2$s have been restored."
+
+#: src/post-types.php:160
+msgid "Our books post type"
+msgstr "Our books post type"
+
+#: src/post-types.php:185
+msgid "Our movies post type"
+msgstr "Our movies post type"
+
+#: src/plugin-version-control.php:68
+msgid "Plugin"
+msgstr "Plugin"
+
+#: src/plugin-version-control.php:79
+msgid "Plugin options & database versions"
+msgstr "Plugin options & database versions"
+
+#: src/plugin-toggler.php:217
+msgid "Plugin toggler"
+msgstr "Plugin toggler"
+
+#: src/post-types.php:94
+msgid "Post types & Taxonomies"
+msgstr "Post types & Taxonomies"
+
+#: src/wordpress-plugins/yoast-seo.php:75
+msgid "Prominent words calculation"
+msgstr "Prominent words calculation"
+
+#: src/plugin-version-control.php:70
+msgid "Real"
+msgstr "Real"
+
+#: src/schema.php:126
+msgid "Replace .test domain name with example.com in Schema output."
+msgstr "Replace .test domain name with example.com in Schema output."
+
+#: src/wordpress-plugin-features.php:73
+msgid "Reset"
+msgstr "Reset"
+
+#: src/form-presenter.php:30
+msgid "Save"
+msgstr "Save"
+
+#: src/plugin-version-control.php:71
+msgid "Saved options"
+msgstr "Saved options"
+
+#: src/schema.php:141
+msgid "Schema"
+msgstr "Schema"
+
+#. translators: %1$s expands to the `script` tag.
+#: src/inline-script.php:71
+msgid "Script (do not include %1$s tags):"
+msgstr "Script (do not include %1$s tags):"
+
+#: src/taxonomies.php:88
+msgid "Search Genres"
+msgstr "Search Genres"
+
+#: src/plugin-toggler.php:213
+msgid "Show plugin toggler."
+msgstr "Show plugin toggler."
+
+#: src/wordpress-plugins/yoast-seo.php:77
+msgid "Site information"
+msgstr "Site information"
+
+#: src/upgrade-detector.php:26
+msgid "The Yoast SEO upgrade routine was executed."
+msgstr "The Yoast SEO upgrade routine was executed."
+
+#: src/wordpress-plugins/yoast-seo.php:78
+msgid "Tracking"
+msgstr "Tracking"
+
+#: src/taxonomies.php:91
+msgid "Update Genre"
+msgstr "Update Genre"
+
+#: src/xml-sitemaps.php:77
+msgid "XML Sitemaps"
+msgstr "XML Sitemaps"
+
+#: src/upgrade-detector.php:35
+msgid "Yoast SEO Premium updated its version number, which should mean the upgrade routine was executed."
+msgstr "Yoast SEO Premium updated its version number, which should mean the upgrade routine was executed."
+
+#: src/admin-page.php:60 src/admin-page.php:61
+msgid "Yoast Test"
+msgstr "Yoast Test"
+
+#: src/domain-dropdown.php:122
+msgid "Set the MyYoast testing domain to: "
+msgstr "Set the MyYoast testing domain to: "
+
+#. Plugin Name of the plugin
+#: yoast-test-helper.php src/admin-page.php:86
+msgid "Yoast Test Helper"
+msgstr "Yoast Test Helper"
+
+#. Plugin URI of the plugin
+#: yoast-test-helper.php
+msgid "https://github.com/yoast/yoast-test-helper"
+msgstr "https://github.com/yoast/yoast-test-helper"
+
+#. Author of the plugin
+#: yoast-test-helper.php
+msgid "Team Yoast"
+msgstr "Team Yoast"
+
+#. Description of the plugin
+#: yoast-test-helper.php
+msgid "Utility to provide testing features for Yoast plugins."
+msgstr "Utility to provide testing features for Yoast plugins."

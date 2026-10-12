@@ -1,0 +1,330 @@
+# Translation of Plugins - Yoast Test Helper - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Yoast Test Helper - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-05-27 10:43:41+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Yoast Test Helper - Stable (latest release)\n"
+
+#: src/wordpress-plugins/yoast-seo.php:80
+msgid "SEO roles & capabilities"
+msgstr "Perfiles y capacidades SEO"
+
+#: src/post-types.php:183
+msgid "Add new movie"
+msgstr "Añadir nueva película"
+
+#: src/post-types.php:158
+msgid "Add new book"
+msgstr "Añadir nuevo libro"
+
+#. translators: %1$s expands to date, %2$s to plugin name.
+#: src/plugin-version-control.php:230
+msgid "Options from %1$s for %2$s have been restored."
+msgstr "Las opciones de %1$s para %2$s se han restaurado."
+
+#. translators: %1$s expands to the plugin name.
+#: src/plugin-version-control.php:128
+msgid "%1$s options were saved."
+msgstr "Las opciones de %1$s se han guardado."
+
+#. translators: %1$s expands to the plugin name, %2$s to the version.
+#: src/plugin-version-control.php:113
+msgid "%1$s version was set to %2$s."
+msgstr "La versión de %1$s se estableció a %2$s."
+
+#: src/plugin-version-control.php:79
+msgid "Plugin options & database versions"
+msgstr "Opciones del plugin y versiones de la base de datos"
+
+#: src/plugin-version-control.php:71
+msgid "Saved options"
+msgstr "Opciones guardadas"
+
+#: src/plugin-version-control.php:70
+msgid "Real"
+msgstr "Real"
+
+#: src/plugin-version-control.php:69
+msgid "DB Version"
+msgstr "Vesión de la BD"
+
+#: src/plugin-version-control.php:68
+msgid "Plugin"
+msgstr "Plugin"
+
+#: src/form-presenter.php:30
+msgid "Save"
+msgstr "Guardar"
+
+#. translators: %1$s expands to the `script` tag.
+#: src/inline-script.php:71
+msgid "Script (do not include %1$s tags):"
+msgstr "Script (no incluir las etiquetas %1$s)"
+
+#: src/inline-script.php:63
+msgid "After script"
+msgstr "Después del script"
+
+#: src/inline-script.php:59
+msgid "Add the inline script specified below after the script selected here."
+msgstr "Añade el script integrado especificado abajo después del script seleccionado aquí."
+
+#: src/wordpress-plugins/yoast-seo.php:79
+msgid "Indexables tables & migrations"
+msgstr "Tablas de indexables y migraciones"
+
+#: src/wordpress-plugins/yoast-seo.php:78
+msgid "Tracking"
+msgstr "Seguimiento"
+
+#: src/wordpress-plugins/yoast-seo.php:77
+msgid "Site information"
+msgstr "Información del sitio"
+
+#: src/wordpress-plugins/yoast-seo.php:76
+msgid "Notifications"
+msgstr "Avisos"
+
+#: src/wordpress-plugins/yoast-seo.php:75
+msgid "Prominent words calculation"
+msgstr "Cálculo de palabras prominentes"
+
+#: src/wordpress-plugins/yoast-seo.php:74
+msgid "Internal link counter"
+msgstr "Contador interno de enlaces"
+
+#: src/wordpress-plugins/local-seo.php:81 src/wordpress-plugins/news-seo.php:83
+#: src/wordpress-plugins/video-seo.php:81
+#: src/wordpress-plugins/woocommerce-seo.php:83
+#: src/wordpress-plugins/yoast-seo-premium.php:83
+#: src/wordpress-plugins/yoast-seo.php:146
+msgid "not active"
+msgstr "no activo"
+
+#: src/feature-toggler.php:69
+msgid "Feature toggler"
+msgstr "Alternador de características"
+
+#. translators: %s expands to the label.
+#: src/feature-toggler.php:64
+msgid "Enable %s"
+msgstr "Activar %s"
+
+#: src/post-types.php:185
+msgid "Our movies post type"
+msgstr "Nuestro tipo de contenido de películas"
+
+#: src/post-types.php:181
+msgid "Movie"
+msgstr "Película"
+
+#: src/post-types.php:178 src/post-types.php:180
+msgid "Movies"
+msgstr "Películas"
+
+#: src/post-types.php:160
+msgid "Our books post type"
+msgstr "Nuestro tipo de contenido de libros"
+
+#: src/post-types.php:156
+msgid "Book"
+msgstr "Libro"
+
+#: src/post-types.php:153 src/post-types.php:155
+msgid "Books"
+msgstr "Libros"
+
+#: src/post-types.php:94
+msgid "Post types & Taxonomies"
+msgstr "Tipos de contenido y taxonomías"
+
+#: src/post-types.php:90
+msgid "Enable block editor for Videos."
+msgstr "Activar el editor de bloques para los vídeos."
+
+#: src/post-types.php:84
+msgid "Enable block editor for Books."
+msgstr "Activar el editor de bloques para los libros."
+
+#: src/post-types.php:78
+msgid "Enable post types & taxonomies."
+msgstr "Activar tipos de contenido y taxonomías"
+
+#: src/domain-dropdown.php:138
+msgid "Domain Dropdown"
+msgstr "Desplegable de dominios"
+
+#: src/taxonomies.php:93
+msgid "New Genre Name"
+msgstr "Nombre del nuevo género"
+
+#: src/taxonomies.php:92
+msgid "Add New Genre"
+msgstr "Añadir un nuevo género"
+
+#: src/taxonomies.php:91
+msgid "Update Genre"
+msgstr "Actualizar género"
+
+#: src/taxonomies.php:90
+msgid "Edit Genre"
+msgstr "Editar género"
+
+#: src/taxonomies.php:89
+msgid "All Genres"
+msgstr "Todos los géneros"
+
+#: src/taxonomies.php:88
+msgid "Search Genres"
+msgstr "Buscar géneros"
+
+#: src/taxonomies.php:87 src/taxonomies.php:94
+msgid "Genre"
+msgstr "Género"
+
+#: src/taxonomies.php:84 src/taxonomies.php:86
+msgid "Genres"
+msgstr "Géneros"
+
+#: src/taxonomies.php:64
+msgid "Category"
+msgstr "Categoría"
+
+#: src/taxonomies.php:61 src/taxonomies.php:63
+msgid "Categories"
+msgstr "Categorías"
+
+#: src/development-mode.php:50
+msgid "Enable development mode."
+msgstr "Activar el modo de desarrollo."
+
+#: src/xml-sitemaps.php:77
+msgid "XML Sitemaps"
+msgstr "Mapas del sitio XML"
+
+#: src/xml-sitemaps.php:74
+msgid "Maximum entries per XML sitemap:"
+msgstr "Máximo de registros por mapa del sitio XML:"
+
+#: src/xml-sitemaps.php:71
+msgid "Disable the XML sitemaps cache."
+msgstr "Desactivar la caché de los mapas del sitio XML."
+
+#: src/admin-bar-panel.php:35
+msgid "Option"
+msgstr "Opción"
+
+#: src/admin-bar-panel.php:27
+msgid "Debug Information"
+msgstr "Información de depuración"
+
+#: src/upgrade-detector.php:35
+msgid "Yoast SEO Premium updated its version number, which should mean the upgrade routine was executed."
+msgstr "Yoast SEO Premium actualizó su número de versión, lo que debería significar que se ejecutó la rutina de actualización."
+
+#: src/upgrade-detector.php:26
+msgid "The Yoast SEO upgrade routine was executed."
+msgstr "Se ejecutó la rutina de actualización de Yoast SEO."
+
+#: src/plugin-toggler.php:217
+msgid "Plugin toggler"
+msgstr "Alternador de plugins"
+
+#: src/plugin-toggler.php:213
+msgid "Show plugin toggler."
+msgstr "Mostrar el alternador de plugins."
+
+#: src/schema.php:141
+msgid "Schema"
+msgstr "Schema"
+
+#: src/schema.php:107
+msgid "Never include"
+msgstr "No incluir nunca"
+
+#: src/schema.php:106
+msgid "Always include"
+msgstr "Incluir siempre"
+
+#: src/schema.php:126
+msgid "Replace .test domain name with example.com in Schema output."
+msgstr "Reemplazar el nombre de dominio .test con example.com en la salida del Schema."
+
+#. translators: %1$s expands to the plugin name, %2$s to the feature name.
+#: src/wordpress-plugin-features.php:146
+msgid "%1$s feature %2$s has been reset."
+msgstr "La característica %2$s de %1$s se ha restablecido."
+
+#. translators: %1$s expands to the plugin name, %2$s to the feature name.
+#: src/wordpress-plugin-features.php:135
+msgid "%1$s feature %2$s could not be reset."
+msgstr "La característica %2$s de %1$s no se pudo restablecer."
+
+#: src/wordpress-plugin-features.php:73
+msgid "Reset"
+msgstr "Restablecer"
+
+#: src/schema.php:105
+msgid "Don't influence"
+msgstr "No influye"
+
+#. translators: %1$s expands to date, %2$s to plugin name, %3$s and %4$s to
+#. HTML strong tags.
+#: src/plugin-version-control.php:217
+msgid "Options from %1$s for %2$s have %3$snot%4$s been restored."
+msgstr "Las opciones de %1$s para %2$s %3$sno%4$s se han restaurado."
+
+#: src/inline-script.php:75
+msgid "Inline script"
+msgstr "Script integrado"
+
+#: src/admin-page.php:60 src/admin-page.php:61
+msgid "Yoast Test"
+msgstr "Pruebas de Yoast"
+
+#: src/admin-debug-info.php:70
+msgid "Debug Bar integration"
+msgstr "Integración con el plugin Debug Bar"
+
+#. translators: %1$s and %2$s expand to link to debug bar.
+#: src/admin-debug-info.php:66
+msgid "Add Yoast SEO panel to %1$sDebug Bar%2$s."
+msgstr "Añade el panel de Yoast SEO al plugin %1$sDebug Bar%2$s."
+
+#: src/schema.php:119
+msgid "Influence the WebPage Graph piece: "
+msgstr "Influye en la pieza WebPage Graph:"
+
+#: src/schema.php:112
+msgid "Influence the Breadcrumb Graph piece: "
+msgstr "Influye en la pieza Breadcrumb Graph:"
+
+#: src/domain-dropdown.php:122
+msgid "Set the MyYoast testing domain to: "
+msgstr "Configura el dominio de prueba de MyYoast en: "
+
+#. Plugin Name of the plugin
+#: yoast-test-helper.php src/admin-page.php:86
+msgid "Yoast Test Helper"
+msgstr "Yoast Test Helper"
+
+#. Description of the plugin
+#: yoast-test-helper.php
+msgid "Utility to provide testing features for Yoast plugins."
+msgstr "Utilidad para permitir hacer pruebas con los plugins de Yoast."
+
+#. Plugin URI of the plugin
+#: yoast-test-helper.php
+msgid "https://github.com/yoast/yoast-test-helper"
+msgstr "https://github.com/yoast/yoast-test-helper"
+
+#. Author of the plugin
+#: yoast-test-helper.php
+msgid "Team Yoast"
+msgstr "El equipo de Yoast"

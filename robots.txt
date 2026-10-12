@@ -1,0 +1,49 @@
+User-agent: *
+Disallow: /wp-login
+Disallow: /wp-admin
+Disallow: /wp-admin/*
+Disallow: /wp-includes
+Disallow: /cgi-bin
+Disallow: /css
+Disallow: /js
+Disallow: /cache/
+Disallow: /*?*
+Disallow: /?gclid=
+Disallow: /?utm_source=
+Disallow: /?yclid=
+
+User-agent: Googlebot
+Allow: *.css
+Allow: *.js
+Allow: /images/
+Disallow: /wp-admin
+Disallow: /wp-login
+Disallow: /wp-admin/*
+Disallow: /wp-includes
+Disallow: /cgi-bin
+Disallow: /cache/
+Disallow: /*?*
+Disallow: /?gclid=
+Disallow: /?utm_source=
+Disallow: /?yclid=
+
+User-agent: Googlebot-Image
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: /wp-admin/upload
+Allow: *.css
+Allow: *.js
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /cgi-bin
+Disallow: /*?*
+Disallow: /?gclid=
+Disallow: /?utm_source=
+Disallow: /?yclid=
+
+Sitemap: https://luxurysotogrande.com/sitemap_index.xml
+
+#WP Import Export Rule
+User-agent: *
+Disallow: /wp-content/uploads/wp-import-export-lite/

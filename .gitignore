@@ -1,0 +1,23 @@
+# Directories specified by user to ignore
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/uploads/
+wp-content/webp-express/
+wp-content/updraft/
+wp-content/pdfs/
+database_backups/
+extra/
+
+# Backups, cache, and logs
+wp-content/ai1wm-backups/
+wp-content/logs/
+wp-content/wflogs/
+wp-content/debug.log
+wp-content/temp-write-test-*
+*.log
+
+# WordPress sensitive credentials (DB passwords)
+wp-config.php
+wp-config.php.*
+wp-config.php.back
+.htaccess.bk
