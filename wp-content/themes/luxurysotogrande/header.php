@@ -92,7 +92,7 @@ src="https://www.facebook.com/tr?id=689537527375045&ev=PageView&noscript=1"
         <div class="bg-lsg-gold header-background">
             <div class="flex items-center justify-between p-4 mx-auto text-white max-w-screen-2xl lg:p-0 header-row">
                 <?php if ($id = get_field('logo', 'options')) : ?>
-                    <a class="header-logo" href="/"><?php echo wp_get_attachment_image($id, 'full', null, ['class' => 'w-3/5 lg:w-auto skip-lazy']); ?></a>
+                    <a class="header-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo wp_get_attachment_image($id, 'full', null, ['class' => 'w-3/5 lg:w-auto skip-lazy']); ?></a>
                 <?php endif; ?>
                 <div class="flex items-center">
                     <?php

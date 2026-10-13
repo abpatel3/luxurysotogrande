@@ -14,10 +14,15 @@ wp-content/logs/
 wp-content/wflogs/
 wp-content/debug.log
 wp-content/temp-write-test-*
+wp-content/plugins/independent-analytics/temp/
 *.log
 
 # WordPress sensitive credentials (DB passwords)
 wp-config.php
 wp-config.php.*
 wp-config.php.back
+.htaccess
 .htaccess.bk
+
+# Documentation
+DEVELOPMENT_DOCUMENTATION.md

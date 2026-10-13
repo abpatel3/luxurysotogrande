@@ -1437,6 +1437,10 @@ JS;
 });
 
 
+// ==========================================================================================
+// Old Code - Commented on 12-10-2026
+// ==========================================================================================
+/*
 add_filter('acf/fields/relationship/query/key=field_675963be624de', function($args, $field, $post_id) {
 
     error_log('-------------------------------------------');
@@ -1486,6 +1490,12 @@ add_filter('acf/fields/relationship/query/key=field_675963be624de', function($ar
     return $args;
 
 }, 10, 3);
+*/
+
+// ==========================================================================================
+// New Code - Property Merchandising & Ordering System - Added on 12-10-2026
+// ==========================================================================================
+require_once get_template_directory() . '/includes/property-merchandising.php';
 
 
 // For Bulk Pdf Generation

@@ -28,7 +28,7 @@
 <footer class="bg-lsg-blue 2">
     <div class="grid max-w-6xl gap-10 px-5 py-20 mx-auto text-white lg:grid-cols-3 lg:pg-0">
         <div id="sidebar-about" class="space-y-10">
-            <a href="/"><img src="https://luxurysotogrande.com/wp-content/uploads/2023/07/Luxury-Soto-Grande-Logo-Gold.png" alt="" class="w-full"></a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( home_url( '/wp-content/uploads/2023/07/Luxury-Soto-Grande-Logo-Gold.png' ) ); ?>" alt="" class="w-full"></a>
             <?php dynamic_sidebar('about'); ?>
             <div class="footer-socials">
                 <a target="_blank" title="<?php _e('FACEBOOK', 'purple');?>" href="https://www.facebook.com/LuxurySotogrande">

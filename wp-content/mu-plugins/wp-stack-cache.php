@@ -21,6 +21,8 @@ while ( true ) {
                 exit(1);
         }
 }
-require "/usr/share/php/wp-stack-cache.php";
-$wpsc = new WPStackCache();
+if ( file_exists( "/usr/share/php/wp-stack-cache.php" ) ) {
+    require "/usr/share/php/wp-stack-cache.php";
+    $wpsc = new WPStackCache();
+}
 
