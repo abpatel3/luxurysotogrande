@@ -103,8 +103,10 @@ get_header(); ?>
 	<?php get_template_part('parts/search-bar'); ?>
 
     <div class="posts-container mx-auto">
-        <?php if($properties_order) : ?>
-	        <?php
+        <?php 
+        // 13-10-2026: Merchandising ($properties_order) bypassed as per user request to sort all 'for-sale' properties by price High to Low
+        /*
+        if($properties_order) : 
 	        // Query args
 	        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
@@ -166,7 +168,9 @@ get_header(); ?>
                 </section>
 	        <?php endif;
 	        wp_reset_postdata(); ?>
-        <?php else:?>
+        <?php else:
+        */
+        ?>
 	    <?php
 	    $property_status = get_field('property_status');
 	    $property_area = get_field('property_area');
@@ -198,6 +202,10 @@ get_header(); ?>
 	    // Query args
 	    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
         $order = isset($_GET['order']) && $_GET['order'] === 'asc' ? 'ASC' : 'DESC';
+        
+        // 13-10-2026: Set price sorting High to Low (numeric) with zero/POA placed at end
+        /*
+        // Old args (13-10-2026):
 	    $args = array(
 		    'post_type'      => 'property',
  		    'meta_key'       => 'property_price',  // The ACF field key
@@ -214,6 +222,29 @@ get_header(); ?>
 //     'posts_per_page' => get_option('posts_per_page'),
 //     'paged'          => get_query_var('paged') ? get_query_var('paged') : 1,
 //     'tax_query'      => array('relation' => 'AND'),
+	    );
+        */
+	    $args = array(
+		    'post_type'      => 'property',
+		    'posts_per_page' => get_option('posts_per_page'),
+		    'paged'          => $paged,
+		    'meta_query'     => array(
+			    'relation' => 'OR',
+			    'price_clause' => array(
+				    'key'     => 'property_price',
+				    'type'    => 'NUMERIC',
+				    'compare' => 'EXISTS',
+			    ),
+			    'no_price_clause' => array(
+				    'key'     => 'property_price',
+				    'compare' => 'NOT EXISTS',
+			    ),
+		    ),
+		    'orderby'        => array(
+			    'price_clause' => $order,
+			    'date'         => 'DESC',
+		    ),
+		    'tax_query'      => array('relation' => 'AND'),
 	    );
 
 	    // Add 'property_status' filter if it's set
@@ -293,7 +324,10 @@ get_header(); ?>
             </section>
 	    <?php endif;
 	    wp_reset_postdata(); ?>
-        <?php endif;?>
+        <?php 
+        // 13-10-2026: Old closing endif for if($properties_order):
+        // endif; 
+        ?>
     </div>
 
 

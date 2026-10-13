@@ -1,4 +1,8 @@
 <?php $price = get_field('property_price'); ?>
+<?php 
+// 13-10-2026: Initialize property_reduced_price at top to avoid PHP undefined variable warning and enable reduction banner
+$property_reduced_price = get_field('property_reduced_price'); 
+?>
 <?php $property_id = get_field('property_id'); ?>
 <?php $bedrooms = get_field('bedrooms'); ?>
 <?php $bathrooms = get_field('bathrooms'); ?>
@@ -32,7 +36,7 @@ if ($start_date && $end_date) {
 }
 ?>
 
-<div class="property-item-new property-<?php echo esc_attr($slug); ?>">
+<div class="property-item-new property-<?php echo esc_attr($slug); ?>" style="overflow:hidden;">
     <?php if ($rented_from || $rented_to ) : ?>
     <div class="card-rented bg-lsg-gold">
         <h2 class="card-rented__title">
@@ -66,7 +70,10 @@ if ($start_date && $end_date) {
 
         </p>
         <?php else: ?>
-        <?php if (isset($property_reduced_price)) : ?>
+        <?php 
+        // 13-10-2026: Old was isset($property_reduced_price), changed to !empty to only show banner if reduced price exists
+        if (!empty($property_reduced_price)) : 
+        ?>
         <p class="sold-banner bg-lsg-gold">
             <?php _e('Price Reduction', 'luxury'); ?>
         </p>
@@ -137,7 +144,10 @@ if ($start_date && $end_date) {
                     href="<?php the_permalink()?><?php if(!empty($new_query)){ echo esc_url($new_query); }; ?>">
                     <div class="card-body__top">
                         <?php if ( has_term( ['for-sale', 'for-sale-es'], 'property_status' ) ) : ?>
-                        <?php //$property_reduced_price = get_field('property_reduced_price'); ?>
+                        <?php 
+                        // 13-10-2026: Old: //$property_reduced_price = get_field('property_reduced_price');
+                        // Variable $property_reduced_price is already fetched at top
+                        ?>
                         <?php if ($poa) : ?>
                         <h4 class="card-body__top-price">
                             <p class="normal-price">
@@ -147,9 +157,9 @@ if ($start_date && $end_date) {
                         <?php else: ?>
                         <?php if ($price) : ?>
                         <h4
-                            class="card-body__top-price <?php echo $property_reduced_price == true ? 'card-body__top-price-reduced' : ''; ?>">
+                            class="card-body__top-price <?php echo (!empty($property_reduced_price)) ? 'card-body__top-price-reduced' : ''; ?>">
                             <p class="normal-price"><?php echo number_format($price, 0, '.', '.'); ?> <span>€</span></p>
-                            <?php if ($property_reduced_price) : ?>
+                            <?php if (!empty($property_reduced_price)) : ?>
                             <p>
                                 <?php echo number_format($property_reduced_price, 0, '.', '.'); ?> <span>€</span>
                             </p>
