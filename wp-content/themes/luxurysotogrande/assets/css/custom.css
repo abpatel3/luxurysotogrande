@@ -6495,3 +6495,11 @@ input.datepicker {
 .card-content__top{
     width: 100%;
 }
+.footer-about-widget p {
+    font-family: 'Roboto, sans-serif';
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #C4BCAF;
+}

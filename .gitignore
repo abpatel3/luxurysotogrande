@@ -16,6 +16,8 @@ wp-content/debug.log
 wp-content/temp-write-test-*
 wp-content/plugins/independent-analytics/temp/
 *.log
+.gradle/
+
 
 # WordPress sensitive credentials (DB passwords)
 wp-config.php

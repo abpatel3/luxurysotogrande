@@ -192,6 +192,9 @@ add_action('wp_enqueue_scripts', 'enqueue_nouislider');
 function acf_starter_scripts()
 {
 	wp_enqueue_style('gill-sans-nova', 'https://use.typekit.net/vml6itj.css');
+	
+	// 13-10-2026: Google Fonts (Mrs Saint Delafield, Playfair Display, Roboto)
+	wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap', array(), null);
 
 	wp_dequeue_style('wp-block-library');
 
@@ -352,9 +355,9 @@ function lsg_widgets_init()
 			'name'          => esc_html__('About', 'lsg'),
 			'id'            => 'about',
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget %2$s footer-about-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-4 text-2xl font-semibold widget-title">',
+			'before_title'  => '<h2 class="mb-2.5 font-mrs-saint font-normal text-[26px] leading-[36px] tracking-normal widget-title text-warm-beige">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -1110,14 +1113,25 @@ add_action('admin_head', 'custom_acf_css');
 
 function order_search_results_by_property_price( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
-		$query->set( 'meta_key', 'property_price' ); // ACF field name
-		$query->set( 'orderby', 'meta_value_num' ); // Order numerically
-		$query->set( 'order', 'DESC' ); // Highest to lowest
+		// 13-10-2026: For-sale properties sort by price High to Low, holiday rentals sort by date
+		$property_status = isset($_GET['property_status']) ? sanitize_text_field($_GET['property_status']) : '';
+		
+		if ( in_array($property_status, ['for-sale', 'for-sale-es']) ) {
+			$query->set( 'meta_key', 'property_price' ); // ACF field name
+			$query->set( 'orderby', 'meta_value_num' ); // Order numerically High to Low
+			$query->set( 'order', 'DESC' );
+		} else {
+			// Holiday rentals and other queries sort by date (Newest first)
+			$query->set( 'orderby', 'date' );
+			$query->set( 'order', 'DESC' );
+		}
 	}
 }
 add_action( 'pre_get_posts', 'order_search_results_by_property_price' );
 
 // Start -- Comment BY Developer Kevin Patel -- 30-7-2025 -- OLD Code
+// 13-10-2026: Commented out to prevent overwriting price sorting
+/*
 function order_search_results_by_publish_date( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
 		$query->set( 'orderby', 'date' ); // Sort by post publish date
@@ -1125,6 +1139,7 @@ function order_search_results_by_publish_date( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'order_search_results_by_publish_date' );
+*/
 // End -- Comment BY Developer Kevin Patel -- 30-7-2025 -- OLD Code
 
 do_action( 'wpml_register_single_string', 'luxury', 'Price Reduction', 'Price Reduction' );

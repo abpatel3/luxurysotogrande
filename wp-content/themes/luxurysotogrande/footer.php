@@ -25,19 +25,22 @@
 </div> -->
 
 
-<footer class="bg-lsg-blue 2">
-    <div class="grid max-w-6xl gap-10 px-5 py-20 mx-auto text-white lg:grid-cols-3 lg:pg-0">
-        <div id="sidebar-about" class="space-y-10">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( home_url( '/wp-content/uploads/2023/07/Luxury-Soto-Grande-Logo-Gold.png' ) ); ?>" alt="" class="w-full"></a>
+<footer class="bg-lsg-brown 2">
+    <div class="grid ls-container gap-7 py-20 lg:grid-cols-4">
+        <div id="sidebar-about" class="space-y-2.5">
+            <?php 
+            /* 13-10-2026: Old logo: <img src="<?php echo esc_url( home_url( '/wp-content/uploads/2023/07/Luxury-Soto-Grande-Logo-Gold.png' ) ); ?>" alt="" class="w-full">*/
+            ?>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/footer-ls-logo.svg' ); ?>" alt="<?php bloginfo('name'); ?>" class="w-full max-w-[188px]"></a>
             <?php dynamic_sidebar('about'); ?>
-            <div class="footer-socials">
+            <!-- <div class="footer-socials">
                 <a target="_blank" title="<?php _e('FACEBOOK', 'purple');?>" href="https://www.facebook.com/LuxurySotogrande">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/facebook.png" alt="facebook" width="512" height="512">
                 </a>
                 <a target="_blank" title="<?php _e('Instagram', 'purple');?>" href="https://www.instagram.com/luxurysotogrande/">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/instagram.png" alt="instagram" width="512" height="512">
                 </a>
-            </div>
+            </div> -->
         </div>
 
         <div id="sidebar-import-links">
