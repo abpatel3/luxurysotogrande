@@ -1311,7 +1311,9 @@
 	flex-direction: column;
 }
 
-#sidebar-import-links .sub-menu {
+#sidebar-import-links .sub-menu,
+#sidebar-areas .sub-menu,
+#sidebar-contact .sub-menu {
 	display: none;
 }
 
@@ -5565,7 +5567,9 @@ html {
 }
 
 
-#sidebar-import-links ul li a {
+#sidebar-import-links ul li a,
+#sidebar-areas ul li a,
+#sidebar-contact ul li a {
 	text-transform: uppercase;
 }
 
@@ -6496,10 +6500,51 @@ input.datepicker {
     width: 100%;
 }
 .footer-about-widget p {
-    font-family: 'Roboto, sans-serif';
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 13px;
     line-height: 20px;
     letter-spacing: 0;
     color: #C4BCAF;
+	text-align: left;
+}
+.footer-links-widget ul li{
+	margin-bottom: 12px;
+	display: flex;
+}
+.footer-links-widget ul li a{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 17px;
+	letter-spacing: 2px;
+	color: #C4BCAF;
+	transition: color 0.2s ease;
+}
+.footer-links-widget ul li a:hover {
+	color: #ffffff;
+}
+
+#footer-bottom-menu ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: 24px;
+	row-gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#footer-bottom-menu ul li a {
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	line-height: 16px;
+	color: #C4BCAF;
+	text-decoration: underline;
+	transition: color 0.2s ease;
+}
+
+#footer-bottom-menu ul li a:hover {
+	color: #ffffff;
 }

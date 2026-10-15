@@ -128,9 +128,10 @@ if (!function_exists('acf_starter_setup')) {
 		 */
 		register_nav_menus(
 			array(
-				'primary' 	=> __('Primary'),
-				'mobile'  	=> __('Mobile'),
-				'language'  => __('Language')
+				'primary' 	    => __('Primary'),
+				'mobile'  	    => __('Mobile'),
+				'language'      => __('Language'),
+				'bottom_footer' => __('Bottom Footer', 'lsg'),
 			)
 		);
 	}
@@ -367,9 +368,21 @@ function lsg_widgets_init()
 			'name'          => esc_html__('Import Links', 'lsg'),
 			'id'            => 'important-links',
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-4 text-xl uppercase text-lsg-gold">',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
+			'after_title'   => '</h2>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__('Areas', 'lsg'),
+			'id'            => 'areas',
+			'description'   => esc_html__('Add widgets here.', 'lsg'),
+			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -381,15 +394,36 @@ function lsg_widgets_init()
 			'name'          => esc_html__('Contact', 'lsg'),
 			'id'            => 'contact',
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-4 text-xl uppercase text-lsg-gold">',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
 			'after_title'   => '</h2>',
 		)
 	);
 }
 add_action('widgets_init', 'lsg_widgets_init');
 add_filter('use_widgets_block_editor', '__return_false');
+
+// Display language label for menus in admin to easily distinguish translations
+add_filter('wp_get_nav_menus', function($menus) {
+	if (is_admin() && !empty($menus)) {
+		global $sitepress;
+		if ($sitepress && method_exists($sitepress, 'get_language_for_element')) {
+			foreach ($menus as $menu) {
+				if (!empty($menu->term_taxonomy_id)) {
+					$lang = $sitepress->get_language_for_element($menu->term_taxonomy_id, 'tax_nav_menu');
+					if ($lang) {
+						$label = ($lang === 'en') ? 'English' : (($lang === 'es') ? 'Español' : strtoupper($lang));
+						if (strpos($menu->name, "($label)") === false) {
+							$menu->name .= " ($label)";
+						}
+					}
+				}
+			}
+		}
+	}
+	return $menus;
+});
 
 /**
  * Set the Google Maps API key for the ACF Google Maps Field.

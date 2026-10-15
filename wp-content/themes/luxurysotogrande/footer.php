@@ -25,46 +25,43 @@
 </div> -->
 
 
-<footer class="bg-lsg-brown 2">
-    <div class="grid ls-container gap-7 py-20 lg:grid-cols-4">
-        <div id="sidebar-about" class="space-y-2.5">
-            <?php 
-            /* 13-10-2026: Old logo: <img src="<?php echo esc_url( home_url( '/wp-content/uploads/2023/07/Luxury-Soto-Grande-Logo-Gold.png' ) ); ?>" alt="" class="w-full">*/
-            ?>
+<footer class="bg-lsg-brown">
+    <div class=" ls-container pt-14 pb-9 space-y-9">
+        <div class="grid gap-7 grid-cols-12">
+        <div id="sidebar-about" class="space-y-2.5 col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/footer-ls-logo.svg' ); ?>" alt="<?php bloginfo('name'); ?>" class="w-full max-w-[188px]"></a>
             <?php dynamic_sidebar('about'); ?>
-            <!-- <div class="footer-socials">
-                <a target="_blank" title="<?php _e('FACEBOOK', 'purple');?>" href="https://www.facebook.com/LuxurySotogrande">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/facebook.png" alt="facebook" width="512" height="512">
-                </a>
-                <a target="_blank" title="<?php _e('Instagram', 'purple');?>" href="https://www.instagram.com/luxurysotogrande/">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/instagram.png" alt="instagram" width="512" height="512">
-                </a>
-            </div> -->
         </div>
 
-        <div id="sidebar-import-links">
+        <div id="sidebar-import-links" class="col-span-12 sm:col-span-6 lg:col-span-2 xl:col-span-3">
             <?php dynamic_sidebar('important-links'); ?>
         </div>
 
-        <div id="sidebar-contact">
-<!--            --><?php //dynamic_sidebar('contact'); ?>
-            <h2 class="mb-4 text-xl uppercase text-lsg-gold">
-                <?php _e('Contact', 'purple'); ?>
-            </h2>
-	        <?php if ( have_rows( 'columns_search', 'options' ) ): ?>
-                <div class="contacts__columns">
-                    <div class="contacts__columns-row">
-				        <?php while ( have_rows( 'columns_search', 'options' ) ): the_row(); ?>
-					        <?php if ( $text = get_sub_field('text') ): ?>
-                                <div class="contacts-column-text">
-							        <?php echo $text; ?>
-                                </div>
-					        <?php endif; ?>
-				        <?php endwhile; ?>
-                    </div>
-                </div>
-	        <?php endif; ?>
+        <div id="sidebar-areas" class="col-span-12 sm:col-span-6 lg:col-span-2 xl:col-span-3">
+            <?php dynamic_sidebar('areas'); ?>
+        </div>
+
+        <div id="sidebar-contact" class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3">
+          <?php dynamic_sidebar('contact'); ?>
+        </div>
+        </div>
+        <hr class="border-[#4A443C]">
+        <div class="grid gap-7 lg:grid-cols-2">
+            <p class="text-[#C4BCAF] font-roboto text-xs">© 2026 Luxury Sotogrande. Design and Build by <a href="https://textmimedia.com">Textme Media</a></p>
+            <div id="footer-bottom-menu" class="flex items-center justify-start lg:justify-end">
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'bottom_footer',
+                        'menu'           => 'bottom footer',
+                        'container'      => false,
+                        'menu_class'     => 'flex flex-wrap items-center gap-x-5 gap-y-2',
+                        'fallback_cb'    => false,
+                        'depth'          => 1,
+                    )
+                );
+                ?>
+            </div>
         </div>
     </div>
 </footer>
