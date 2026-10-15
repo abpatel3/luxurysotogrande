@@ -49,71 +49,148 @@ src="https://www.facebook.com/tr?id=689537527375045&ev=PageView&noscript=1"
 <!-- End cookieyes banner -->
     <?= get_field('body_scripts', 'option'); ?>
 
-    <header class="sticky top-0 z-50 w-full 123">
-        <div class="px-5 py-3 lg:p-0 bg-lsg-blue header-small">
-            <div class="flex items-center justify-end p-3 mx-auto text-white md:justify-between flex-flow md:flex-row max-w-screen-2xl">
-                <div class="grid justify-center w-full space-y-5 text-center md:flex md:space-x-5 md:space-y-0 md:flex-row lg:justify-end">
-                    <div>
-                        <?php
-                        wp_nav_menu(array(
-                            'theme_location'  => 'language',
-                            'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
-                            'container'       => '',
-                            'container_class' => '',
-                            'container_id'    => '',
-                            'menu_class'      => 'language-menu flex justify-center space-x-2'
-                        ));
-                        ?>
-                    </div>
-                    <!-- Contact -->
-                    <a href="tel:<?php the_field('telephone', 'options'); ?>" class="flex items-center justify-center">
-                        <?php get_template_part('template-parts/icons/telephone', null, ['classes' => 'w-5 fill-current mr-2']); ?>
-                        <span><?php the_field('telephone', 'options'); ?></span>
-                    </a>
-                    <a href="mailto:<?php the_field('email', 'options'); ?>" class="flex items-center justify-center">
-                        <?php get_template_part('template-parts/icons/email', null, ['classes' => 'w-5 fill-current mr-2']); ?>
-                        <span><?php the_field('email', 'options'); ?></span>
-                    </a>
-                    <button id="OpenForm">
-                        <img alt="<?php _e('Search Purple', 'purple'); ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/search_icon.svg" width="20" height="20">
-                    </button>
-                </div>
-                <div id="SearchForm" class="header__links-form">
-                    <!-- BEGIN of search form -->
-                    <form method="get" id="searchform" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                        <label for="s" class="css-clip"><?php _e( 'Search', 'default' ); ?></label>
-                        <input type="search" name="s" id="s" class="search-form__input" placeholder="<?php _e( 'Search...', 'default' ); ?>" value="<?php echo get_search_query(); ?>"/>
-                        <img alt="<?php _e('Search Form Icon', 'purple'); ?>" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/search_icon.svg" width="20" height="20">
-                    </form>
-                    <!-- END of search form -->
-                </div>
+    <header id="site-header" class="sticky top-0 z-50 w-full !bg-light-beige">
+        <div class="ls-container h-16 flex items-center justify-between">
+            
+            <!-- Left: LS Brand Logo -->
+            <div class="flex items-center shrink-0">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center header-logo-link" aria-label="<?php bloginfo('name'); ?>">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/luxurysotogrande-logo.svg" alt="<?php bloginfo('name'); ?>" class="h-[34px] w-auto" width="250" height="34">
+                </a>
             </div>
-        </div>
-        <div class="bg-lsg-gold header-background">
-            <div class="flex items-center justify-between p-4 mx-auto text-white max-w-screen-2xl lg:p-0 header-row">
-                <?php if ($id = get_field('logo', 'options')) : ?>
-                    <a class="header-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo wp_get_attachment_image($id, 'full', null, ['class' => 'w-3/5 lg:w-auto skip-lazy']); ?></a>
-                <?php endif; ?>
-                <div class="flex items-center">
-                    <?php
+
+            <!-- Center: Primary Desktop Navigation -->
+            <nav class="hidden xl:flex items-center justify-center flex-1 px-8 header-navigation" aria-label="<?php esc_attr_e('Primary Navigation', 'luxurysotogrande'); ?>">
+                <?php
+                $lsg_menu_tree = function_exists('lsg_get_primary_menu_tree') ? lsg_get_primary_menu_tree() : [];
+                if (!empty($lsg_menu_tree)) :
+                ?>
+                    <ul class="header-primary-nav">
+                        <?php foreach ($lsg_menu_tree as $l1_id => $l1) : 
+                            $item         = $l1['item'];
+                            $has_columns  = !empty($l1['columns']);
+                            $has_mega     = function_exists('lsg_menu_item_has_mega') ? lsg_menu_item_has_mega($l1) : false;
+                            $is_dropdown  = $has_columns && !$has_mega;
+                            $is_current   = (get_queried_object_id() == $item->object_id);
+                            
+                            $li_classes = 'menu-item menu-item-' . $l1_id;
+                            if ($has_mega) $li_classes .= ' has-megamenu';
+                            if ($is_dropdown) $li_classes .= ' menu-item-has-children';
+                            if ($is_current) $li_classes .= ' current-menu-item';
+                        ?>
+                            <li class="<?php echo esc_attr($li_classes); ?>" data-menu-id="<?php echo esc_attr($l1_id); ?>">
+                                <a href="<?php echo esc_url($item->url); ?>" target="<?php echo esc_attr($item->target ?: '_self'); ?>">
+                                    <?php echo esc_html($item->title); ?>
+                                </a>
+                                <?php if ($is_dropdown) : ?>
+                                    <ul class="sub-menu">
+                                        <?php foreach ($l1['columns'] as $sub_col) : 
+                                            $sub_item = $sub_col['item'];
+                                            $sub_current = (get_queried_object_id() == $sub_item->object_id);
+                                            $sub_li_cls = 'menu-item' . ($sub_current ? ' current-menu-item' : '');
+                                        ?>
+                                            <li class="<?php echo esc_attr($sub_li_cls); ?>">
+                                                <a href="<?php echo esc_url($sub_item->url); ?>" target="<?php echo esc_attr($sub_item->target ?: '_self'); ?>">
+                                                    <?php echo esc_html($sub_item->title); ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else : 
                     wp_nav_menu(array(
                         'theme_location'  => 'primary',
-                        'depth'           => 3, // 1 = no dropdowns, 2 = with dropdowns.
-                        'container'       => '',
-                        'container_class' => '',
-                        'container_id'    => '',
-                        'menu_class'      => 'primary-menu | hidden lg:flex',
-                        'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+                        'depth'           => 3,
+                        'container'       => false,
+                        'menu_class'      => 'header-primary-nav',
+                        'fallback_cb'     => false,
                     ));
+                endif;
+                ?>
+            </nav>
+
+            <!-- Right: Actions (Language, Phone, Enquire, Mobile Toggle) -->
+            <div class="flex items-center space-x-5 lg:space-x-6 shrink-0 header-actions">
+                
+                <!-- Language Switcher -->
+                <div class="header-lang-switch hidden sm:flex items-center">
+                    <?php
+                    $wpml_languages = apply_filters('wpml_active_languages', NULL, 'skip_empty=0&orderby=custom');
+                    if (!empty($wpml_languages)) {
+                        $lang_count = 0;
+                        foreach ($wpml_languages as $l) {
+                            if ($lang_count > 0) {
+                                echo '<span class="lang-divider">|</span>';
+                            }
+                            $flag = $l['language_code'] === 'en' ? '🇬🇧' : ($l['language_code'] === 'es' ? '🇪🇸' : '');
+                            $active_cls = $l['active'] ? ' active-lang' : '';
+                            echo '<a href="' . esc_url($l['url']) . '" class="header-lang-item' . $active_cls . '">';
+                            if ($flag) {
+                                echo '<span class="lang-flag">' . $flag . '</span>';
+                            }
+                            echo '<span class="lang-text">' . esc_html(strtoupper($l['language_code'])) . '</span>';
+                            echo '</a>';
+                            $lang_count++;
+                        }
+                    } elseif (has_nav_menu('language')) {
+                        wp_nav_menu(array(
+                            'theme_location'  => 'language',
+                            'depth'           => 1,
+                            'container'       => false,
+                            'menu_class'      => 'language-menu flex items-center space-x-2',
+                            'fallback_cb'     => false,
+                        ));
+                    } else {
+                        ?>
+                        <span class="header-lang-item active-lang">
+                            <span class="lang-flag">🇬🇧</span>
+                            <span class="lang-text">EN</span>
+                        </span>
+                        <span class="lang-divider">|</span>
+                        <a href="<?php echo esc_url( home_url('/es/') ); ?>" class="header-lang-item">
+                            <span class="lang-flag">🇪🇸</span>
+                            <span class="lang-text">ES</span>
+                        </a>
+                        <?php
+                    }
                     ?>
-                    <!-- Search -->
-                    <?php // get_template_part( 'template-parts/search' ); 
-                    ?>
-                    <!-- Mobile Menu -->
+                </div>
+
+                <!-- Phone Link -->
+                <?php 
+                $tel = get_field('telephone', 'options');
+                if (!$tel) {
+                    $tel = '+34 956 123 456';
+                }
+                $tel_clean = preg_replace('/[^0-9+]/', '', $tel);
+                ?>
+                <a href="tel:<?php echo esc_attr($tel_clean); ?>" class="header-phone-link hidden md:inline-flex group">
+                    <span class="header-phone-icon">
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                        </svg>
+                    </span>
+                    <span class="header-phone-text"><?php echo esc_html($tel); ?></span>
+                </a>
+
+                <!-- Enquire CTA Button -->
+                <a href="<?php echo esc_url( home_url('/contact/') ); ?>" class="header-enquire-btn hidden sm:inline-flex">
+                    <?php _e('ENQUIRE', 'luxurysotogrande'); ?>
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <div class="xl:hidden flex items-center">
                     <?php get_template_part('template-parts/mobile-menu'); ?>
                 </div>
+
             </div>
         </div>
+
+        <!-- 6-Column Mega Menu Dropdown -->
+        <?php get_template_part('template-parts/header-megamenu'); ?>
     </header>
 	<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-821110381">

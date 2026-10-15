@@ -645,9 +645,8 @@ $('.property-page-images').on('click', function() {
 jQuery(document).ready(function($) {
     $('.mobile-menu .menu-item-has-children > a').on('click', function(e) {
         e.preventDefault(); // Prevent the default link behavior
-        $(this).siblings('.sub-menu').slideToggle(); // Toggle the sub-menu
-        $(this).parent().toggleClass('open'); // Optionally toggle a class for styling
-        $('body').toggleClass('no-scroll'); // Optionally toggle a class for styling
+        $(this).siblings('.sub-menu').slideToggle(250); // Toggle the sub-menu smoothly
+        $(this).parent().toggleClass('open'); // Toggle open class for arrow rotation
     });
 });
 
@@ -670,3 +669,81 @@ jQuery(document).ready(function($) {
 
 
 console.log(html2canvas); // Should not be undefined
+
+// Mega Menu Interaction for Luxury Sotogrande Header (Dynamic Multi-Mega Support)
+jQuery(document).ready(function($) {
+    let megaTimeout;
+    const $megaPanels = $('.header-megamenu-panel');
+    const $primaryNavItems = $('.header-primary-nav > li');
+
+    if (!$megaPanels.length) return;
+
+    function closeAllMega() {
+        $megaPanels.removeClass('is-active');
+        $primaryNavItems.removeClass('megamenu-trigger-active');
+    }
+
+    // Hover on any menu item
+    $primaryNavItems.on('mouseenter', function() {
+        clearTimeout(megaTimeout);
+        const $this = $(this);
+        const menuId = $this.data('menu-id');
+
+        // Check if this item has its own dynamic mega panel
+        let $targetPanel = $('#megamenu-panel-' + menuId);
+
+        // Fallback for default static panel if single mega menu
+        if (!$targetPanel.length && ($this.hasClass('has-megamenu') || $this.is(':first-child'))) {
+            $targetPanel = $('#header-megamenu-panel');
+        }
+
+        if ($targetPanel.length && $this.hasClass('has-megamenu')) {
+            $megaPanels.not($targetPanel).removeClass('is-active');
+            $primaryNavItems.not(this).removeClass('megamenu-trigger-active');
+            $targetPanel.addClass('is-active');
+            $this.addClass('megamenu-trigger-active');
+        } else {
+            // Normal link (e.g. Blog, Contact Us) -> close mega panels
+            closeAllMega();
+        }
+    });
+
+    $primaryNavItems.on('mouseleave', function() {
+        const menuId = $(this).data('menu-id');
+        let $targetPanel = $('#megamenu-panel-' + menuId);
+        if (!$targetPanel.length) {
+            $targetPanel = $('#header-megamenu-panel');
+        }
+
+        megaTimeout = setTimeout(function() {
+            if (!$targetPanel.is(':hover')) {
+                $targetPanel.removeClass('is-active');
+                $('.header-primary-nav > li[data-menu-id="' + menuId + '"]').removeClass('megamenu-trigger-active');
+            }
+        }, 180);
+    });
+
+    $megaPanels.on('mouseenter', function() {
+        clearTimeout(megaTimeout);
+    });
+
+    $megaPanels.on('mouseleave', function() {
+        const $panel = $(this);
+        const menuId = $panel.data('menu-id');
+        megaTimeout = setTimeout(function() {
+            $panel.removeClass('is-active');
+            if (menuId) {
+                $('.header-primary-nav > li[data-menu-id="' + menuId + '"]').removeClass('megamenu-trigger-active');
+            } else {
+                $primaryNavItems.removeClass('megamenu-trigger-active');
+            }
+        }, 180);
+    });
+
+    // Close on ESC key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            closeAllMega();
+        }
+    });
+});

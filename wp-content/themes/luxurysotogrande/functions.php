@@ -128,15 +128,172 @@ if (!function_exists('acf_starter_setup')) {
 		 */
 		register_nav_menus(
 			array(
-				'primary' 	    => __('Primary'),
-				'mobile'  	    => __('Mobile'),
-				'language'      => __('Language'),
-				'bottom_footer' => __('Bottom Footer', 'lsg'),
+				'primary' 	      => __('Primary'),
+				'mobile'  	      => __('Mobile'),
+				'language'        => __('Language'),
+				'bottom_footer'   => __('Bottom Footer', 'lsg'),
 			)
 		);
 	}
 }
 add_action('after_setup_theme', 'acf_starter_setup');
+
+/**
+ * Build 3-level Menu Hierarchy Tree for Luxury Header & Mega Menus
+ * Level 1: Main Menu (top bar)
+ * Level 2: Column Header
+ * Level 3: Column Submenu Links
+ */
+function lsg_get_primary_menu_tree() {
+	$locations = get_nav_menu_locations();
+	$menu_id = $locations['primary'] ?? 0;
+	if (!$menu_id) {
+		return [];
+	}
+
+	$menu_items = wp_get_nav_menu_items($menu_id);
+	if (empty($menu_items)) {
+		return [];
+	}
+
+	$tree = [];
+	$l2_to_l1 = [];
+
+	// Level 1 items (main menu)
+	foreach ($menu_items as $item) {
+		if ((int)$item->menu_item_parent === 0) {
+			$tree[$item->ID] = [
+				'item'    => $item,
+				'columns' => []
+			];
+		}
+	}
+
+	// Level 2 items (columns)
+	foreach ($menu_items as $item) {
+		$p_id = (int)$item->menu_item_parent;
+		if ($p_id !== 0 && isset($tree[$p_id])) {
+			$tree[$p_id]['columns'][$item->ID] = [
+				'item'      => $item,
+				'sub_items' => []
+			];
+			$l2_to_l1[$item->ID] = $p_id;
+		}
+	}
+
+	// Level 3 items (column submenus)
+	foreach ($menu_items as $item) {
+		$p_id = (int)$item->menu_item_parent;
+		if ($p_id !== 0 && isset($l2_to_l1[$p_id])) {
+			$l1_id = $l2_to_l1[$p_id];
+			$tree[$l1_id]['columns'][$p_id]['sub_items'][] = $item;
+		}
+	}
+
+	return $tree;
+}
+
+/**
+ * Determine if a Top-Level menu item qualifies as a Mega Menu.
+ * An item qualifies as a Mega Menu ONLY if at least one of its sub-items (columns)
+ * has child items / subpages. If none of its sub-items have children, it should be a Simple Dropdown.
+ */
+function lsg_menu_item_has_mega($l1) {
+	if (empty($l1['columns'])) {
+		return false;
+	}
+	foreach ($l1['columns'] as $col) {
+		$col_data = function_exists('lsg_get_megamenu_col_items') ? lsg_get_megamenu_col_items($col) : ['items' => $col['sub_items'] ?? []];
+		if (!empty($col_data['items']) || !empty($col_data['all_link'])) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Retrieve sub-items for a mega menu column.
+ * - If manual sub-items exist in Appearance -> Menus, use them directly.
+ * - If no manual sub-items exist, automatically query published child pages of this item from WordPress!
+ * - Also provides an automatic "All [Title]" link pointing to the parent page.
+ */
+function lsg_get_megamenu_col_items($col) {
+	if (!empty($col['sub_items'])) {
+		return [
+			'items'    => $col['sub_items'],
+			'all_link' => null,
+			'is_auto'  => false,
+		];
+	}
+
+	$col_item = isset($col['item']) ? $col['item'] : null;
+	if (!$col_item) {
+		return ['items' => [], 'all_link' => null, 'is_auto' => false];
+	}
+
+	$page_id = 0;
+	if (!empty($col_item->object_id) && $col_item->object === 'page') {
+		$page_id = (int) $col_item->object_id;
+	}
+	if (!$page_id && !empty($col_item->url)) {
+		$page_id = url_to_postid($col_item->url);
+		if (!$page_id) {
+			$path = trim(parse_url($col_item->url, PHP_URL_PATH), '/');
+			if ($path) {
+				$p = get_page_by_path($path);
+				if (!$p) {
+					$parts = explode('/', $path);
+					$slug = end($parts);
+					$p = get_page_by_path($slug);
+				}
+				if ($p) {
+					$page_id = $p->ID;
+				}
+			}
+		}
+	}
+	if (!$page_id && !empty($col_item->title)) {
+		$p = get_page_by_title($col_item->title, OBJECT, 'page');
+		if ($p) {
+			$page_id = $p->ID;
+		}
+	}
+
+	if ($page_id > 0) {
+		$children = get_pages([
+			'child_of'    => $page_id,
+			'sort_column' => 'menu_order,post_title',
+			'sort_order'  => 'ASC',
+			'post_status' => 'publish',
+		]);
+
+		if (!empty($children)) {
+			$items = [];
+			foreach ($children as $c) {
+				$items[] = (object) [
+					'ID'       => $c->ID,
+					'title'    => $c->post_title,
+					'url'      => get_permalink($c->ID),
+					'target'   => '_self',
+					'classes'  => [],
+				];
+			}
+
+			$all_link = (object) [
+				'title' => sprintf(__('All %s', 'luxurysotogrande'), get_the_title($page_id)),
+				'url'   => get_permalink($page_id),
+			];
+
+			return [
+				'items'    => $items,
+				'all_link' => $all_link,
+				'is_auto'  => true,
+			];
+		}
+	}
+
+	return ['items' => [], 'all_link' => null, 'is_auto' => false];
+}
 
 function enqueue_nouislider() {
 	wp_enqueue_style('nouislider-css', 'https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css', array(), '15.7.1');

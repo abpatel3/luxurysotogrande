@@ -28,3 +28,8 @@ wp-config.php.back
 
 # Documentation
 DEVELOPMENT_DOCUMENTATION.md
+
+# Temporary and copy files
+wp-content/themes/luxurysotogrande/header copy.php
+*copy*.php
+

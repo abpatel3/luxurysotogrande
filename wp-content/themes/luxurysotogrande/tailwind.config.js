@@ -14,6 +14,7 @@ module.exports = {
         "lsg-gray": "#f9f9f8",
         "lsg-brown": "#2B2622",
         "warm-beige": "#CBBC9A",
+        "light-beige": "#F5F2ED",
       },
       fontFamily: {
         "mrs-saint": ['"Mrs Saint Delafield"', "cursive"],
