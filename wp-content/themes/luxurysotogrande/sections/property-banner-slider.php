@@ -220,7 +220,7 @@ $clean_wa = preg_replace('/^00/', '', preg_replace('/[^0-9]/', '', $default_tel)
                 </div>
 
                 <!-- Floating Glassmorphism Property Card -->
-                <div class="property-hero-container">
+                <div class="property-hero-container ls-container">
                     <div class="property-hero-card">
                         
                         <!-- Top Gold Accent Indicator -->
@@ -288,44 +288,46 @@ $clean_wa = preg_replace('/^00/', '', preg_replace('/[^0-9]/', '', $default_tel)
         <?php endforeach; ?>
     </div>
 
-    <!-- Floating Custom Slider Navigation (Bottom Right Pill) -->
-    <div class="property-hero-controls-pill">
-        <!-- Prev Arrow -->
-        <button type="button" class="property-hero-nav-btn property-hero-prev" aria-label="<?php esc_attr_e('Previous Slide', 'luxurysotogrande'); ?>">
-            <svg width="15" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 5H1M1 5L5 1M1 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
+    <!-- Floating Custom Slider Navigation (Bottom Right Pill within ls-container) -->
+    <div class="property-hero-controls-wrap ls-container">
+        <div class="property-hero-controls-pill">
+            <!-- Prev Arrow -->
+            <button type="button" class="property-hero-nav-btn property-hero-prev" aria-label="<?php esc_attr_e('Previous Slide', 'luxurysotogrande'); ?>">
+                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 5H1M1 5L5 1M1 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
 
-        <!-- Slide Dash Indicators -->
-        <div class="property-hero-dashes">
-            <?php for ($i = 0; $i < count($slides); $i++) : ?>
-                <button type="button" 
-                        class="property-hero-dash <?php echo $i === 0 ? 'is-active' : ''; ?>" 
-                        data-slide-index="<?php echo $i; ?>"
-                        aria-label="<?php echo esc_attr(sprintf(__('Go to slide %d', 'luxurysotogrande'), $i + 1)); ?>">
-                </button>
-            <?php endfor; ?>
+            <!-- Slide Dash Indicators -->
+            <div class="property-hero-dashes">
+                <?php for ($i = 0; $i < count($slides); $i++) : ?>
+                    <button type="button" 
+                            class="property-hero-dash <?php echo $i === 0 ? 'is-active' : ''; ?>" 
+                            data-slide-index="<?php echo $i; ?>"
+                            aria-label="<?php echo esc_attr(sprintf(__('Go to slide %d', 'luxurysotogrande'), $i + 1)); ?>">
+                    </button>
+                <?php endfor; ?>
+            </div>
+
+            <!-- Next Arrow -->
+            <button type="button" class="property-hero-nav-btn property-hero-next" aria-label="<?php esc_attr_e('Next Slide', 'luxurysotogrande'); ?>">
+                <svg width="15" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <!-- Pause / Play Toggle Button -->
+            <button type="button" class="property-hero-pause-btn" aria-label="<?php esc_attr_e('Pause slider autoplay', 'luxurysotogrande'); ?>" data-state="playing">
+                <!-- Pause Icon (Default) -->
+                <svg class="property-hero-icon-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+                <!-- Play Icon (When Paused) -->
+                <svg class="property-hero-icon-play hidden" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </button>
         </div>
-
-        <!-- Next Arrow -->
-        <button type="button" class="property-hero-nav-btn property-hero-next" aria-label="<?php esc_attr_e('Next Slide', 'luxurysotogrande'); ?>">
-            <svg width="15" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-
-        <!-- Pause / Play Toggle Button -->
-        <button type="button" class="property-hero-pause-btn" aria-label="<?php esc_attr_e('Pause slider autoplay', 'luxurysotogrande'); ?>" data-state="playing">
-            <!-- Pause Icon (Default) -->
-            <svg class="property-hero-icon-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-            </svg>
-            <!-- Play Icon (When Paused) -->
-            <svg class="property-hero-icon-play hidden" width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-        </button>
     </div>
 
 </section>

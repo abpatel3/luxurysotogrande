@@ -2427,7 +2427,29 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "wpml_cf_preferences": 0,
+                            "wpml_cf_preferences": 2,
+                            "default_value": "LET'S TAKE YOU ON A JOURNEY",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "LET'S TAKE YOU ON A JOURNEY",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_67a5e9259735e",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Enter the subtitle text displayed on the right side of the search bar",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 2,
                             "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
@@ -2718,5 +2740,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "advanced",
-    "modified": 1792129630
+    "modified": 1792131740
 }

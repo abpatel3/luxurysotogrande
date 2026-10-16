@@ -7174,33 +7174,30 @@ input.datepicker {
     z-index: 2 !important;
 }
 
-/* Floating Glassmorphism Container (Positions card at bottom left) */
+/* Floating Glassmorphism Container (Positions card at bottom left strictly aligned with ls-container) */
 .property-hero-container {
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     width: 100% !important;
-    max-width: 1440px !important;
-    margin: 0 auto !important;
-    padding: 0 24px 36px 24px !important;
+    max-width: 1344px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     z-index: 10 !important;
     pointer-events: none !important;
     box-sizing: border-box !important;
     display: flex !important;
     justify-content: flex-start !important;
     align-items: flex-end !important;
-}
-
-@media (min-width: 768px) {
-    .property-hero-container {
-        padding: 0 40px 48px 40px !important;
-    }
+    padding-bottom: 48px !important;
 }
 
 @media (min-width: 1024px) {
     .property-hero-container {
-        padding: 0 60px 60px 60px !important;
+        padding-bottom: 60px !important;
     }
 }
 
@@ -7370,12 +7367,39 @@ input.datepicker {
     color: #FFFFFF !important;
 }
 
+/* Floating Controls Wrapper (Positions pill at bottom right strictly aligned with ls-container) */
+.property-hero-controls-wrap {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 1344px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    z-index: 25 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    padding-bottom: 48px !important;
+}
+
+@media (min-width: 1024px) {
+    .property-hero-controls-wrap {
+        padding-bottom: 60px !important;
+    }
+}
+
 /* Floating Bottom Right Controls Pill (Matches Mockup) */
 .property-hero-controls-pill {
-    position: absolute !important;
-    right: 24px !important;
-    bottom: 24px !important;
-    z-index: 25 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
     display: inline-flex !important;
     align-items: center !important;
     gap: 14px !important;
@@ -7384,20 +7408,6 @@ input.datepicker {
     padding: 10px 18px !important;
     font-size: 14px !important;
     line-height: normal !important;
-}
-
-@media (min-width: 768px) {
-    .property-hero-controls-pill {
-        right: 40px !important;
-        bottom: 48px !important;
-    }
-}
-
-@media (min-width: 1024px) {
-    .property-hero-controls-pill {
-        right: 60px !important;
-        bottom: 60px !important;
-    }
 }
 
 .property-hero-nav-btn {
@@ -7482,14 +7492,13 @@ input.datepicker {
 /* Tablet responsive (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .property-hero-container {
-        padding: 0 30px 80px 30px !important;
+        padding-bottom: 80px !important;
     }
     .property-hero-card {
         max-width: 540px !important;
     }
-    .property-hero-controls-pill {
-        right: 30px !important;
-        bottom: 24px !important;
+    .property-hero-controls-wrap {
+        padding-bottom: 24px !important;
     }
 }
 
@@ -7500,7 +7509,7 @@ input.datepicker {
         height: 620px !important;
     }
     .property-hero-container {
-        padding: 0 16px 72px 16px !important;
+        padding-bottom: 72px !important;
     }
     .property-hero-card {
         padding: 24px 20px 22px 20px !important;
@@ -7518,11 +7527,514 @@ input.datepicker {
         font-size: 9.5px !important;
         letter-spacing: 1px !important;
     }
+    .property-hero-controls-wrap {
+        padding-bottom: 18px !important;
+    }
     .property-hero-controls-pill {
-        right: 16px !important;
-        bottom: 18px !important;
         padding: 6px 14px !important;
         gap: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   Luxury New Search Section (Custom 4-Column Layout matching Mockup)
+   Self-contained: does NOT affect parts/search-bar.php on other pages
+   ========================================================================== */
+.luxury-search-section {
+    width: 100% !important;
+    background: #FFFFFF !important;
+    padding: 44px 0 52px 0 !important;
+    box-sizing: border-box !important;
+}
+
+.luxury-search-section .ls-container {
+    width: 100% !important;
+}
+
+/* Header Row: Title on Left, Subtitle on Right */
+.luxury-search-header {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    margin-bottom: 26px !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+}
+
+.luxury-search-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 22px !important;
+    line-height: 30px !important;
+    font-weight: 400 !important;
+    letter-spacing: 3.5px !important;
+    text-transform: uppercase !important;
+    color: #2B2724 !important;
+    margin: 0 !important;
+}
+
+.luxury-search-subtitle {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 19px !important;
+    font-weight: 400 !important;
+    color: #4A453E !important;
+    margin: 0 !important;
+    text-align: right !important;
+}
+
+/* 4-Column Grid Form */
+.luxury-search-form {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    column-gap: 22px !important;
+    row-gap: 16px !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.luxury-search-col {
+    position: relative !important;
+    width: 100% !important;
+}
+
+/* Custom Select Dropdowns */
+.luxury-select-wrapper {
+    position: relative !important;
+    width: 100% !important;
+}
+
+.luxury-select {
+    width: 100% !important;
+    height: 48px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D5CFC7 !important;
+    border-radius: 2px !important;
+    padding: 0 12px 0 16px !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #4A453E !important;
+    cursor: pointer !important;
+    outline: none !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.luxury-select:focus {
+    border-color: #B99B62 !important;
+}
+
+.luxury-select option {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: normal !important;
+    text-transform: uppercase !important;
+    color: #2B2724 !important;
+    padding: 8px !important;
+    background: #FFFFFF !important;
+}
+
+.luxury-select-chevron {
+    position: absolute !important;
+    right: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ==========================================================================
+   Luxury Select2 Dropdown Styling
+   ========================================================================== */
+
+/* Hide native chevron icon when select2 is active */
+.luxury-select-wrapper:has(.select2-container) .luxury-select-chevron,
+.luxury-select-wrapper .select2-container ~ .luxury-select-chevron {
+    display: none !important;
+}
+
+/* Select2 Main Container */
+.luxury-search-form .select2-container {
+    width: 100% !important;
+    height: 48px !important;
+    display: block !important;
+}
+
+.luxury-search-form .select2-container .select2-selection--single {
+    width: 100% !important;
+    height: 48px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D5CFC7 !important;
+    border-radius: 2px !important;
+    padding: 0 36px 0 16px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    outline: none !important;
+}
+
+.luxury-search-form .select2-container--open .select2-selection--single,
+.luxury-search-form .select2-container--focus .select2-selection--single {
+    border-color: #B99B62 !important;
+    box-shadow: 0 0 0 1px #B99B62 !important;
+}
+
+.luxury-search-form .select2-container .select2-selection--single .select2-selection__rendered {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #4A453E !important;
+    padding: 0 !important;
+    line-height: 46px !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* Custom SVG Chevron Arrow inside Select2 */
+.luxury-search-form .select2-container .select2-selection--single .select2-selection__arrow {
+    position: absolute !important;
+    top: 50% !important;
+    right: 14px !important;
+    transform: translateY(-50%) !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: none !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.luxury-search-form .select2-container .select2-selection--single .select2-selection__arrow b {
+    display: block !important;
+    width: 7px !important;
+    height: 7px !important;
+    border: none !important;
+    border-right: 1.5px solid #4A453E !important;
+    border-bottom: 1.5px solid #4A453E !important;
+    transform: rotate(45deg) !important;
+    margin: -3px 0 0 0 !important;
+    transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+.luxury-search-form .select2-container--open .select2-selection--single .select2-selection__arrow b {
+    transform: rotate(-135deg) !important;
+    margin: 2px 0 0 0 !important;
+    border-color: #B99B62 !important;
+}
+
+/* Dropdown Menu Container */
+.select2-dropdown.luxury-select2-dropdown {
+    background: #FFFFFF !important;
+    border: 1px solid #B99B62 !important;
+    border-radius: 2px !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+    z-index: 99999 !important;
+    margin-top: 3px !important;
+    overflow: hidden !important;
+}
+
+.luxury-select2-dropdown .select2-search--dropdown {
+    display: none !important; /* Hide search bar for ultra-clean dropdown */
+}
+
+.luxury-select2-dropdown .select2-results {
+    padding: 4px 0 !important;
+}
+
+.luxury-select2-dropdown .select2-results__options {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+}
+
+/* Custom Scrollbar for Dropdown */
+.luxury-select2-dropdown .select2-results__options::-webkit-scrollbar {
+    width: 5px !important;
+}
+.luxury-select2-dropdown .select2-results__options::-webkit-scrollbar-thumb {
+    background: #D5CFC7 !important;
+    border-radius: 3px !important;
+}
+
+/* Dropdown Option Items */
+.luxury-select2-dropdown .select2-results__option {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #4A453E !important;
+    padding: 11px 16px !important;
+    cursor: pointer !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+    border: none !important;
+}
+
+/* Hover / Highlighted State */
+.luxury-select2-dropdown .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #FAF8F5 !important;
+    color: #B99B62 !important;
+}
+
+/* Selected State */
+.luxury-select2-dropdown .select2-results__option--selected {
+    background-color: #F5F1EB !important;
+    color: #2B2724 !important;
+    font-weight: 600 !important;
+}
+
+/* Reference Input */
+.luxury-input {
+    width: 100% !important;
+    height: 48px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D5CFC7 !important;
+    border-radius: 2px !important;
+    padding: 0 16px !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #4A453E !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease !important;
+}
+
+.luxury-input:focus {
+    border-color: #B99B62 !important;
+}
+
+.luxury-input::placeholder {
+    color: #7E7870 !important;
+    font-size: 11px !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+}
+
+/* Dual Range Price Slider Block */
+.luxury-price-slider-box {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    height: 48px !important;
+    padding: 0 4px !important;
+    box-sizing: border-box !important;
+}
+
+.luxury-price-labels {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 8px !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #2B2724 !important;
+}
+
+/* Luxury Slider Bar & Handles */
+#luxury-price-slider {
+    height: 3px !important;
+    background: #E5DFD7 !important;
+    border: none !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+    position: relative !important;
+    margin: 4px 7px 0 7px !important;
+}
+
+#luxury-price-slider .noUi-connect {
+    background: #B99B62 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#luxury-price-slider .noUi-handle {
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: #B99B62 !important;
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+    cursor: pointer !important;
+    right: -7px !important;
+    top: -5.5px !important;
+    outline: none !important;
+}
+
+#luxury-price-slider .noUi-handle::before,
+#luxury-price-slider .noUi-handle::after {
+    display: none !important;
+}
+
+/* Search Submit Button */
+.luxury-search-btn {
+    width: 100% !important;
+    height: 48px !important;
+    background: #2B2724 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 2px !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: background 0.25s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+.luxury-search-btn:hover {
+    background: #3F3934 !important;
+}
+
+/* Holiday Rental Booking Fields & Calendar */
+.luxury-input-wrapper {
+    position: relative !important;
+    width: 100% !important;
+}
+
+.luxury-calendar-icon {
+    position: absolute !important;
+    right: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.luxury-datepicker {
+    padding-right: 36px !important;
+    cursor: pointer !important;
+}
+
+/* On Desktop when Holiday Rental is chosen: Reference spans 3 cols, Submit on col 4 */
+@media (min-width: 1025px) {
+    #luxury-search-form.has-holiday-rental .luxury-search-col-ref {
+        grid-column: span 3 !important;
+    }
+    #luxury-search-form.has-holiday-rental .luxury-search-col-submit {
+        grid-column: 4 !important;
+    }
+}
+
+/* Luxury jQuery UI Datepicker Styling */
+.ui-datepicker {
+    background: #FFFFFF !important;
+    border: 1px solid #D5CFC7 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+    font-family: 'Roboto', sans-serif !important;
+    padding: 12px !important;
+    z-index: 99999 !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: #2B2724 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 2px !important;
+    padding: 8px 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    cursor: pointer !important;
+    top: 6px !important;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    filter: invert(1) !important;
+}
+
+.ui-datepicker th {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #8C8479 !important;
+    text-transform: uppercase !important;
+    padding: 6px 2px !important;
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+    text-align: center !important;
+    padding: 6px 4px !important;
+    font-size: 12px !important;
+    border-radius: 2px !important;
+    border: none !important;
+    color: #2B2724 !important;
+}
+
+.ui-datepicker td a:hover {
+    background: #F0ECE6 !important;
+    color: #2B2724 !important;
+}
+
+.ui-datepicker td .ui-state-active,
+.ui-datepicker td .ui-state-highlight {
+    background: #B99B62 !important;
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .luxury-search-form {
+        grid-template-columns: repeat(2, 1fr) !important;
+        column-gap: 20px !important;
+    }
+    .luxury-search-section {
+        padding: 50px 0 40px 0 !important;
+    }
+}
+
+/* Mobile Responsive (max-width: 640px) */
+@media (max-width: 640px) {
+    .luxury-search-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    .luxury-search-title {
+        font-size: 20px !important;
+        line-height: 28px !important;
+        letter-spacing: 2.5px !important;
+    }
+    .luxury-search-subtitle {
+        text-align: left !important;
+    }
+    .luxury-search-form {
+        grid-template-columns: 1fr !important;
+        row-gap: 14px !important;
+    }
+    .luxury-price-slider-box {
+        margin: 10px 0 !important;
     }
 }
 
