@@ -49,7 +49,7 @@ function starter_scripts_and_styles() {
 		// Load Stylesheets
 		wp_enqueue_style( 'select2', get_template_directory_uri() . '/assets/css/select2.css', null, '4.1.0' );
 		wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/css/slick.css', null, '4.1.0' );
-		wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', null, '4.1.0' );
+		wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', null, filemtime( get_stylesheet_directory() . '/assets/css/custom.css' ) );
 
 		// Load JavaScripts
 		wp_enqueue_style( 'jquery-ui-datepicker', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', null, '1.12.1' );

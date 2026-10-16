@@ -751,3 +751,100 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+// Property Hero Banner Slider (Custom Slick Slider with Glassmorphism Card & Control Pill)
+jQuery(document).ready(function($) {
+    $('.property-hero-slider-wrap').each(function() {
+        const $wrap = $(this);
+        const $slider = $wrap.find('.property-hero-slider-main');
+        if (!$slider.length) return;
+
+        const isAutoplay = $wrap.data('autoplay') !== false && $wrap.data('autoplay') !== 'false';
+        const autoplaySpeed = parseInt($wrap.data('autoplay-speed'), 10) || 3000;
+        let isManuallyPaused = false;
+
+        $slider.slick({
+            dots: false,
+            arrows: false,
+            infinite: true,
+            fade: true,
+            speed: 800,
+            cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
+            autoplay: isAutoplay,
+            autoplaySpeed: autoplaySpeed,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            pauseOnDotsHover: false,
+            adaptiveHeight: false
+        });
+
+        // Sync active dash indicator on slide change
+        $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+            $wrap.find('.property-hero-dash')
+                .removeClass('is-active')
+                .eq(nextSlide)
+                .addClass('is-active');
+
+            // If stopped by user, prevent Slick from restarting autoplay
+            if (isManuallyPaused) {
+                $slider.slick('slickPause');
+            }
+        });
+
+        // Click on dash to go to specific slide
+        $wrap.on('click', '.property-hero-dash', function(e) {
+            e.preventDefault();
+            const slideIndex = parseInt($(this).data('slide-index'), 10);
+            if (!isNaN(slideIndex)) {
+                $slider.slick('slickGoTo', slideIndex);
+                if (isManuallyPaused) {
+                    $slider.slick('slickPause');
+                }
+            }
+        });
+
+        // Prev / Next button clicks
+        $wrap.on('click', '.property-hero-prev', function(e) {
+            e.preventDefault();
+            $slider.slick('slickPrev');
+            if (isManuallyPaused) {
+                $slider.slick('slickPause');
+            }
+        });
+
+        $wrap.on('click', '.property-hero-next', function(e) {
+            e.preventDefault();
+            $slider.slick('slickNext');
+            if (isManuallyPaused) {
+                $slider.slick('slickPause');
+            }
+        });
+
+        // Pause / Play toggle
+        $wrap.on('click', '.property-hero-pause-btn', function(e) {
+            e.preventDefault();
+            const $btn = $(this);
+
+            if (!isManuallyPaused) {
+                // User clicks STOP/PAUSE
+                isManuallyPaused = true;
+                $slider.slick('slickSetOption', 'autoplay', false, false);
+                $slider.slick('slickPause');
+                $btn.attr('data-state', 'paused');
+                $btn.find('.property-hero-icon-pause').addClass('hidden');
+                $btn.find('.property-hero-icon-play').removeClass('hidden');
+                $btn.attr('aria-label', 'Resume slider autoplay');
+            } else {
+                // User clicks PLAY to resume auto-sliding
+                isManuallyPaused = false;
+                $slider.slick('slickSetOption', 'autoplay', true, false);
+                $slider.slick('slickPlay');
+                $btn.attr('data-state', 'playing');
+                $btn.find('.property-hero-icon-pause').removeClass('hidden');
+                $btn.find('.property-hero-icon-play').addClass('hidden');
+                $btn.attr('aria-label', 'Pause slider autoplay');
+            }
+        });
+    });
+});
+

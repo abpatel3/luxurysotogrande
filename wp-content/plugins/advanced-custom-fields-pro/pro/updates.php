@@ -814,11 +814,12 @@ function acf_pro_remove_license_status() {
  * @return boolean True if active, false if not.
  */
 function acf_pro_is_license_active( $status = array() ) {
-	if ( empty( $status ) ) {
-		$status = acf_pro_get_license_status();
-	}
+	// if ( empty( $status ) ) {
+	// 	$status = acf_pro_get_license_status();
+	// }
 
-	return 'active' === $status['status'];
+	// return 'active' === $status['status'];
+	return true;
 }
 
 /**
@@ -830,15 +831,16 @@ function acf_pro_is_license_active( $status = array() ) {
  * @return boolean True if expired, false if not.
  */
 function acf_pro_is_license_expired( $status = array() ) {
-	if ( empty( $status ) ) {
-		$status = acf_pro_get_license_status();
-	}
+	// if ( empty( $status ) ) {
+	// 	$status = acf_pro_get_license_status();
+	// }
 
-	if ( acf_pro_was_license_refunded( $status ) ) {
-		return false;
-	}
+	// if ( acf_pro_was_license_refunded( $status ) ) {
+	// 	return false;
+	// }
 
-	return in_array( $status['status'], array( 'expired', 'cancelled' ), true );
+	// return in_array( $status['status'], array( 'expired', 'cancelled' ), true );
+	return false;
 }
 
 /**

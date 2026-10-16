@@ -7066,3 +7066,463 @@ input.datepicker {
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   Property Hero Banner Slider Section (Pixel-Perfect Luxury Match)
+   ========================================================================== */
+.property-hero-slider-wrap {
+    position: relative !important;
+    width: 100% !important;
+    height: 720px !important;
+    background-color: transparent !important;
+    overflow: hidden !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.property-hero-slider-main {
+    margin-bottom: 0 !important;
+    height: 100% !important;
+    line-height: normal !important;
+    font-size: initial !important;
+}
+
+.property-hero-slider-main .slick-list,
+.property-hero-slider-main .slick-track {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.property-hero-slider-main .slick-slide {
+    outline: none !important;
+    height: 100% !important;
+}
+
+.property-hero-slide {
+    position: relative !important;
+    width: 100% !important;
+    height: 720px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+@media (min-width: 768px) {
+    .property-hero-slider-wrap,
+    .property-hero-slide {
+        height: 780px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .property-hero-slider-wrap,
+    .property-hero-slide {
+        height: 840px !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .property-hero-slider-wrap,
+    .property-hero-slide {
+        height: calc(100vh - 100px) !important;
+        min-height: 720px !important;
+        max-height: 960px !important;
+    }
+}
+
+.property-hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+}
+
+.property-hero-bg picture {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    line-height: 0 !important;
+}
+
+.property-hero-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.property-hero-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.30) 100%) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+
+/* Floating Glassmorphism Container (Positions card at bottom left) */
+.property-hero-container {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding: 0 24px 36px 24px !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+}
+
+@media (min-width: 768px) {
+    .property-hero-container {
+        padding: 0 40px 48px 40px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .property-hero-container {
+        padding: 0 60px 60px 60px !important;
+    }
+}
+
+/* Floating Glassmorphism Card (Exact Luxury Aesthetic matching mockup) */
+.property-hero-card {
+    pointer-events: auto !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    background: #F5F2EDD9 !important;
+	box-shadow: 0px 10px 30px -6px #0000002E !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    padding: 30px 36px 32px 30px !important;
+    border-radius: 2px !important;
+    box-sizing: border-box !important;
+}
+
+/* Top Gold Accent Bar */
+.property-hero-card-accent {
+    width: 36px !important;
+    height: 2px !important;
+    background-color: #B99B62 !important;
+    margin-bottom: 12px !important;
+}
+
+/* Top Meta: Location & Ref */
+.property-hero-card-meta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    margin-bottom: 12px !important;
+}
+
+.property-hero-location {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #7E692F !important;
+    line-height: 16px !important;
+}
+
+.property-hero-ref {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #7E692F !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+}
+
+/* Property Title (Editorial Serif font) */
+.property-hero-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 36px !important;
+    line-height: 46px !important;
+    font-weight: 400 !important;
+    color: #2B2724 !important;
+    margin-bottom:12px !important;
+    letter-spacing: -0.2px !important;
+    text-transform: none !important;
+}
+
+/* Specs Line */
+.property-hero-specs {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: #4A453E !important;
+    margin-bottom: 12px !important;
+    line-height: 20px !important;
+}
+
+/* Price Line (Editorial Serif font) */
+.property-hero-price {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    font-weight: 400 !important;
+    color: #2B2724 !important;
+    margin-bottom: 24px !important;
+    line-height: 36px !important;
+}
+
+/* Action Buttons Row */
+.property-hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+}
+
+.property-hero-btn-view {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 13px 24px !important;
+    border: 1px solid #2B2724 !important;
+    background: transparent !important;
+    color: #2B2724 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+    border-radius: 2px !important;
+    box-sizing: border-box !important;
+}
+
+.property-hero-btn-view:hover {
+    background: #2B2724 !important;
+    color: #FFFFFF !important;
+}
+
+.property-hero-btn-arrow {
+    display: inline-block !important;
+    transition: transform 0.2s ease !important;
+	color: #7E692F;
+}
+
+.property-hero-btn-view:hover .property-hero-btn-arrow {
+    transform: translateX(3px) !important;
+}
+
+.property-hero-btn-enquire {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: #2B2724 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+    transition: color 0.2s ease !important;
+}
+
+.property-hero-btn-enquire:hover {
+    color: #8C7539 !important;
+}
+
+.property-hero-btn-wa {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background-color: #25D366 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+}
+
+.property-hero-btn-wa:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55) !important;
+    color: #FFFFFF !important;
+}
+
+/* Floating Bottom Right Controls Pill (Matches Mockup) */
+.property-hero-controls-pill {
+    position: absolute !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    z-index: 25 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    background: #2B2724B8 !important;
+    border-radius: 9999px !important;
+    padding: 10px 18px !important;
+    font-size: 14px !important;
+    line-height: normal !important;
+}
+
+@media (min-width: 768px) {
+    .property-hero-controls-pill {
+        right: 40px !important;
+        bottom: 48px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .property-hero-controls-pill {
+        right: 60px !important;
+        bottom: 60px !important;
+    }
+}
+
+.property-hero-nav-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    color: #F5F2ED !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.property-hero-nav-btn svg {
+    display: block !important;
+    width: 15px !important;
+    height: 10px !important;
+    color: inherit !important;
+    pointer-events: none !important;
+}
+
+.property-hero-nav-btn:hover {
+    color: #FFFFFF !important;
+    transform: scale(1.15) !important;
+}
+
+.property-hero-dashes {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.property-hero-dash {
+    display: inline-block !important;
+    height: 6px !important;
+    width: 6px !important;
+    background: #F5F2EDBF !important;
+    border-radius: 2px !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.property-hero-dash:hover {
+    background: rgba(245, 242, 237, 0.1) !important;
+}
+
+.property-hero-dash.is-active {
+    width: 24px !important;
+    background: #B99B62 !important;
+    border-radius: 9999px !important;
+}
+
+.property-hero-pause-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 22px !important;
+    height: 22px !important;
+    color: #F5F2ED !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;    
+    transition: color 0.2s ease !important;
+}
+
+.property-hero-pause-btn:hover {
+    color: #FFFFFF !important;
+}
+
+.property-hero-pause-btn .hidden {
+    display: none !important;
+}
+
+/* Tablet responsive (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .property-hero-container {
+        padding: 0 30px 80px 30px !important;
+    }
+    .property-hero-card {
+        max-width: 540px !important;
+    }
+    .property-hero-controls-pill {
+        right: 30px !important;
+        bottom: 24px !important;
+    }
+}
+
+/* Mobile responsive (max-width: 767px) */
+@media (max-width: 767px) {
+    .property-hero-slider-wrap,
+    .property-hero-slide {
+        height: 620px !important;
+    }
+    .property-hero-container {
+        padding: 0 16px 72px 16px !important;
+    }
+    .property-hero-card {
+        padding: 24px 20px 22px 20px !important;
+        max-width: 100% !important;
+    }
+    .property-hero-title {
+        font-size: 26px !important;
+        line-height: 34px !important;
+    }
+    .property-hero-price {
+        font-size: 22px !important;
+        margin-bottom: 18px !important;
+    }
+    .property-hero-specs {
+        font-size: 9.5px !important;
+        letter-spacing: 1px !important;
+    }
+    .property-hero-controls-pill {
+        right: 16px !important;
+        bottom: 18px !important;
+        padding: 6px 14px !important;
+        gap: 10px !important;
+    }
+}
+
