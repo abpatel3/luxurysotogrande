@@ -643,10 +643,14 @@ $('.property-page-images').on('click', function() {
 });
 
 jQuery(document).ready(function($) {
-    $('.mobile-menu .menu-item-has-children > a').on('click', function(e) {
-        e.preventDefault(); // Prevent the default link behavior
-        $(this).siblings('.sub-menu').slideToggle(250); // Toggle the sub-menu smoothly
-        $(this).parent().toggleClass('open'); // Toggle open class for arrow rotation
+    $('.mobile-menu').on('click', '.menu-item-has-children > a, .mega-dropdown > a', function(e) {
+        var $submenu = $(this).siblings('.sub-menu');
+        if ($submenu.length) {
+            e.preventDefault();
+            e.stopPropagation();
+            $submenu.slideToggle(250);
+            $(this).parent().toggleClass('open');
+        }
     });
 });
 

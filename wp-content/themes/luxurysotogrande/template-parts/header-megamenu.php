@@ -22,6 +22,25 @@ if (!empty($menu_tree)) {
 }
 ?>
 
+<?php
+// Helper for resolving fallback URLs if not exists
+if (!function_exists('lsg_megamenu_url')) {
+    function lsg_megamenu_url($path) {
+        $clean_path = trim($path, '/');
+        $page = get_page_by_path($clean_path);
+        if (!$page) {
+            $parts = explode('/', $clean_path);
+            $slug = end($parts);
+            $page = get_page_by_path($slug);
+        }
+        if ($page) {
+            return get_permalink($page->ID);
+        }
+        return home_url('/' . $clean_path . '/');
+    }
+}
+?>
+
 <?php if (!empty($mega_items)) : ?>
     <!-- DYNAMIC MEGA MENUS PARSED FROM WORDPRESS ADMIN -->
     <?php foreach ($mega_items as $l1_id => $l1) : 
@@ -34,14 +53,15 @@ if (!empty($menu_tree)) {
              role="region" 
              aria-label="<?php echo esc_attr($main_item->title); ?> <?php esc_attr_e('Mega Menu', 'luxurysotogrande'); ?>">
             
-            <div class="megamenu-inner-container">
-                <div class="megamenu-grid">
+            <div class="megamenu-inner-container ls-container">
+                <div class="megamenu-grid megamenu-grid-dynamic" style="--megamenu-cols: 6; grid-template-columns: repeat(6, minmax(0, 1fr)) !important;">
+                    
                     <?php foreach ($cols as $col_id => $col) : 
                         $col_item  = $col['item'];
-                        $col_title = $col_item->title;
+                        $col_title = trim($col_item->title);
                         $col_url   = (!empty($col_item->url) && $col_item->url !== '#' && $col_item->url !== '') ? $col_item->url : '';
                         
-                        // Check if this column has dynamic child posts/pages from helper
+                        // Query dynamic child posts/pages from helper (or explicit sub_items from WP Menu)
                         $col_data  = function_exists('lsg_get_megamenu_col_items') ? lsg_get_megamenu_col_items($col) : ['items' => $col['sub_items'] ?? [], 'all_link' => null, 'is_auto' => false];
                         $sub_items = $col_data['items'];
                         $all_link  = $col_data['all_link'];
@@ -62,11 +82,9 @@ if (!empty($menu_tree)) {
                                 <ul class="megamenu-list">
                                     <?php if (!empty($sub_items)) : ?>
                                         <?php foreach ($sub_items as $sub) : 
-                                            $sub_classes = is_array($sub->classes) ? $sub->classes : [];
+                                            $sub_classes = is_array($sub->classes ?? null) ? $sub->classes : [];
                                             $is_all_link = in_array('all-link', $sub_classes) || 
                                                            in_array('view-all', $sub_classes) || 
-                                                           (stripos($sub->title, 'All ') === 0) || 
-                                                           (stripos($sub->title, 'Todos ') === 0) || 
                                                            (strpos($sub->title, '→') !== false) || 
                                                            (strpos($sub->title, '&rarr;') !== false);
                                             $li_class = $is_all_link ? ' class="megamenu-all-link"' : '';
@@ -91,181 +109,10 @@ if (!empty($menu_tree)) {
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
+
                 </div>
             </div>
         </div>
     <?php endforeach; ?>
-
-<?php else : ?>
-    <!-- DEFAULT FALLBACK IF NO WP-ADMIN MENU HAS 3-LEVEL STRUCTURE YET -->
-    <?php
-    if (!function_exists('lsg_megamenu_url')) {
-        function lsg_megamenu_url($path) {
-            $page = get_page_by_path($path);
-            if ($page) {
-                return get_permalink($page->ID);
-            }
-            return home_url('/' . ltrim($path, '/') . '/');
-        }
-    }
-    ?>
-    <div id="header-megamenu-panel" 
-         class="header-megamenu-panel is-fallback"
-         role="region" 
-         aria-label="<?php esc_attr_e('Properties Mega Menu', 'luxurysotogrande'); ?>">
-        
-        <div class="megamenu-inner-container">
-            <div class="megamenu-grid">
-
-                <!-- Column 1: BROWSE -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('BROWSE', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('properties-for-sale') ); ?>"><?php _e('All Properties for Sale', 'luxurysotogrande'); ?></a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('new-developments') ); ?>"><?php _e('New Developments', 'luxurysotogrande'); ?></a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('off-market-collection') ); ?>"><?php _e('Off-Market Collection', 'luxurysotogrande'); ?></a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('invitation-only') ); ?>"><?php _e('Invitation Only', 'luxurysotogrande'); ?></a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('plots-projects') ); ?>"><?php _e('Plots & Projects', 'luxurysotogrande'); ?></a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('recently-sold') ); ?>"><?php _e('Recently Sold', 'luxurysotogrande'); ?></a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 2: SOTOGRANDE COSTA -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('SOTOGRANDE COSTA', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/el-casar') ); ?>">El Casar</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/el-polo') ); ?>">El Polo</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/kings-queens') ); ?>">Kings & Queens</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/la-loma') ); ?>">La Loma</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/lacasitos') ); ?>">Lacasitos</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/los-granados') ); ?>">Los Granados</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/polo-gardens') ); ?>">Polo Gardens</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/villas-de-paniagua') ); ?>">Villas de Paniagua</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/zone-a') ); ?>">Zone A</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa/zone-b') ); ?>">Zone B</a></li>
-                        <li class="megamenu-all-link">
-                            <a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-costa') ); ?>">
-                                <?php _e('All Sotogrande Costa', 'luxurysotogrande'); ?> &rarr;
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: SOTOGRANDE ALTO -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('SOTOGRANDE ALTO', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/14-homes') ); ?>">14 Homes</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/casas-cortijo') ); ?>">Casas Cortijo</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/hacienda-valderrama') ); ?>">Hacienda Valderrama</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/las-cimas') ); ?>">Las Cimas</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/las-terrazas') ); ?>">Las Terrazas</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/los-altos-de-valderrama') ); ?>">Los Altos de Valderrama</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/los-carmenes') ); ?>">Los Carmenes</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/los-gazules') ); ?>">Los Gazules</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/los-patios-de-valderrama') ); ?>">Los Patios de Valderrama</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/mirador-del-golf') ); ?>">Mirador del Golf</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/sotogolf') ); ?>">Sotogolf</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/tenis') ); ?>">Tenis</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/valgrande') ); ?>">Valgrande</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/zone-c') ); ?>">Zone C</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/zone-d') ); ?>">Zone D</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/zone-e') ); ?>">Zone E</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/zone-f') ); ?>">Zone F</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto/zone-g') ); ?>">Zone G</a></li>
-                        <li class="megamenu-all-link">
-                            <a href="<?php echo esc_url( lsg_megamenu_url('sotogrande-alto') ); ?>">
-                                <?php _e('All Sotogrande Alto', 'luxurysotogrande'); ?> &rarr;
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 4: LA RESERVA -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('LA RESERVA', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva') ); ?>">La Reserva</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/the-seven') ); ?>">The Seven</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/the-fifteen') ); ?>">The Fifteen</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/the-collection') ); ?>">The Collection</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/village-verde') ); ?>">Village Verde</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/la-finca-de-kronos') ); ?>">La Finca de Kronos</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/las-villas-sotogrande') ); ?>">Las Villas - Sotogrande</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/los-cortijos-de-la-reserva') ); ?>">Los Cortijos de la Reserva</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('la-reserva/senda-chica') ); ?>">Senda Chica</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 5: MARINA -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('MARINA', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/guadalmarina') ); ?>">Guadalmarina</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/isla-carey') ); ?>">Isla Carey</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/isla-de-la-vela') ); ?>">Isla de la Vela</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/isla-del-pez-barbero') ); ?>">Isla del Pez Barbero</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/isla-del-pez-volador') ); ?>">Isla del Pez Volador</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/isla-tortuga') ); ?>">Isla Tortuga</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/jungla-del-loro') ); ?>">Jungla del Loro</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/pier-1-2') ); ?>">Pier 1 & 2</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-de-alboaire') ); ?>">Ribera de Alboaire</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-de-la-golondrina') ); ?>">Ribera de la Golondrina</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-de-la-necora') ); ?>">Ribera de la Necora</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-de-la-romana') ); ?>">Ribera de la Romana</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-de-la-tenca') ); ?>">Ribera de la Tenca</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-arlequin') ); ?>">Ribera del Arlequin</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-candil') ); ?>">Ribera del Candil</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-corvo') ); ?>">Ribera del Corvo</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-delfin') ); ?>">Ribera del Delfin</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-emperador') ); ?>">Ribera del Emperador</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-gurami') ); ?>">Ribera del Gurami</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-marlin') ); ?>">Ribera del Marlin</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-obispo') ); ?>">Ribera del Obispo</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-paraiso') ); ?>">Ribera del Paraiso</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-pez-luna') ); ?>">Ribera del Pez Luna</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('marina/ribera-del-rio') ); ?>">Ribera del Rio</a></li>
-                        <li class="megamenu-all-link">
-                            <a href="<?php echo esc_url( lsg_megamenu_url('marina') ); ?>">
-                                <?php _e('All Marina', 'luxurysotogrande'); ?> &rarr;
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 6: BEACH & BEYOND -->
-                <div class="megamenu-col">
-                    <div class="megamenu-col-header">
-                        <span class="megamenu-heading"><?php _e('BEACH & BEYOND', 'luxurysotogrande'); ?></span>
-                        <span class="megamenu-heading-line"></span>
-                    </div>
-                    <ul class="megamenu-list">
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/paseo-del-mar') ); ?>">Paseo del Mar</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/paseo-del-rio') ); ?>">Paseo del Rio</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/puerto-deportivo') ); ?>">Puerto Deportivo</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/san-roque-club') ); ?>">San Roque Club</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/la-alcaidesa') ); ?>">La Alcaidesa</a></li>
-                        <li><a href="<?php echo esc_url( lsg_megamenu_url('beach-beyond/torreguadiaro') ); ?>">Torreguadiaro</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
 <?php endif; ?>
+

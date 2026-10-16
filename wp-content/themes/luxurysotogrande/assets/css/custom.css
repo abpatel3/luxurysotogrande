@@ -5562,7 +5562,12 @@ html {
 }
 
 /* Chevron arrow on items with sub-menu */
-.mobile-menu .menu-item-has-children > a:after {
+.mobile-menu li a {
+	position: relative !important;
+}
+
+.mobile-menu .menu-item-has-children > a:after,
+.mobile-menu .mega-dropdown > a:after {
 	content: '' !important;
 	background-image: none !important;
 	position: absolute !important;
@@ -5575,18 +5580,19 @@ html {
 	filter: none !important;
 	transform: translateY(-70%) rotate(45deg) !important;
 	transition: transform 0.25s ease !important;
+	pointer-events: none;
 }
 
 .mobile-menu .open > a:after {
 	transform: translateY(-30%) rotate(-135deg) !important;
 }
 
-/* Sub-menus in mobile drawer */
+/* Sub-menus in mobile drawer (Level 2) */
 .mobile-menu .sub-menu {
 	display: none;
 	list-style: none !important;
 	margin: 0 !important;
-	padding: 6px 0 !important;
+	padding: 4px 0 !important;
 	background-color: #FAF8F5 !important;
 	border-top: 1px solid #ECE7DE !important;
 }
@@ -5599,7 +5605,8 @@ html {
 
 .mobile-menu .sub-menu li a {
 	display: block !important;
-	padding: 10px 24px 10px 36px !important;
+	position: relative !important;
+	padding: 11px 24px 11px 32px !important;
 	font-family: 'Roboto', sans-serif !important;
 	font-size: 12px !important;
 	font-weight: 400 !important;
@@ -5619,7 +5626,57 @@ html {
 .mobile-menu .sub-menu li.current-menu-item > a {
 	color: #8C7539 !important;
 	background-color: #F4EFE6 !important;
-	padding-left: 40px !important;
+	padding-left: 36px !important;
+}
+
+/* Specific styling for mega-dropdown item in mobile menu */
+.mobile-menu .sub-menu li.mega-dropdown > a {
+	font-weight: 500 !important;
+	color: #2B2724 !important;
+	background-color: #F5F1EA !important;
+	border-bottom: 1px solid #ECE7DE !important;
+	letter-spacing: 0.08em !important;
+}
+
+.mobile-menu .sub-menu li.mega-dropdown.open > a {
+	color: #8C7539 !important;
+	background-color: #ECE5DA !important;
+}
+
+.mobile-menu .sub-menu li.mega-dropdown > a:after {
+	width: 6px !important;
+	height: 6px !important;
+}
+
+/* Nested sub-menu inside mega-dropdown (Level 3) */
+.mobile-menu li.mega-dropdown > .sub-menu {
+	display: none;
+	background-color: #EDE7DC !important;
+	padding: 4px 0 !important;
+	border-top: none !important;
+	border-bottom: 1px solid #ECE7DE !important;
+}
+
+.mobile-menu li.mega-dropdown > .sub-menu li a {
+	padding: 9px 24px 9px 46px !important;
+	font-size: 11.5px !important;
+	font-weight: 400 !important;
+	letter-spacing: 0.02em !important;
+	text-transform: none !important;
+	color: #4A443C !important;
+	background-color: transparent !important;
+	border-bottom: 1px solid rgba(236, 231, 222, 0.5) !important;
+}
+
+.mobile-menu li.mega-dropdown > .sub-menu li:last-child a {
+	border-bottom: none !important;
+}
+
+.mobile-menu li.mega-dropdown > .sub-menu li a:hover,
+.mobile-menu li.mega-dropdown > .sub-menu li.current-menu-item > a {
+	color: #8C7539 !important;
+	background-color: #E2DACB !important;
+	padding-left: 50px !important;
 }
 
 .no-scroll {
@@ -6580,7 +6637,7 @@ input.datepicker {
 }
 .footer-links-widget ul li a{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 12px;
 	line-height: 17px;
 	letter-spacing: 2px;
@@ -6866,9 +6923,9 @@ input.datepicker {
 }
 
 .megamenu-inner-container {
-    max-width: 1536px;
+    max-width: 1344px;
     margin: 0 auto;
-    padding: 44px 40px 52px 40px;
+    padding: 38px 16px 46px 16px;
     max-height: calc(100vh - 95px);
     overflow-y: auto;
 }
@@ -6889,37 +6946,38 @@ input.datepicker {
 .megamenu-grid {
     display: grid !important;
     grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    column-gap: 28px !important;
-    row-gap: 40px !important;
+    column-gap: 20px !important;
+    row-gap: 36px !important;
     align-items: start !important;
 }
 
 @media (max-width: 1400px) {
     .megamenu-grid {
         grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        column-gap: 20px !important;
-        row-gap: 36px !important;
+        column-gap: 16px !important;
+        row-gap: 32px !important;
     }
 }
 
 .megamenu-col {
     display: flex;
     flex-direction: column;
+    min-width: 0; /* Prevents overflow in CSS grid */
 }
 
 .megamenu-col-header {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .megamenu-heading {
     font-family: 'Roboto', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #8C7539;
     display: block;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .megamenu-heading-link {
@@ -6949,40 +7007,50 @@ input.datepicker {
     gap: 8px;
 }
 
-.megamenu-list li a {
+.megamenu-list li {
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.45;
-    color: #2B2724;
+}
+
+.megamenu-list li a {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.45 !important;
+    color: #2B2724 !important;
     text-decoration: none;
     transition: color 0.2s ease, transform 0.2s ease;
     display: inline-block;
 }
 
 .megamenu-list li a:hover {
-    color: #8C7539;
+    color: #8C7539 !important;
     transform: translateX(3px);
 }
 
-.megamenu-all-link {
-    margin-top: 10px;
-    padding-top: 6px;
+.megamenu-list .megamenu-all-link {
+    margin-top: 6px;
+    padding-top: 0;
 }
 
-.megamenu-all-link a {
-    color: #8C7539 !important;
+.megamenu-list .megamenu-all-link a {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12.5px !important;
     font-weight: 500 !important;
-    font-size: 12px !important;
-    letter-spacing: 0.04em !important;
+    line-height: 30px !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    color: #7E692F !important;
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    transition: transform 0.2s ease;
 }
 
-.megamenu-all-link a:hover {
-    color: #6E5A2A !important;
-    text-decoration: underline;
+.megamenu-list .megamenu-all-link a:hover {
+	transform: translateX(3px);
 }
 
 /* Active indicator on main nav item when mega menu is open */

@@ -527,7 +527,7 @@ function lsg_widgets_init()
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-medium text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -539,7 +539,7 @@ function lsg_widgets_init()
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-medium text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
 			'after_title'   => '</h2>',
 		)
 	);
@@ -553,7 +553,7 @@ function lsg_widgets_init()
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s footer-links-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-3 font-roboto font-normal text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
+			'before_title'  => '<h2 class="mb-3 font-roboto font-medium text-[12px] leading-[17px] tracking-[3px] uppercase text-[#EFEAE3]">',
 			'after_title'   => '</h2>',
 		)
 	);
