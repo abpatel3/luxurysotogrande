@@ -8038,3 +8038,689 @@ input.datepicker {
     }
 }
 
+/* ==========================================================================
+   23. FEATURED PORTFOLIO LUXURY SECTION STYLING (21-10-2026)
+   ========================================================================== */
+.featured-portfolio-section {
+    padding: 64px 0 72px 0 ;
+    background-color: #F5F2ED ;
+    position: relative ;
+    width: 100% ;
+}
+
+/* Header Group */
+.featured-portfolio-header {
+    display: flex ;
+    align-items: flex-end ;
+    justify-content: space-between ;
+    margin-bottom: 36px ;
+    gap: 24px ;
+}
+
+.featured-portfolio-title-group {
+    max-width: 700px ;
+}
+
+.featured-portfolio-title {
+    font-family: 'Playfair Display', serif ;
+    font-size: 24px ;
+    line-height: 32px ;
+    font-weight: 400 ;
+    color: #2B2724 ;
+    text-transform: uppercase ;
+    letter-spacing: 4px ;
+    margin: 0 ;
+}
+
+.featured-portfolio-subtitle {
+    font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A453E ;
+    margin: 8px 0 0 0;
+}
+
+/* Explore Link / Action */
+.featured-portfolio-action {
+    flex-shrink: 0 ;
+    padding-bottom: 4px ;
+}
+
+.featured-portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+	line-height: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2B2724;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.featured-portfolio-link:hover {
+    color: #8C7539;
+}
+
+.featured-portfolio-link .link-arrow {
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.featured-portfolio-link:hover .link-arrow {
+    transform: translateX(5px);
+    color: #8C7539;
+}
+
+/* 3-Column Luxury Cards Grid */
+.featured-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Portfolio Card */
+.featured-portfolio-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #ECE7DE;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.featured-portfolio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(43, 39, 36, 0.08);
+    border-color: #D5CFC7;
+}
+
+.portfolio-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Card Media / Image */
+.portfolio-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #EFECE6;
+}
+
+.portfolio-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-portfolio-card:hover .portfolio-card-img {
+    transform: scale(1.06);
+}
+
+/* Subtle Badges */
+.portfolio-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 5px 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    z-index: 2;
+    border-radius: 2px;
+}
+
+.portfolio-badge.badge-protected {
+    background: #2B2724;
+}
+
+.portfolio-badge.badge-sold {
+    background: #2B2724;
+}
+
+.portfolio-badge.badge-rented {
+    background: #8C7539;
+}
+
+.portfolio-badge.badge-reduced {
+    background: #8C7539;
+}
+
+/* Card Body */
+.portfolio-card-body {
+    padding: 18px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #FFFFFF;
+}
+
+/* Top Meta: Area & Ref */
+.portfolio-card-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    gap: 8px;
+}
+
+.portfolio-card-area {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7E692F;
+	line-height: 16px;
+}
+
+.portfolio-card-ref {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #7E692F;
+	line-height: 16px;
+}
+
+/* Property Title */
+.portfolio-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 29px;
+    font-weight: 400;
+    color: #2B2724;
+    margin: 0 0 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.featured-portfolio-card:hover .portfolio-card-title {
+    color: #8C7539;
+}
+
+/* Bottom Meta: Price & Specs */
+.portfolio-card-meta-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.portfolio-card-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2B2724;
+	line-height: 22px;
+}
+
+.portfolio-card-specs {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.portfolio-spec-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #374151;
+	line-height: 19px;
+}
+
+.portfolio-spec-item svg,
+.portfolio-spec-item .spec-icon {
+    color: #4A453E;
+    flex-shrink: 0;
+}
+
+.portfolio-spec-item .spec-count {
+    color: #374151;
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .featured-portfolio-section {
+        padding: 52px 0 60px 0;
+    }
+    .featured-portfolio-header {
+        margin-bottom: 28px;
+        gap: 20px;
+    }
+    .featured-portfolio-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+    }
+    .featured-portfolio-subtitle {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .featured-portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .portfolio-card-title {
+        font-size: 20px;
+        line-height: 27px;
+    }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .featured-portfolio-section {
+        padding: 44px 0 52px 0;
+    }
+    .featured-portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+    .featured-portfolio-title {
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 2.5px;
+    }
+    .featured-portfolio-subtitle {
+        font-size: 13px;
+        line-height: 19px;
+        margin-top: 6px;
+    }
+    .featured-portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .portfolio-card-body {
+        padding: 16px 18px 18px 18px;
+    }
+    .portfolio-card-title {
+        font-size: 19px;
+        line-height: 26px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .featured-portfolio-section {
+        padding: 38px 0 44px 0;
+    }
+    .featured-portfolio-title {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 2px;
+    }
+    .featured-portfolio-subtitle {
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .featured-portfolio-link {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+    .portfolio-card-body {
+        padding: 14px 14px 16px 14px;
+    }
+    .portfolio-card-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .portfolio-card-meta-bottom {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .portfolio-badge {
+        top: 10px;
+        left: 10px;
+        padding: 4px 10px;
+        font-size: 9px;
+    }
+}
+
+/* ==========================================================================
+   24. STAY A WHILE (HOLIDAY RENTALS) LUXURY SECTION STYLING (21-10-2026)
+   ========================================================================== */
+.stay-a-while-section {
+    padding: 0px 0 72px 0;
+    background-color: #F5F2ED;
+    position: relative;
+    width: 100%;
+}
+
+/* Header Group */
+.stay-a-while-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    gap: 24px;
+}
+
+.stay-a-while-title-group {
+    max-width: 700px;
+}
+
+.stay-a-while-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2B2724;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+.stay-a-while-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A453E;
+    margin: 8px 0 0 0;
+}
+
+/* Action Link */
+.stay-a-while-action {
+    flex-shrink: 0;
+    padding-bottom: 4px;
+}
+
+.stay-a-while-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2B2724;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.stay-a-while-link:hover {
+    color: #8C7539;
+}
+
+.stay-a-while-link .link-arrow {
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.stay-a-while-link:hover .link-arrow {
+    transform: translateX(5px);
+    color: #8C7539;
+}
+
+/* 3-Column Luxury Cards Grid */
+.stay-a-while-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Card */
+.stay-a-while-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #ECE7DE;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.stay-a-while-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(43, 39, 36, 0.08);
+    border-color: #D5CFC7;
+}
+
+.stay-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Card Media / Image */
+.stay-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #EFECE6;
+}
+
+.stay-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stay-a-while-card:hover .stay-card-img {
+    transform: scale(1.06);
+}
+
+/* Card Body */
+.stay-card-body {
+    padding: 18px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #FFFFFF;
+}
+
+/* Top Meta: Area & Ref */
+.stay-card-meta-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    gap: 8px;
+}
+
+.stay-card-area {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7E692F;
+    line-height: 16px;
+}
+
+.stay-card-ref {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #7E692F;
+    line-height: 16px;
+}
+
+/* Property Title */
+.stay-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    line-height: 29px;
+    font-weight: 400;
+    color: #2B2724;
+    margin: 0 0 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.stay-a-while-card:hover .stay-card-title {
+    color: #8C7539;
+}
+
+/* Bottom Meta: Rates on request & Specs */
+.stay-card-meta-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.stay-card-rate {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #7E692F;
+}
+
+.stay-card-specs {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.stay-spec-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #374151;
+    line-height: 19px;
+}
+
+.stay-spec-item svg {
+    color: #4A453E;
+    flex-shrink: 0;
+}
+
+.stay-spec-item .spec-count {
+    color: #374151;
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .stay-a-while-section {
+        padding: 0px 0 60px 0;
+    }
+    .stay-a-while-header {
+        margin-bottom: 28px;
+        gap: 20px;
+    }
+    .stay-a-while-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+    }
+    .stay-a-while-subtitle {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .stay-a-while-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .stay-card-title {
+        font-size: 20px;
+        line-height: 27px;
+    }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .stay-a-while-section {
+        padding: 0px 0 52px 0;
+    }
+    .stay-a-while-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+    .stay-a-while-title {
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 2.5px;
+    }
+    .stay-a-while-subtitle {
+        font-size: 13px;
+        line-height: 19px;
+        margin-top: 6px;
+    }
+    .stay-a-while-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .stay-card-body {
+        padding: 16px 18px 18px 18px;
+    }
+    .stay-card-title {
+        font-size: 19px;
+        line-height: 26px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .stay-a-while-section {
+        padding: 0px 0 44px 0;
+    }
+    .stay-a-while-title {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 2px;
+    }
+    .stay-a-while-subtitle {
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .stay-a-while-link {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+    .stay-card-body {
+        padding: 14px 14px 16px 14px;
+    }
+    .stay-card-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .stay-card-meta-bottom {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
