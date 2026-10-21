@@ -8724,3 +8724,315 @@ input.datepicker {
     }
 }
 
+/* ==========================================================================
+   25. SELL WITH US (THE ART OF SELLING LUXURY HOMES) SECTION STYLING (21-10-2026)
+   ========================================================================== */
+.sell-with-us-section {
+    padding: 72px 0 72px 0;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 100%;
+}
+
+.sell-with-us-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+    align-items: center;
+}
+
+/* Left Media Column: Exactly 5 columns (Columns 1 to 5) */
+.sell-with-us-media {
+    grid-column: 1 / 6;
+    position: relative;
+    width: 100%;
+}
+
+.sell-media-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #EFECE6;
+}
+
+.sell-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sell-with-us-media:hover .sell-image {
+    transform: scale(1.03);
+}
+
+/* Right Content Column: Exactly 6 columns (Columns 7 to 12, leaving Column 6 as the 1-column luxury spacer) */
+.sell-with-us-content {
+    grid-column: 7 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sell-tagline {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #7E692F;
+    margin-bottom: 20px;
+    display: inline-block;
+    line-height: 17px;
+}
+
+.sell-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 400;
+    color: #2B2724;
+    margin: 0 0 20px 0;
+}
+
+.sell-gold-line {
+    width: 36px;
+    height: 2px;
+    background-color: #B99B62;
+    margin-bottom: 20px;
+}
+
+.sell-description {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    color: #4A453E;
+    margin: 0 0 20px 0;
+}
+
+/* 2x2 Features Grid */
+.sell-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 28px;
+    margin-bottom: 28px;
+}
+
+.sell-feature-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.sell-feature-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #2B2724;
+    margin: 0 0 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 17px;
+}
+
+.sell-feature-title .feature-dash {
+    color: #B99B62;
+    font-weight: 400;
+}
+
+.sell-feature-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 19px;
+    color: #4A453E;
+    margin: 0;
+    font-weight: 400;
+	margin-left: 20px;
+}
+
+/* Actions Dual CTA */
+.sell-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.sell-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 14px 26px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    line-height: 17px;
+    text-align: center;
+}
+
+.sell-btn-primary {
+    background-color: #2B2724;
+    color: #FFFFFF;
+    border: 1px solid #2B2724;
+}
+
+.sell-btn-primary:hover {
+    background-color: #7E692F;
+    border-color: #7E692F;
+    color: #FFFFFF;
+}
+
+.sell-btn-secondary {
+    background-color: transparent;
+    color: #2B2724;
+    border: 1px solid #2B2724;
+}
+
+.sell-btn-secondary:hover {
+    background-color: #2B2724;
+    color: #FFFFFF;
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .sell-with-us-section {
+        padding: 56px 0 56px 0;
+    }
+    .sell-with-us-grid {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 24px;
+    }
+    .sell-with-us-media {
+        grid-column: 1 / 6;
+    }
+    .sell-with-us-content {
+        grid-column: 6 / 13;
+    }
+    .sell-tagline {
+        font-size: 11.5px;
+        margin-bottom: 16px;
+    }
+    .sell-title {
+        font-size: 30px;
+        line-height: 38px;
+        margin-bottom: 16px;
+    }
+    .sell-gold-line {
+        margin-bottom: 16px;
+    }
+    .sell-description {
+        font-size: 14px;
+        line-height: 23px;
+        margin-bottom: 18px;
+    }
+    .sell-features-grid {
+        gap: 16px 20px;
+        margin-bottom: 24px;
+    }
+    .sell-feature-title {
+        font-size: 11.5px;
+    }
+    .sell-feature-text {
+        font-size: 12.5px;
+        line-height: 18px;
+        margin-left: 18px;
+    }
+    .sell-btn {
+        padding: 13px 22px;
+        font-size: 11px;
+    }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .sell-with-us-section {
+        padding: 44px 0 44px 0;
+    }
+    .sell-with-us-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .sell-with-us-media {
+        grid-column: 1 / -1;
+    }
+    .sell-with-us-content {
+        grid-column: 1 / -1;
+    }
+    .sell-tagline {
+        font-size: 11px;
+        margin-bottom: 12px;
+        letter-spacing: 2.5px;
+    }
+    .sell-title {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 14px;
+    }
+    .sell-gold-line {
+        margin-bottom: 14px;
+    }
+    .sell-description {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 18px;
+    }
+    .sell-features-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+    .sell-feature-title {
+        font-size: 11.5px;
+        line-height: 16px;
+    }
+    .sell-feature-text {
+        font-size: 12.5px;
+        line-height: 18px;
+        margin-left: 18px;
+    }
+    .sell-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .sell-btn {
+        width: 100%;
+        padding: 13px 20px;
+        font-size: 11px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .sell-with-us-section {
+        padding: 36px 0 36px 0;
+    }
+    .sell-title {
+        font-size: 22px;
+        line-height: 29px;
+    }
+    .sell-description {
+        font-size: 13.5px;
+        line-height: 21px;
+    }
+    .sell-feature-text {
+        margin-left: 16px;
+    }
+    .sell-btn {
+        padding: 12px 16px;
+        font-size: 10.5px;
+        letter-spacing: 1.5px;
+    }
+}
+
