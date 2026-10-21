@@ -3113,6 +3113,160 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_6ad87d2708eca": {
+                    "key": "layout_6ad87d2708eca",
+                    "name": "local_expertise",
+                    "label": "Local Expertise",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6ad87d3008ecc",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 2,
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "LOCAL EXPERTISE. GLOBAL REACH.",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6ad87d6e08ecd",
+                            "label": "Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 0,
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": 3,
+                            "placeholder": "Whether your property is marketed publicly or privately, our bespoke approach combines thoughtful marketing, strategic advice and global reach to achieve outstanding results.",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_6ad87d8508ece",
+                            "label": "Features",
+                            "name": "features_",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "layout": "table",
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add Feature",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_6ad87dd108ed1",
+                                    "label": "icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "wpml_cf_preferences": 1,
+                                    "choices": {
+                                        "compass": "Compass \/ Crosshair (40+ Years)",
+                                        "star": "Star \/ Diamond (Handpicked)",
+                                        "target": "Target \/ Direct (With Bella)"
+                                    },
+                                    "default_value": "compass",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_6ad87d8508ece"
+                                },
+                                {
+                                    "key": "field_6ad87da508ecf",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "wpml_cf_preferences": 2,
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "40+ YEARS IN SOTOGRANDE",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_6ad87d8508ece"
+                                },
+                                {
+                                    "key": "field_6ad87db208ed0",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "wpml_cf_preferences": 0,
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "Let’s make my home your home too",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_6ad87d8508ece"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -3141,5 +3295,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "advanced",
-    "modified": 1792566131
+    "modified": 1792572989
 }
