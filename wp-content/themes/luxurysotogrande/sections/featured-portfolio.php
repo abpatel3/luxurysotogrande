@@ -5,12 +5,17 @@
  * Displays a curated luxury property portfolio showcase with:
  * - Editorial header (Title, Subtitle, "Explore the Portfolio" action)
  * - 3-column responsive luxury cards grid
- * - Integrated ACF Relationship field with intelligent fallback to featured/latest properties
  * - Pure luxury typography (Playfair Display & Roboto)
+ * - Strictly ACF-driven: Title, subtitle, button link and selected properties
+ *   are fetched purely from ACF without any hardcoded fallback items.
  *
  * @package LuxurySotogrande
  * @date 21-10-2026
  */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 // Retrieve ACF sub fields
 $title_field    = get_sub_field('title');
@@ -18,16 +23,26 @@ $subtitle_field = get_sub_field('subtitle');
 $button_link    = get_sub_field('button_link');
 $selected_props = get_sub_field('properties');
 
-// Title & Subtitle with defaults
-$title    = !empty($title_field) ? $title_field : "LET'S FIND THE ONE";
-$subtitle = ($subtitle_field !== null && $subtitle_field !== false && $subtitle_field !== '') ? $subtitle_field : 'Homes chosen, not listed.';
+$title    = !empty($title_field) ? $title_field : '';
+$subtitle = ($subtitle_field !== null && $subtitle_field !== false && $subtitle_field !== '') ? $subtitle_field : '';
 
-// Explore Link / Button
-$button_url    = !empty($button_link['url']) ? $button_link['url'] : home_url('/sotogrande-villas-for-sale/all-sotogrande/');
-$button_title  = !empty($button_link['title']) ? $button_link['title'] : __('EXPLORE THE PORTFOLIO', 'luxurysotogrande');
-$button_target = !empty($button_link['target']) ? $button_link['target'] : '_self';
+// Explore Link / Button configuration strictly from ACF
+$button_url    = '';
+$button_title  = '';
+$button_target = '_self';
 
-// Properties Resolution
+if (!empty($button_link)) {
+    if (is_array($button_link)) {
+        $button_url    = !empty($button_link['url']) ? $button_link['url'] : '';
+        $button_title  = !empty($button_link['title']) ? $button_link['title'] : '';
+        $button_target = !empty($button_link['target']) ? $button_link['target'] : '_self';
+    } elseif (is_string($button_link)) {
+        $button_url   = $button_link;
+        $button_title = __('EXPLORE THE PORTFOLIO', 'luxurysotogrande');
+    }
+}
+
+// Properties Resolution strictly from ACF
 $portfolio_properties = [];
 
 if (!empty($selected_props) && is_array($selected_props)) {
@@ -39,26 +54,9 @@ if (!empty($selected_props) && is_array($selected_props)) {
     }
 }
 
-// Fallback: If no properties are selected or published, fetch 3 curated properties with thumbnails
-if (empty($portfolio_properties)) {
-    $fallback_query = get_posts([
-        'post_type'      => 'property',
-        'post_status'    => 'publish',
-        'posts_per_page' => 3,
-        'meta_query'     => [
-            [
-                'key'     => '_thumbnail_id',
-                'compare' => 'EXISTS',
-            ],
-        ],
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-        'fields'         => 'ids',
-    ]);
-
-    if (!empty($fallback_query)) {
-        $portfolio_properties = $fallback_query;
-    }
+// Exit if nothing to display
+if (empty($title) && empty($subtitle) && empty($portfolio_properties)) {
+    return;
 }
 ?>
 
@@ -66,27 +64,29 @@ if (empty($portfolio_properties)) {
     <div class="ls-container">
         
         <!-- Section Header -->
-        <div class="featured-portfolio-header">
-            <div class="featured-portfolio-title-group">
-                <?php if ($title) : ?>
-                    <h2 class="featured-portfolio-title"><?php echo esc_html($title); ?></h2>
-                <?php endif; ?>
-                <?php if ($subtitle) : ?>
-                    <p class="featured-portfolio-subtitle"><?php echo esc_html($subtitle); ?></p>
+        <?php if (!empty($title) || !empty($subtitle) || (!empty($button_url) && !empty($button_title))) : ?>
+            <div class="featured-portfolio-header">
+                <div class="featured-portfolio-title-group">
+                    <?php if (!empty($title)) : ?>
+                        <h2 class="featured-portfolio-title"><?php echo esc_html($title); ?></h2>
+                    <?php endif; ?>
+                    <?php if (!empty($subtitle)) : ?>
+                        <p class="featured-portfolio-subtitle"><?php echo esc_html($subtitle); ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (!empty($button_url) && !empty($button_title)) : ?>
+                    <div class="featured-portfolio-action">
+                        <a href="<?php echo esc_url($button_url); ?>" target="<?php echo esc_attr($button_target); ?>" class="featured-portfolio-link">
+                            <span class="link-label"><?php echo esc_html($button_title); ?></span>
+                            <svg class="link-arrow" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M12 1L17 6M17 6L12 11M17 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 <?php endif; ?>
             </div>
-
-            <?php if ($button_url && $button_title) : ?>
-                <div class="featured-portfolio-action">
-                    <a href="<?php echo esc_url($button_url); ?>" target="<?php echo esc_attr($button_target); ?>" class="featured-portfolio-link">
-                        <span class="link-label"><?php echo esc_html($button_title); ?></span>
-                        <svg class="link-arrow" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M12 1L17 6M17 6L12 11M17 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
 
         <!-- 3-Column Luxury Cards Grid -->
         <?php if (!empty($portfolio_properties)) : ?>
@@ -125,15 +125,9 @@ if (empty($portfolio_properties)) {
                             $area_name = strtoupper($clean_tname);
                         }
                     }
-                    if (empty($area_name)) {
-                        $area_name = 'SOTOGRANDE';
-                    }
 
                     // Reference ID
                     $ref_code = get_field('property_id', $property_id);
-                    if (empty($ref_code)) {
-                        $ref_code = 'LS' . $property_id;
-                    }
 
                     // Pricing
                     $is_poa    = get_field('poa', $property_id);
@@ -188,10 +182,6 @@ if (empty($portfolio_properties)) {
                                 }
                             }
                         }
-
-                        if (empty($image_url)) {
-                            $image_url = get_stylesheet_directory_uri() . '/assets/images/placeholder.jpg';
-                        }
                     }
 
                     // Badges (Protected / Sold / Rented / Price Reduced)
@@ -203,7 +193,9 @@ if (empty($portfolio_properties)) {
                             
                             <!-- Card Media / Image -->
                             <div class="portfolio-card-media">
-                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo $image_alt; ?>" loading="lazy" class="portfolio-card-img" />
+                                <?php if (!empty($image_url)) : ?>
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo $image_alt; ?>" loading="lazy" class="portfolio-card-img" />
+                                <?php endif; ?>
                                 
                                 <?php if ($is_protected) : ?>
                                     <span class="portfolio-badge badge-protected"><?php echo esc_html(__('PROTECTED', 'luxurysotogrande')); ?></span>
@@ -220,10 +212,16 @@ if (empty($portfolio_properties)) {
                             <div class="portfolio-card-body">
                                 
                                 <!-- Top Meta: Area & Reference -->
-                                <div class="portfolio-card-meta-top">
-                                    <span class="portfolio-card-area"><?php echo esc_html($area_name); ?></span>
-                                    <span class="portfolio-card-ref">REF: <?php echo esc_html($ref_code); ?></span>
-                                </div>
+                                <?php if (!empty($area_name) || !empty($ref_code)) : ?>
+                                    <div class="portfolio-card-meta-top">
+                                        <?php if (!empty($area_name)) : ?>
+                                            <span class="portfolio-card-area"><?php echo esc_html($area_name); ?></span>
+                                        <?php endif; ?>
+                                        <?php if (!empty($ref_code)) : ?>
+                                            <span class="portfolio-card-ref">REF: <?php echo esc_html($ref_code); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <!-- Property Title -->
                                 <h3 class="portfolio-card-title"><?php echo esc_html($card_title); ?></h3>

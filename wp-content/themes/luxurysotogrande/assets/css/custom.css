@@ -9267,4 +9267,411 @@ input.datepicker {
     }
 }
 
+/* ==========================================================================
+   27. OUR SERVICES (LIGHT LUXURY GRID) SECTION STYLING (21-10-2026)
+   ========================================================================== */
+.our-services-section {
+    padding: 64px 0 64px 0;
+    background-color: #F5F2ED;
+    position: relative;
+    width: 100%;
+}
+
+.our-services-header {
+    margin-bottom: 40px;
+}
+
+.our-services-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2B2724;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0 0 8px 0;
+}
+
+.our-services-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #4A453E;
+    margin: 0;
+}
+
+/* 3x2 Grid */
+.our-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 40px;
+    column-gap: 48px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.service-gold-line {
+    width: 28px;
+    height: 2px;
+    background-color: #B99B62;
+    margin-bottom: 10px;
+}
+
+.service-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2B2724;
+    margin: 0 0 10px 0;
+}
+
+.service-card-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #4A453E;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+.service-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #7E692F;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.service-card-link-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.service-card-link:hover {
+    color: #2B2724;
+}
+
+.service-card-link:hover .service-card-link-arrow {
+    transform: translateX(4px);
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .our-services-section {
+        padding: 56px 0 56px 0;
+    }
+    .our-services-header {
+        margin-bottom: 32px;
+    }
+    .our-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .our-services-section {
+        padding: 44px 0 44px 0;
+    }
+    .our-services-header {
+        margin-bottom: 28px;
+    }
+    .our-services-title {
+        font-size: 21px;
+        line-height: 28px;
+        letter-spacing: 3px;
+    }
+    .our-services-subtitle {
+        font-size: 13.5px;
+        line-height: 19px;
+    }
+    .our-services-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .service-card-description {
+        font-size: 13.5px;
+        line-height: 21px;
+        margin-bottom: 14px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .our-services-section {
+        padding: 38px 0 38px 0;
+    }
+    .our-services-grid {
+        gap: 24px;
+    }
+    .our-services-title {
+        font-size: 19px;
+        line-height: 26px;
+        letter-spacing: 2px;
+    }
+}
+
+/* ==========================================================================
+   28. THE SOTOGRANDE LIFESTYLE (5-COLUMN PHOTO GRID) SECTION (21-10-2026)
+   ========================================================================== */
+.lifestyle-section {
+    padding: 64px 0 72px 0;
+    background-color: #F5F2ED;
+    position: relative;
+    width: 100%;
+}
+
+.lifestyle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.lifestyle-header-content {
+    flex: 1;
+    min-width: 260px;
+}
+
+.lifestyle-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2B2724;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0 0 8px 0;
+}
+
+.lifestyle-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #4A453E;
+    margin: 0;
+}
+
+.lifestyle-header-action {
+    flex-shrink: 0;
+}
+
+.lifestyle-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2B2724;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.lifestyle-link-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+	color: #7E692F;
+}
+
+
+.lifestyle-link:hover .lifestyle-link-arrow {
+    transform: translateX(4px);
+}
+
+/* 5-Column Grid */
+.lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.lifestyle-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.lifestyle-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #E5E0D8;
+    border-radius: 0;
+}
+
+.lifestyle-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.lifestyle-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #E5E0D8;
+}
+
+.lifestyle-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: 400;
+    color: #4A453E;
+    text-align: center;
+    margin-top: 14px;
+    transition: color 0.25s ease;
+}
+
+.lifestyle-card:hover .lifestyle-card-img {
+    transform: scale(1.04);
+}
+
+.lifestyle-card:hover .lifestyle-card-title {
+    color: #7E692F;
+}
+
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .lifestyle-section {
+        padding: 52px 0 56px 0;
+    }
+    .lifestyle-header {
+        margin-bottom: 28px;
+        gap: 16px;
+    }
+    .lifestyle-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+    }
+    .lifestyle-subtitle {
+        font-size: 13.5px;
+        line-height: 19px;
+    }
+    .lifestyle-link {
+        font-size: 11.5px;
+        line-height: 16px;
+        letter-spacing: 1.5px;
+    }
+    .lifestyle-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .lifestyle-card-title {
+        font-size: 12.5px;
+        line-height: 18px;
+        margin-top: 12px;
+    }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+    .lifestyle-section {
+        padding: 44px 0 48px 0;
+    }
+    .lifestyle-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .lifestyle-title {
+        font-size: 21px;
+        line-height: 28px;
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+    }
+    .lifestyle-subtitle {
+        font-size: 13px;
+        line-height: 19px;
+    }
+    .lifestyle-link {
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: 1.5px;
+    }
+    .lifestyle-link-arrow svg {
+        width: 20px;
+        height: 6px;
+    }
+    .lifestyle-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .lifestyle-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 7px);
+        margin: 0 auto;
+        width: 100%;
+    }
+    .lifestyle-card-title {
+        font-size: 12px;
+        line-height: 17px;
+        margin-top: 10px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .lifestyle-section {
+        padding: 38px 0 42px 0;
+    }
+    .lifestyle-header {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .lifestyle-title {
+        font-size: 19px;
+        line-height: 26px;
+        letter-spacing: 2px;
+    }
+    .lifestyle-subtitle {
+        font-size: 12.5px;
+        line-height: 18px;
+    }
+    .lifestyle-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .lifestyle-card:last-child:nth-child(odd) {
+        max-width: calc(50% - 5px);
+    }
+    .lifestyle-card-title {
+        font-size: 11.5px;
+        line-height: 16px;
+        margin-top: 8px;
+    }
+}
+
+
 
