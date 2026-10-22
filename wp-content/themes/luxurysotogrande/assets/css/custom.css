@@ -10499,6 +10499,159 @@ input.datepicker {
     }
 }
 
+/* ==========================================================================
+   32. VALUATION BANNER SECTION (22-10-2026)
+   ========================================================================== */
+.valuation-banner-section {
+    padding: 64px 0;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 100%;
+}
+
+.valuation-banner-content {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.valuation-banner-subtitle {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: #7E692F;
+    text-align: center;
+    margin: 0 0 18px 0;
+}
+
+.valuation-banner-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #282724;
+    text-align: center;
+    margin: 0 0 18px 0;
+}
+
+.valuation-banner-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+.valuation-banner-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #282724;
+    border: 1px solid #282724;
+    background-color: transparent;
+    padding: 13px 28px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+}
+
+.valuation-banner-btn:hover {
+    background-color: #282724;
+    color: #FFFFFF;
+    border-color: #282724;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints - Valuation Banner
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .valuation-banner-section {
+        padding: 52px 0;
+    }
+    .valuation-banner-content {
+        padding: 0 16px;
+    }
+    .valuation-banner-subtitle {
+        font-size: 34px;
+        line-height: 44px;
+        margin-bottom: 16px;
+    }
+    .valuation-banner-title {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+    }
+    .valuation-banner-btn {
+        padding: 12px 24px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .valuation-banner-section {
+        padding: 44px 0;
+    }
+    .valuation-banner-content {
+        padding: 0 12px;
+    }
+    .valuation-banner-subtitle {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 14px;
+    }
+    .valuation-banner-title {
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: 2.5px;
+        margin-bottom: 16px;
+    }
+    .valuation-banner-btn {
+        font-size: 11.5px;
+        line-height: 16px;
+        padding: 11px 22px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .valuation-banner-section {
+        padding: 38px 0;
+    }
+    .valuation-banner-subtitle {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 12px;
+    }
+    .valuation-banner-title {
+        font-size: 16.5px;
+        line-height: 24px;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
+    }
+    .valuation-banner-btn {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        padding: 10px 18px;
+    }
+}
+
+
 
 
 
