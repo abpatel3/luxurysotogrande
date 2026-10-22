@@ -9673,5 +9673,834 @@ input.datepicker {
     }
 }
 
+/* ==========================================================================
+   29. MEET BELLA SECTION (21-10-2026)
+   ========================================================================== */
+.meet-bella-section {
+    padding: 24px 0 64px 0;
+    background-color: #F5F2ED;
+    position: relative;
+    width: 100%;
+}
+
+.meet-bella-grid {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+}
+
+/* 1. Left Visual Media (Bella Portrait) */
+.meet-bella-media {
+    flex: 0 0 320px;
+    max-width: 340px;
+    width: 100%;
+}
+
+.meet-bella-image {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* 2. Middle Column: Bio & Content */
+.meet-bella-content {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: left;
+}
+
+.meet-bella-content.no-media {
+    max-width: 680px;
+}
+
+.meet-bella-content.no-quote {
+    max-width: 760px;
+}
+
+.meet-bella-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #282724;
+    margin: 0 0 20px 0;
+}
+
+.meet-bella-description {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0;
+    color: #4A453E;
+    text-align: left;
+    margin-bottom: 28px;
+}
+
+.meet-bella-description p {
+    text-align: left;
+    margin: 0 0 14px 0;
+}
+
+.meet-bella-description p:last-child {
+    margin-bottom: 0;
+}
+
+.meet-bella-action {
+    display: flex;
+    align-items: center;
+}
+
+.meet-bella-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #282724;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.meet-bella-arrow {
+    display: inline-flex;
+    align-items: center;
+    color: #7E692F;
+    transition: transform 0.25s ease;
+}
+
+.meet-bella-arrow svg {
+    display: block;
+    width: 24px;
+    height: 7px;
+}
+
+.meet-bella-link:hover {
+    color: #7E692F;
+}
+
+.meet-bella-link:hover .meet-bella-arrow {
+    transform: translateX(5px);
+}
+
+/* 3. Right Column: Quote Card */
+.meet-bella-card {
+    flex: 0 0 360px;
+    max-width: 380px;
+    width: 100%;
+    background-color: #EFE8DB;
+    padding: 40px 36px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.meet-bella-quote-icon {
+    color: #B99B62;
+    margin-bottom: 18px;
+    line-height: 1;
+}
+
+.meet-bella-quote-icon svg {
+    display: block;
+    width: 28px;
+    height: 20px;
+}
+
+.meet-bella-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 30px;
+    letter-spacing: 0;
+    color: #2B2724;
+    margin: 0 0 20px 0;
+    padding: 0;
+    border: none;
+}
+
+.meet-bella-signature {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: 0;
+    color: #7E692F;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .meet-bella-section {
+        padding: 20px 0 52px 0;
+    }
+    .meet-bella-grid {
+        gap: 32px;
+    }
+    .meet-bella-media {
+        flex: 0 0 260px;
+        max-width: 260px;
+    }
+    .meet-bella-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+    }
+    .meet-bella-description {
+        font-size: 14.5px;
+        line-height: 24px;
+        margin-bottom: 24px;
+    }
+    .meet-bella-card {
+        flex: 0 0 310px;
+        padding: 32px 26px;
+    }
+    .meet-bella-quote {
+        font-size: 17px;
+        line-height: 27px;
+        margin-bottom: 16px;
+    }
+    .meet-bella-signature {
+        font-size: 36px;
+        line-height: 48px;
+    }
+}
+
+/* Small Tablet / Stack Layout (max-width: 880px) */
+@media (max-width: 880px) {
+    .meet-bella-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+    }
+    .meet-bella-media {
+        flex: none;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .meet-bella-content {
+        flex: none;
+        width: 100%;
+        text-align: left;
+    }
+    .meet-bella-card {
+        flex: none;
+        max-width: 100%;
+        width: 100%;
+        padding: 34px 28px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .meet-bella-section {
+        padding: 18px 0 44px 0;
+    }
+    .meet-bella-grid {
+        gap: 28px;
+    }
+    .meet-bella-media {
+        max-width: 300px;
+    }
+    .meet-bella-title {
+        font-size: 21px;
+        line-height: 28px;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+    }
+    .meet-bella-description {
+        font-size: 14px;
+        line-height: 23px;
+        margin-bottom: 22px;
+    }
+    .meet-bella-link {
+        font-size: 11.5px;
+        line-height: 16px;
+    }
+    .meet-bella-card {
+        padding: 28px 22px;
+    }
+    .meet-bella-quote-icon svg {
+        width: 24px;
+        height: 18px;
+    }
+    .meet-bella-quote {
+        font-size: 16.5px;
+        line-height: 26px;
+        margin-bottom: 14px;
+    }
+    .meet-bella-signature {
+        font-size: 34px;
+        line-height: 44px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .meet-bella-section {
+        padding: 16px 0 38px 0;
+    }
+    .meet-bella-grid {
+        gap: 24px;
+    }
+    .meet-bella-media {
+        max-width: 100%;
+    }
+    .meet-bella-title {
+        font-size: 19px;
+        line-height: 26px;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+    .meet-bella-description {
+        font-size: 13.5px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+    .meet-bella-link {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+    .meet-bella-card {
+        padding: 24px 18px;
+    }
+    .meet-bella-quote {
+        font-size: 15.5px;
+        line-height: 24px;
+        margin-bottom: 12px;
+    }
+    .meet-bella-signature {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+/* ==========================================================================
+   30. TESTIMONIALS (WORD TRAVELS SOFTLY HERE) SECTION (21-10-2026)
+   ========================================================================== */
+.testimonials-section {
+    padding: 72px 0;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 100%;
+}
+
+.testimonials-wrapper {
+    max-width: 864px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.testimonials-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #282724;
+    text-align: center;
+    margin: 0 0 22px 0;
+}
+
+.testimonials-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #4A453E;
+    text-align: center;
+    margin: 0 0 22px 0;
+}
+
+.testimonials-slider {
+    position: relative;
+    width: 100%;
+}
+
+.testimonials-slider .glide__slides {
+    margin: 0;
+    padding: 0;
+}
+
+.testimonial-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.testimonial-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #7E692F;
+    font-size: 14px;
+    line-height: 1;
+    margin: 0 0 22px 0;
+}
+
+.testimonial-star {
+    display: inline-block;
+    color: #7E692F;
+}
+
+.testimonial-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 33px;
+    letter-spacing: 0;
+    color: #282724;
+    text-align: center;
+    margin: 0 auto 22px auto;
+    padding: 0;
+    border: none;
+    max-width: 820px;
+}
+
+.testimonial-author {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #282724;
+    text-align: center;
+    margin: 0 0 22px 0;
+}
+
+.testimonial-role {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7E692F;
+    text-align: center;
+    margin: 0 0 22px 0;
+}
+
+.testimonials-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.testimonials-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #D4CFC7;
+    background-color: transparent;
+    color: #282724;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 0;
+    outline: none;
+}
+
+.testimonials-arrow svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.testimonials-arrow:hover {
+    border-color: #7E692F;
+    color: #7E692F;
+    background-color: #FBF9F5;
+}
+
+.testimonials-arrow--prev:hover svg {
+    transform: translateX(-2px);
+}
+
+.testimonials-arrow--next:hover svg {
+    transform: translateX(2px);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints - Testimonials
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .testimonials-section {
+        padding: 60px 0;
+    }
+    .testimonials-wrapper {
+        max-width: 720px;
+        padding: 0 16px;
+    }
+    .testimonials-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+    .testimonials-subtitle {
+        font-size: 13.5px;
+        line-height: 19px;
+        margin-bottom: 20px;
+    }
+    .testimonial-stars {
+        margin-bottom: 20px;
+    }
+    .testimonial-quote {
+        font-size: 18.5px;
+        line-height: 31px;
+        margin-bottom: 20px;
+    }
+    .testimonial-author {
+        font-size: 11.5px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+    .testimonial-role {
+        font-size: 10.5px;
+        line-height: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 50px 0;
+    }
+    .testimonials-wrapper {
+        padding: 0 12px;
+    }
+    .testimonials-title {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 2.5px;
+        margin-bottom: 18px;
+    }
+    .testimonials-subtitle {
+        font-size: 13px;
+        line-height: 19px;
+        margin-bottom: 18px;
+    }
+    .testimonial-stars {
+        gap: 6px;
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+    .testimonial-quote {
+        font-size: 17px;
+        line-height: 28px;
+        margin-bottom: 18px;
+    }
+    .testimonial-author {
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+    }
+    .testimonial-role {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1.5px;
+        margin-bottom: 18px;
+    }
+    .testimonials-arrow {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .testimonials-section {
+        padding: 42px 0;
+    }
+    .testimonials-title {
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+    .testimonials-subtitle {
+        font-size: 12.5px;
+        line-height: 18px;
+        margin-bottom: 16px;
+    }
+    .testimonial-stars {
+        margin-bottom: 16px;
+    }
+    .testimonial-quote {
+        font-size: 15.5px;
+        line-height: 25px;
+        margin-bottom: 16px;
+    }
+    .testimonial-author {
+        font-size: 10.5px;
+        letter-spacing: 1.5px;
+        margin-bottom: 16px;
+    }
+    .testimonial-role {
+        font-size: 9.5px;
+        letter-spacing: 1.2px;
+        margin-bottom: 16px;
+    }
+    .testimonials-arrow {
+        width: 32px;
+        height: 32px;
+    }
+    .testimonials-arrow svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* ==========================================================================
+   31. FAQ (EVERYTHING PEOPLE ASK US) ACCORDION SECTION (22-10-2026)
+   ========================================================================== */
+.faq-luxury-section {
+    padding: 64px 0 80px 0;
+    background-color: #F5F2ED;
+    position: relative;
+    width: 100%;
+}
+
+.faq-luxury-wrapper {
+    max-width: 864px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.faq-luxury-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #282724;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+.faq-luxury-accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-luxury-item {
+    border-top: 1px solid #E0DAD0;
+    transition: background-color 0.25s ease;
+}
+
+.faq-luxury-item:last-child {
+    border-bottom: 1px solid #E0DAD0;
+}
+
+.faq-luxury-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: padding 0.2s ease;
+    outline: none;
+}
+
+.faq-luxury-item--active .faq-luxury-header {
+    padding: 20px 0 0 0;
+}
+
+.faq-luxury-question {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #282724;
+    margin: 0;
+    transition: color 0.2s ease;
+    flex: 1;
+}
+
+.faq-luxury-icon {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0;
+    color: #7E692F;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.faq-luxury-header:hover .faq-luxury-question {
+    color: #7E692F;
+}
+
+.faq-luxury-content {
+    padding: 10px 0 20px 0;
+}
+
+.faq-luxury-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #4A453E;
+    margin: 0;
+    text-align: left;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints - FAQ Luxury
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .faq-luxury-section {
+        padding: 52px 0 64px 0;
+    }
+    .faq-luxury-wrapper {
+        max-width: 760px;
+        padding: 0 16px;
+    }
+    .faq-luxury-title {
+        font-size: 22px;
+        line-height: 30px;
+        letter-spacing: 3px;
+        margin-bottom: 32px;
+    }
+    .faq-luxury-header {
+        padding: 18px 0;
+    }
+    .faq-luxury-item--active .faq-luxury-header {
+        padding: 18px 0 0 0;
+    }
+    .faq-luxury-content {
+        padding: 10px 0 18px 0;
+    }
+    .faq-luxury-question {
+        font-size: 14.5px;
+        line-height: 22px;
+    }
+    .faq-luxury-text {
+        font-size: 13.5px;
+        line-height: 22px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .faq-luxury-section {
+        padding: 44px 0 56px 0;
+    }
+    .faq-luxury-wrapper {
+        padding: 0 12px;
+    }
+    .faq-luxury-title {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 2.5px;
+        margin-bottom: 28px;
+    }
+    .faq-luxury-header {
+        padding: 16px 0;
+        gap: 12px;
+    }
+    .faq-luxury-item--active .faq-luxury-header {
+        padding: 16px 0 0 0;
+    }
+    .faq-luxury-content {
+        padding: 8px 0 16px 0;
+    }
+    .faq-luxury-question {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .faq-luxury-icon {
+        font-size: 16px;
+        width: 18px;
+        height: 18px;
+    }
+    .faq-luxury-text {
+        font-size: 13px;
+        line-height: 21px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .faq-luxury-section {
+        padding: 38px 0 48px 0;
+    }
+    .faq-luxury-title {
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: 2px;
+        margin-bottom: 24px;
+    }
+    .faq-luxury-header {
+        padding: 14px 0;
+    }
+    .faq-luxury-item--active .faq-luxury-header {
+        padding: 14px 0 0 0;
+    }
+    .faq-luxury-content {
+        padding: 8px 0 14px 0;
+    }
+    .faq-luxury-question {
+        font-size: 13.5px;
+        line-height: 20px;
+    }
+    .faq-luxury-text {
+        font-size: 12.5px;
+        line-height: 20px;
+    }
+}
+
+
+
+
 
 

@@ -198,6 +198,24 @@ if (newsCarousels) {
 }
 
 /**
+ * Initialize Testimonials slider
+ */
+const testimonialSliders = document.querySelectorAll('.testimonials-slider');
+if (testimonialSliders) {
+    testimonialSliders.forEach( glide => {
+        new Glide(glide, {
+            type: 'carousel',
+            autoplay: 7000,
+            hoverpause: true,
+            perView: 1,
+            gap: 0,
+            animationDuration: 600
+        }).mount();
+    } );
+}
+
+
+/**
  * Initialize AOS
  */
 
