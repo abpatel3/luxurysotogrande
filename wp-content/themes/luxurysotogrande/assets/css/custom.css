@@ -7843,7 +7843,7 @@ input.datepicker {
     margin-bottom: 8px !important;
     font-family: 'Roboto', sans-serif !important;
     font-size: 13px !important;
-    font-weight: 600 !important;
+    font-weight: 300 !important;
     color: #2B2724 !important;
 }
 
@@ -8216,7 +8216,8 @@ input.datepicker {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 6px;
-    gap: 8px;
+    gap: 6px 10px;
+    flex-wrap: wrap;
 }
 
 .portfolio-card-area {
@@ -8226,7 +8227,16 @@ input.datepicker {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #7E692F;
-	line-height: 16px;
+    line-height: 16px;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.portfolio-card-area .area-sep {
+    margin: 0 4px;
+    color: #A39160;
+    font-weight: 400;
 }
 
 .portfolio-card-ref {
@@ -8236,7 +8246,7 @@ input.datepicker {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #7E692F;
-	line-height: 16px;
+    line-height: 16px;
 }
 
 /* Property Title */
@@ -8264,6 +8274,8 @@ input.datepicker {
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
+    flex-wrap: wrap;
+    gap: 8px 12px;
 }
 
 .portfolio-card-price {
@@ -8271,24 +8283,27 @@ input.datepicker {
     font-size: 15px;
     font-weight: 500;
     color: #2B2724;
-	line-height: 22px;
+    line-height: 22px;
+    white-space: nowrap;
 }
 
 .portfolio-card-specs {
     display: flex;
     align-items: center;
-    gap: 14px;
+    flex-wrap: wrap;
+    gap: 8px 12px;
 }
 
 .portfolio-spec-item {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: 400;
     color: #374151;
-	line-height: 19px;
+    line-height: 19px;
+    white-space: nowrap;
 }
 
 .portfolio-spec-item svg,
@@ -8546,7 +8561,8 @@ input.datepicker {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 6px;
-    gap: 8px;
+    gap: 6px 10px;
+    flex-wrap: wrap;
 }
 
 .stay-card-area {
@@ -8557,6 +8573,15 @@ input.datepicker {
     letter-spacing: 2px;
     color: #7E692F;
     line-height: 16px;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stay-card-area .area-sep {
+    margin: 0 4px;
+    color: #A39160;
+    font-weight: 400;
 }
 
 .stay-card-ref {

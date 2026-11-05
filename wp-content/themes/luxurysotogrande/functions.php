@@ -479,6 +479,29 @@ function get_section_templates() {
 
 			$layout = get_row_layout();
 
+			// WPML Layout Name Normalizer (in case layout slug is translated by WPML)
+			$clean_slug = strtolower(trim((string) $layout));
+			$clean_slug_normalized = preg_replace('/[^a-z0-9_]/u', '_', $clean_slug);
+			$layout_map = [
+				'quedate_un_rato'                     => 'stay_a_while',
+				'vende_con_nosotros'                   => 'sell_with_us',
+				'experiencia_local'                    => 'local_expertise',
+				'nuestros_servicios'                   => 'our_services',
+				'el_estilo_de_vida_de_sotogrande'      => 'the_sotogrande_lifestyle',
+				'conoce_a_bella'                       => 'meet_bella',
+				'testimonios'                          => 'testimonials',
+				'valuation_banner_informaci_n_banner' => 'valuation_banner',
+				'valuation_banner_informacion_banner' => 'valuation_banner',
+				'valuation_banner_información_banner' => 'valuation_banner',
+				'html_personalizado'                  => 'custom_html',
+			];
+
+			if (isset($layout_map[$clean_slug])) {
+				$layout = $layout_map[$clean_slug];
+			} elseif (isset($layout_map[$clean_slug_normalized])) {
+				$layout = $layout_map[$clean_slug_normalized];
+			}
+
 			if ($layout === 'global_section') {
 				/**
 				 * Get the global section title
@@ -1934,3 +1957,96 @@ function sync_wpml_translation_status($new_status, $old_status, $post)
  */
 require_once get_template_directory() . '/inc/property-report.php';
 require_once get_template_directory() . '/inc/property-report-export.php';
+
+/**
+ * Helper to copy ACF flexible content sections from English page to translated page (e.g. Spanish)
+ */
+add_action('add_meta_boxes', function () {
+    add_meta_box(
+        'ls_copy_sections_box',
+        __('Sync Sections from English', 'luxurysotogrande'),
+        function ($post) {
+            // Get original English post
+            $trid = apply_filters('wpml_element_trid', null, $post->ID, 'post_' . $post->post_type);
+            $en_post_id = 0;
+            if ($trid) {
+                $translations = apply_filters('wpml_get_element_translations', null, $trid, 'post_' . $post->post_type);
+                if (!empty($translations['en']->element_id) && (int)$translations['en']->element_id !== (int)$post->ID) {
+                    $en_post_id = (int) $translations['en']->element_id;
+                }
+            }
+            if (!$en_post_id) {
+                $front_id = (int) get_option('page_on_front');
+                if ($front_id && $front_id !== (int)$post->ID) {
+                    $en_post_id = $front_id;
+                }
+            }
+
+            if (!$en_post_id) {
+                echo '<p style="color:#666;font-size:13px;margin:0;">' . esc_html__('This is either the default English page or has no linked English original.', 'luxurysotogrande') . '</p>';
+                return;
+            }
+
+            $en_sections = get_field('sections', $en_post_id, false);
+            $en_count = is_array($en_sections) ? count($en_sections) : 0;
+            $current_sections = get_field('sections', $post->ID, false);
+            $current_count = is_array($current_sections) ? count($current_sections) : 0;
+
+            $nonce = wp_create_nonce('ls_copy_sections_' . $post->ID);
+            $action_url = admin_url('admin-post.php?action=ls_copy_en_sections&post_id=' . $post->ID . '&_wpnonce=' . $nonce);
+
+            echo '<div style="padding:4px 0;">';
+            echo '<p style="margin:0 0 10px;font-size:13px;line-height:1.4;">' . sprintf(esc_html__('English Page has %d sections. Current page has %d sections.', 'luxurysotogrande'), $en_count, $current_count) . '</p>';
+            echo '<a href="' . esc_url($action_url) . '" class="button button-primary" onclick="return confirm(\'Are you sure you want to copy all sections from English? This will copy all 11 sections into this page.\');" style="width:100%;text-align:center;display:block;">' . esc_html__('Copy All Sections from English', 'luxurysotogrande') . '</a>';
+            echo '<p style="margin:8px 0 0;font-size:11px;color:#777;line-height:1.3;">' . esc_html__('Copies all sections with images & settings from English so you can translate text directly here.', 'luxurysotogrande') . '</p>';
+            echo '</div>';
+        },
+        ['page'],
+        'side',
+        'high'
+    );
+});
+
+add_action('admin_post_ls_copy_en_sections', function () {
+    if (!current_user_can('edit_pages')) {
+        wp_die('Unauthorized');
+    }
+
+    $post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0;
+    check_admin_referer('ls_copy_sections_' . $post_id);
+
+    if (!$post_id) {
+        wp_die('Invalid post ID');
+    }
+
+    $trid = apply_filters('wpml_element_trid', null, $post_id, 'post_' . get_post_type($post_id));
+    $en_post_id = 0;
+    if ($trid) {
+        $translations = apply_filters('wpml_get_element_translations', null, $trid, 'post_' . get_post_type($post_id));
+        if (!empty($translations['en']->element_id)) {
+            $en_post_id = (int) $translations['en']->element_id;
+        }
+    }
+    if (!$en_post_id) {
+        $front_id = (int) get_option('page_on_front');
+        if ($front_id && $front_id !== $post_id) {
+            $en_post_id = $front_id;
+        }
+    }
+
+    if ($en_post_id) {
+        $en_sections = get_field('sections', $en_post_id, false);
+        if (!empty($en_sections)) {
+            update_field('field_624c814735a2a', $en_sections, $post_id);
+        }
+    }
+
+    wp_safe_redirect(admin_url('post.php?post=' . $post_id . '&action=edit&sections_copied=1'));
+    exit;
+});
+
+add_action('admin_notices', function () {
+    if (isset($_GET['sections_copied']) && $_GET['sections_copied'] == '1') {
+        echo '<div class="notice notice-success is-dismissible"><p><strong>' . esc_html__('All sections copied from English successfully! You can now edit each section.', 'luxurysotogrande') . '</strong></p></div>';
+    }
+});

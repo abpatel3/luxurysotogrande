@@ -105,24 +105,65 @@ if (empty($title) && empty($subtitle) && empty($portfolio_properties)) {
                         $card_title = ucwords(strtolower(trim($raw_title)));
                     }
 
-                    // Location / Area: Hierarchy without "All "
+                    // Location / Area: Hierarchy (Main Area > Sub-area)
                     $area_terms = get_the_terms($property_id, 'property_area');
-                    $area_name = '';
+                    $area_name_html = '';
                     if ($area_terms && !is_wp_error($area_terms)) {
                         $valid_terms = array_filter($area_terms, function($t) {
-                            return stripos($t->name, 'All ') === false;
-                        });
-
-                        // Prioritize specific subareas/areas
-                        usort($valid_terms, function($a, $b) {
-                            return (int)$b->parent - (int)$a->parent;
+                            return stripos($t->name, 'All ') === false && $t->slug !== 'all-sotogrande';
                         });
 
                         if (!empty($valid_terms)) {
-                            $primary_term = reset($valid_terms);
-                            $decoded_tname = html_entity_decode($primary_term->name, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                            $clean_tname = trim(str_ireplace('Sotogrande ', '', $decoded_tname));
-                            $area_name = strtoupper($clean_tname);
+                            $child_term  = null;
+                            $parent_term = null;
+
+                            // Clean and uppercase name helper
+                            $clean_area_name = function($name) {
+                                $decoded = html_entity_decode($name, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                $cleaned = preg_replace('/^Sotogrande\s+La\s+Reserva/i', 'La Reserva', $decoded);
+                                $cleaned = preg_replace('/^Sotogrande\s+/i', '', $cleaned);
+                                $cleaned = preg_replace('/\s*-\s*Sotogrande/i', '', $cleaned);
+                                return strtoupper(trim($cleaned));
+                            };
+
+                            // Look for a child term that has a parent
+                            foreach ($valid_terms as $t) {
+                                if (!empty($t->parent)) {
+                                    $child_term = $t;
+                                    $p_obj = get_term($t->parent, 'property_area');
+                                    if ($p_obj && !is_wp_error($p_obj) && stripos($p_obj->name, 'All ') === false) {
+                                        $parent_term = $p_obj;
+                                    }
+                                    break;
+                                }
+                            }
+
+                            // If no parent found through child parent ID, check if a top-level term exists
+                            if (!$parent_term) {
+                                foreach ($valid_terms as $t) {
+                                    if (empty($t->parent)) {
+                                        $parent_term = $t;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if ($parent_term && $child_term && $parent_term->term_id !== $child_term->term_id) {
+                                $p_name = $clean_area_name($parent_term->name);
+                                $c_name = $clean_area_name($child_term->name);
+                                if ($p_name === $c_name) {
+                                    $area_name_html = esc_html($p_name);
+                                } else {
+                                    $area_name_html = '<span class="area-main">' . esc_html($p_name) . '</span><span class="area-sep"> &gt; </span><span class="area-sub">' . esc_html($c_name) . '</span>';
+                                }
+                            } elseif ($child_term) {
+                                $area_name_html = esc_html($clean_area_name($child_term->name));
+                            } elseif ($parent_term) {
+                                $area_name_html = esc_html($clean_area_name($parent_term->name));
+                            } else {
+                                $first = reset($valid_terms);
+                                $area_name_html = esc_html($clean_area_name($first->name));
+                            }
                         }
                     }
 
@@ -144,9 +185,41 @@ if (empty($title) && empty($subtitle) && empty($portfolio_properties)) {
                         $price_text = __('POA', 'luxurysotogrande');
                     }
 
-                    // Specs: Bedrooms & Bathrooms
-                    $bedrooms  = get_field('bedrooms', $property_id);
-                    $bathrooms = get_field('bathrooms', $property_id);
+                    // Specs: Internal Area, Plot Size, Bedrooms & Bathrooms
+                    $internal_raw = get_field('internal_size', $property_id);
+                    $plot_raw     = get_field('plot_size', $property_id);
+                    $bedrooms     = get_field('bedrooms', $property_id);
+                    $bathrooms    = get_field('bathrooms', $property_id);
+
+                    // Internal Area formatting
+                    $internal_size = '';
+                    if (!empty($internal_raw)) {
+                        if (is_array($internal_raw) && !empty($internal_raw['size'])) {
+                            $val  = trim((string)$internal_raw['size']);
+                            $post = !empty($internal_raw['postfix_text']) ? trim((string)$internal_raw['postfix_text']) : 'm²';
+                            if (preg_match('/m(?:2|²)|metro|sq/i', $post)) {
+                                $post = 'm²';
+                            }
+                            $internal_size = $val . ' ' . $post;
+                        } elseif (is_string($internal_raw) && trim($internal_raw) !== '') {
+                            $internal_size = trim($internal_raw) . ' m²';
+                        }
+                    }
+
+                    // Plot Size formatting
+                    $plot_size = '';
+                    if (!empty($plot_raw)) {
+                        if (is_array($plot_raw) && !empty($plot_raw['size'])) {
+                            $val  = trim((string)$plot_raw['size']);
+                            $post = !empty($plot_raw['postfix_text']) ? trim((string)$plot_raw['postfix_text']) : 'm²';
+                            if (preg_match('/m(?:2|²)|metro|sq/i', $post)) {
+                                $post = 'm²';
+                            }
+                            $plot_size = $val . ' ' . $post;
+                        } elseif (is_string($plot_raw) && trim($plot_raw) !== '') {
+                            $plot_size = trim($plot_raw) . ' m²';
+                        }
+                    }
 
                     // Check if property is password protected / pocket listing
                     $post_password = get_post_field('post_password', $property_id);
@@ -212,10 +285,10 @@ if (empty($title) && empty($subtitle) && empty($portfolio_properties)) {
                             <div class="portfolio-card-body">
                                 
                                 <!-- Top Meta: Area & Reference -->
-                                <?php if (!empty($area_name) || !empty($ref_code)) : ?>
+                                <?php if (!empty($area_name_html) || !empty($ref_code)) : ?>
                                     <div class="portfolio-card-meta-top">
-                                        <?php if (!empty($area_name)) : ?>
-                                            <span class="portfolio-card-area"><?php echo esc_html($area_name); ?></span>
+                                        <?php if (!empty($area_name_html)) : ?>
+                                            <span class="portfolio-card-area"><?php echo $area_name_html; ?></span>
                                         <?php endif; ?>
                                         <?php if (!empty($ref_code)) : ?>
                                             <span class="portfolio-card-ref">REF: <?php echo esc_html($ref_code); ?></span>
@@ -232,6 +305,26 @@ if (empty($title) && empty($subtitle) && empty($portfolio_properties)) {
                                         <?php echo esc_html($price_text); ?>
                                     </div>
                                     <div class="portfolio-card-specs">
+                                        <?php if (!empty($internal_size)) : ?>
+                                            <span class="portfolio-spec-item" title="<?php echo esc_attr(__('Internal Area: ', 'luxurysotogrande') . $internal_size); ?>">
+                                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <path d="M1.875 6.875L7.5 2.5L13.125 6.875" stroke="currentColor" stroke-width="1.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M3.125 6.25V12.5C3.125 12.8452 3.40482 13.125 3.75 13.125H11.25C11.5952 13.125 11.875 12.8452 11.875 12.5V6.25" stroke="currentColor" stroke-width="1.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M6.25 13.125V9.375H8.75V13.125" stroke="currentColor" stroke-width="1.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <span class="spec-count"><?php echo esc_html($internal_size); ?></span>
+                                            </span>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($plot_size)) : ?>
+                                            <span class="portfolio-spec-item" title="<?php echo esc_attr(__('Plot Size: ', 'luxurysotogrande') . $plot_size); ?>">
+                                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <path d="M7.5 1.875L4.0625 6.25H5.9375L2.8125 10.625H6.5625V13.125H8.4375V10.625H12.1875L9.0625 6.25H10.9375L7.5 1.875Z" stroke="currentColor" stroke-width="1.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <span class="spec-count"><?php echo esc_html($plot_size); ?></span>
+                                            </span>
+                                        <?php endif; ?>
+
                                         <?php if ($bedrooms) : ?>
                                             <span class="portfolio-spec-item" title="<?php echo esc_attr($bedrooms . ' ' . __('Bedrooms', 'luxurysotogrande')); ?>">
                                                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
