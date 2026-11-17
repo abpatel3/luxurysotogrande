@@ -28,9 +28,9 @@
         <!-- Top Drawer Header with Logo & Close Button -->
         <div class="flex items-center justify-between px-6 py-5 border-b border-[#ECE7DE]">
             <a href="<?php echo esc_url( home_url('/') ); ?>" class="flex items-center" @click="open = false">
-                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/luxurysotogrande-logo.svg' ); ?>" 
+                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/ls-header-logo.webp' ); ?>" 
                      alt="<?php bloginfo('name'); ?>" 
-                     class="h-7 w-auto">
+                     class="h-8 w-auto" width="298" height="90">
             </a>
             <button @click="open = false" aria-label="<?php esc_attr_e('Close Navigation Menu', 'luxurysotogrande'); ?>" class="text-[#2B2724] hover:text-[#8C7539] p-1.5 focus:outline-none transition">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">

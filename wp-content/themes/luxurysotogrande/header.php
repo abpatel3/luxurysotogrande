@@ -55,7 +55,7 @@ src="https://www.facebook.com/tr?id=689537527375045&ev=PageView&noscript=1"
             <!-- Left: LS Brand Logo -->
             <div class="flex items-center shrink-0">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center header-logo-link" aria-label="<?php bloginfo('name'); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/luxurysotogrande-logo.svg" alt="<?php bloginfo('name'); ?>" class="h-[34px] w-auto" width="250" height="34">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/ls-header-logo.webp" alt="<?php bloginfo('name'); ?>" class="h-14 w-auto" width="298" height="90">
                 </a>
             </div>
 

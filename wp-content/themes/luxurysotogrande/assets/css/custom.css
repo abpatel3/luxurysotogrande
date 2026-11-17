@@ -6239,7 +6239,23 @@ input[type=range]:focus::-ms-fill-upper {
 #sidebar-contact .contacts-column-text p a {
 	color: white;
 }
-
+#sidebar-contact .contact-person h3 {
+    font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 19px;
+	letter-spacing: 1px;
+	color: #EFEAE3;
+}
+#sidebar-contact .contact-person p,
+#sidebar-contact .contact-address p {
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 12px;
+color:#C4BCAF;
+line-height: 17px;
+letter-spacing: 0%;
+}
 .property-hotel-for-sale {
 	order: 2;
 }
@@ -6622,6 +6638,19 @@ input.datepicker {
 .card-content__top{
     width: 100%;
 }
+.footer-about-widget .widget-title,
+#sidebar-about .widget-title {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-size: 21px !important;
+    line-height: 30px !important;
+    letter-spacing: 0.5px !important;
+    color: #CBBC9A !important;
+    text-transform: none !important;
+    margin-bottom: 10px !important;
+}
+
 .footer-about-widget p {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -7563,8 +7592,8 @@ input.datepicker {
 
 .luxury-search-title {
     font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: 22px !important;
-    line-height: 30px !important;
+    font-size: 24px !important;
+    line-height: 32px !important;
     font-weight: 400 !important;
     letter-spacing: 3.5px !important;
     text-transform: uppercase !important;

@@ -538,7 +538,7 @@ function lsg_widgets_init()
 			'description'   => esc_html__('Add widgets here.', 'lsg'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s footer-about-widget">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="mb-2.5 font-mrs-saint font-normal text-[26px] leading-[36px] tracking-normal widget-title text-warm-beige">',
+			'before_title'  => '<h2 class="mb-2.5 font-playfair font-medium text-[21px] leading-[30px] tracking-[0.5px] widget-title text-[#CBBC9A]">',
 			'after_title'   => '</h2>',
 		)
 	);

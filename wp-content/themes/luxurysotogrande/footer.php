@@ -29,7 +29,7 @@
     <div class=" ls-container pt-14 pb-9 space-y-9">
         <div class="grid gap-7 grid-cols-12">
         <div id="sidebar-about" class="space-y-2.5 col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/footer-ls-logo.svg' ); ?>" alt="<?php bloginfo('name'); ?>" class="w-full max-w-[188px]"></a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/ls-footer-logo.webp' ); ?>" alt="<?php bloginfo('name'); ?>" class="w-full max-w-[188px] h-auto" width="298" height="90"></a>
             <?php dynamic_sidebar('about'); ?>
         </div>
 

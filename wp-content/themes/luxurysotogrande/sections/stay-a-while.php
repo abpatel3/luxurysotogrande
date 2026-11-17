@@ -151,11 +151,17 @@ if (empty($title) && empty($subtitle) && empty($property_ids)) {
                     // Reference ID
                     $ref_code = get_field('property_id', $property_id);
 
-                    // Rates / Pricing for Stays (Default to Step Inside)
+                    // Password Protected Check
+                    $post_password = get_post_field('post_password', $property_id);
+                    $is_protected  = !empty($post_password) || post_password_required($property_id);
+
+                    // Rates / Pricing for Stays (Default to Step Inside; Hidden on Protected/Pocket listings)
                     $is_poa    = get_field('poa', $property_id);
                     $raw_price = get_field('property_price', $property_id);
 
-                    if (!$is_poa && !empty($raw_price) && is_numeric($raw_price) && (float)$raw_price < 100000) {
+                    if ($is_protected) {
+                        $rate_text = '';
+                    } elseif (!$is_poa && !empty($raw_price) && is_numeric($raw_price) && (float)$raw_price < 100000) {
                         $rate_text = '€' . number_format((float)$raw_price) . ' / ' . __('week', 'luxurysotogrande');
                     } else {
                         $rate_text = __('Step Inside', 'luxurysotogrande');
@@ -197,10 +203,6 @@ if (empty($title) && empty($subtitle) && empty($property_ids)) {
                         }
                     }
 
-                    // Password Protected Check
-                    $post_password = get_post_field('post_password', $property_id);
-                    $is_protected  = !empty($post_password) || post_password_required($property_id);
-
                     // Featured Image
                     $image_url = '';
                     $image_alt = esc_attr($card_title);
@@ -239,9 +241,6 @@ if (empty($title) && empty($subtitle) && empty($property_ids)) {
                             <div class="stay-card-media">
                                 <?php if (!empty($image_url)) : ?>
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="stay-card-img" loading="lazy">
-                                <?php endif; ?>
-                                <?php if ($is_protected) : ?>
-                                    <span class="portfolio-badge badge-protected"><?php echo esc_html(__('PROTECTED', 'luxurysotogrande')); ?></span>
                                 <?php endif; ?>
                             </div>
 
