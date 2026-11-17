@@ -156,6 +156,13 @@ function lsg_get_primary_menu_tree() {
 		return [];
 	}
 
+	// Dynamically resolve relative or cross-environment URLs with current home_url()
+	foreach ($menu_items as $item) {
+		if (!empty($item->url)) {
+			$item->url = lsg_normalize_menu_url($item->url);
+		}
+	}
+
 	$tree = [];
 	$l2_to_l1 = [];
 
@@ -212,15 +219,249 @@ function lsg_menu_item_has_mega($l1) {
 }
 
 /**
+ * Normalize menu URLs dynamically:
+ * - Prepends current home_url() for relative query strings (e.g. ?s=... or /?s=...)
+ * - Automatically swaps any hardcoded environment domain (staging, localhost, live) to the current environment's home_url()
+ * - Preserves external URLs (tel, mailto, external sites) untouched.
+ */
+function lsg_normalize_menu_url($url) {
+	if (empty($url) || $url === '#') {
+		return $url;
+	}
+
+	// Relative query: ?s=...
+	if (strpos($url, '?') === 0) {
+		return home_url('/' . $url);
+	}
+
+	// Root-relative path: /?s=... or /contact/
+	if (strpos($url, '/') === 0 && strpos($url, '//') !== 0) {
+		return home_url($url);
+	}
+
+	// Internal site URL (staging, localhost, or production) -> dynamically align with current home_url
+	if (strpos($url, 'luxurysotogrande.com') !== false || strpos($url, 'localhost') !== false) {
+		$parsed = parse_url($url);
+		$path_query = ($parsed['path'] ?? '') . (isset($parsed['query']) ? '?' . $parsed['query'] : '');
+		$path_query = preg_replace('#^/luxurysotogrande\.com#', '', $path_query);
+		return home_url($path_query);
+	}
+
+	return $url;
+}
+
+/**
+ * Automatically resolve relative URLs in menus with current home_url()
+ * and filter out any menu items whose page contains 0 properties.
+ */
+add_filter('wp_nav_menu_objects', function($items) {
+	if (empty($items)) {
+		return $items;
+	}
+
+	$filtered_items = [];
+	$removed_ids    = [];
+
+	foreach ($items as $item) {
+		// If this is a page item, check if it represents a property area/sub-area with 0 properties
+		$page_id = (isset($item->object) && $item->object === 'page') ? (int)$item->object_id : 0;
+		if ($page_id > 0 && !lsg_subarea_page_has_properties($page_id)) {
+			$removed_ids[] = (int)$item->ID;
+			continue;
+		}
+
+		// Also check if its parent was removed
+		if (!empty($item->menu_item_parent) && in_array((int)$item->menu_item_parent, $removed_ids, true)) {
+			$removed_ids[] = (int)$item->ID;
+			continue;
+		}
+
+		if (!empty($item->url)) {
+			$item->url = lsg_normalize_menu_url($item->url);
+		}
+
+		$filtered_items[] = $item;
+	}
+
+	return $filtered_items;
+});
+
+/**
+ * Retrieve all translated term IDs for a given taxonomy term across WPML languages.
+ * Enables seamless cross-language checking between English and Spanish properties/terms.
+ */
+function lsg_get_all_term_translations($term_id, $taxonomy) {
+	static $cache = [];
+	$cache_key = "{$taxonomy}_{$term_id}";
+	if (isset($cache[$cache_key])) {
+		return $cache[$cache_key];
+	}
+
+	$terms = [(int)$term_id];
+
+	global $sitepress;
+	if ($sitepress) {
+		$tax_element_type = 'tax_' . $taxonomy;
+		$trid = $sitepress->get_element_trid($term_id, $tax_element_type);
+		if ($trid) {
+			$translations = $sitepress->get_element_translations($trid, $tax_element_type);
+			if (!empty($translations)) {
+				foreach ($translations as $t) {
+					if (!empty($t->term_id)) {
+						$terms[] = (int)$t->term_id;
+					}
+				}
+			}
+		}
+	}
+
+	$en_id = apply_filters('wpml_object_id', $term_id, $taxonomy, false, 'en');
+	if ($en_id && !in_array((int)$en_id, $terms, true)) {
+		$terms[] = (int)$en_id;
+	}
+	$es_id = apply_filters('wpml_object_id', $term_id, $taxonomy, false, 'es');
+	if ($es_id && !in_array((int)$es_id, $terms, true)) {
+		$terms[] = (int)$es_id;
+	}
+
+	$cache[$cache_key] = array_values(array_unique($terms));
+	return $cache[$cache_key];
+}
+
+/**
+ * Check if a sub-area child page has published properties.
+ * If the page has a 'property_area' ACF field/meta, check if there are > 0 published properties.
+ * If 'property_status' is also defined on the page, check published properties with that status.
+ * Automatically checks all translated term IDs (WPML EN & ES) so properties tagged in either language are properly counted.
+ * Returns true if the page has > 0 properties, or if it is not a sub-area page.
+ * Returns false if it is a sub-area page with 0 properties.
+ */
+function lsg_subarea_page_has_properties($page_id) {
+	static $area_status_counts = null;
+
+	if ($area_status_counts === null) {
+		global $wpdb;
+		$area_status_counts = [];
+		$results = $wpdb->get_results("
+			SELECT tt_area.term_id AS area_term_id, tt_status.term_id AS status_term_id, COUNT(DISTINCT p.ID) AS total
+			FROM {$wpdb->posts} p
+			JOIN {$wpdb->term_relationships} tr_area ON p.ID = tr_area.object_id
+			JOIN {$wpdb->term_taxonomy} tt_area ON tr_area.term_taxonomy_id = tt_area.term_taxonomy_id AND tt_area.taxonomy = 'property_area'
+			LEFT JOIN {$wpdb->term_relationships} tr_status ON p.ID = tr_status.object_id
+			LEFT JOIN {$wpdb->term_taxonomy} tt_status ON tr_status.term_taxonomy_id = tt_status.term_taxonomy_id AND tt_status.taxonomy = 'property_status'
+			WHERE p.post_type = 'property' AND p.post_status = 'publish'
+			GROUP BY tt_area.term_id, tt_status.term_id
+		");
+
+		if (!empty($results)) {
+			foreach ($results as $row) {
+				$a_id = (int)$row->area_term_id;
+				$s_id = (int)($row->status_term_id ?? 0);
+				if (!isset($area_status_counts[$a_id])) {
+					$area_status_counts[$a_id] = [];
+				}
+				$area_status_counts[$a_id][$s_id] = (int)$row->total;
+			}
+		}
+	}
+
+	$property_area_meta = get_post_meta($page_id, 'property_area', true);
+	// If empty on translated page, fallback to original/English page meta
+	if (empty($property_area_meta)) {
+		$orig_page_id = apply_filters('wpml_object_id', $page_id, 'page', false, 'en');
+		if ($orig_page_id && $orig_page_id !== $page_id) {
+			$property_area_meta = get_post_meta($orig_page_id, 'property_area', true);
+		}
+	}
+
+	if (empty($property_area_meta)) {
+		return true; // Not a sub-area page, keep visible
+	}
+
+	$term_ids = [];
+	if (is_array($property_area_meta)) {
+		$term_ids = $property_area_meta;
+	} elseif (is_numeric($property_area_meta)) {
+		$term_ids = [(int)$property_area_meta];
+	} elseif (is_string($property_area_meta)) {
+		$unserialized = @maybe_unserialize($property_area_meta);
+		if (is_array($unserialized)) {
+			$term_ids = $unserialized;
+		} elseif (is_numeric($unserialized)) {
+			$term_ids = [(int)$unserialized];
+		}
+	}
+
+	if (empty($term_ids)) {
+		return true;
+	}
+
+	// In ACF, property_area stores [parent_term_id, child_term_id] or [term_id].
+	// The sub-area term is the specific child term (last element in the array).
+	$subarea_term_id = (int)end($term_ids);
+
+	$property_status_meta = get_post_meta($page_id, 'property_status', true);
+	if (empty($property_status_meta)) {
+		$orig_page_id = apply_filters('wpml_object_id', $page_id, 'page', false, 'en');
+		if ($orig_page_id && $orig_page_id !== $page_id) {
+			$property_status_meta = get_post_meta($orig_page_id, 'property_status', true);
+		}
+	}
+
+	$status_term_id = 0;
+	if (!empty($property_status_meta)) {
+		if (is_numeric($property_status_meta)) {
+			$status_term_id = (int)$property_status_meta;
+		} elseif (is_object($property_status_meta) && isset($property_status_meta->term_id)) {
+			$status_term_id = (int)$property_status_meta->term_id;
+		}
+	}
+
+	// Resolve all translation IDs for this area and status (EN & ES)
+	$area_terms = lsg_get_all_term_translations($subarea_term_id, 'property_area');
+	$status_terms = $status_term_id > 0 ? lsg_get_all_term_translations($status_term_id, 'property_status') : [];
+
+	foreach ($area_terms as $a_id) {
+		if (!isset($area_status_counts[$a_id])) {
+			continue;
+		}
+
+		if (!empty($status_terms)) {
+			foreach ($status_terms as $s_id) {
+				if (!empty($area_status_counts[$a_id][$s_id]) && $area_status_counts[$a_id][$s_id] > 0) {
+					return true;
+				}
+			}
+		} else {
+			if (array_sum($area_status_counts[$a_id]) > 0) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
  * Retrieve sub-items for a mega menu column.
- * - If manual sub-items exist in Appearance -> Menus, use them directly.
+ * - If manual sub-items exist in Appearance -> Menus, use them directly (filtering empty sub-areas).
  * - If no manual sub-items exist, automatically query published child pages of this item from WordPress!
+ * - Hides any sub-area page that contains 0 published properties.
  * - Also provides an automatic "All [Title]" link pointing to the parent page.
  */
 function lsg_get_megamenu_col_items($col) {
 	if (!empty($col['sub_items'])) {
+		$filtered_sub_items = [];
+		foreach ($col['sub_items'] as $sub) {
+			$sub_page_id = (isset($sub->object) && $sub->object === 'page') ? (int)$sub->object_id : 0;
+			if ($sub_page_id > 0 && !lsg_subarea_page_has_properties($sub_page_id)) {
+				continue;
+			}
+			$filtered_sub_items[] = $sub;
+		}
+
 		return [
-			'items'    => $col['sub_items'],
+			'items'    => $filtered_sub_items,
 			'all_link' => null,
 			'is_auto'  => false,
 		];
@@ -260,16 +501,34 @@ function lsg_get_megamenu_col_items($col) {
 	}
 
 	if ($page_id > 0) {
-		$children = get_pages([
-			'child_of'    => $page_id,
-			'sort_column' => 'menu_order,post_title',
-			'sort_order'  => 'ASC',
-			'post_status' => 'publish',
+		// Use get_children to reliably retrieve all child pages across WPML languages without get_pages hierarchy cache drops
+		$children = get_children([
+			'post_parent'      => $page_id,
+			'post_type'        => 'page',
+			'post_status'      => 'publish',
+			'orderby'          => 'menu_order post_title',
+			'order'            => 'ASC',
+			'suppress_filters' => true,
 		]);
+
+		// Fallback to get_pages if get_children returned empty
+		if (empty($children)) {
+			$children = get_pages([
+				'child_of'    => $page_id,
+				'sort_column' => 'menu_order,post_title',
+				'sort_order'  => 'ASC',
+				'post_status' => 'publish',
+			]);
+		}
 
 		if (!empty($children)) {
 			$items = [];
 			foreach ($children as $c) {
+				// Only show sub-area page if it contains > 0 published properties
+				if (!lsg_subarea_page_has_properties($c->ID)) {
+					continue;
+				}
+
 				$items[] = (object) [
 					'ID'       => $c->ID,
 					'title'    => $c->post_title,
@@ -1277,9 +1536,67 @@ add_action('pre_get_posts', function ($query) {
 			// Set the updated meta_query
 			$query->set('meta_query', $meta_query);
 		}
+
+		// New listings filter (anything within last X days, default 60 days)
+		if (!empty($_GET['new_listings'])) {
+			$days = (int)$_GET['new_listings'] > 0 ? (int)$_GET['new_listings'] : 60;
+			$query->set('date_query', array(
+				array(
+					'after'     => "$days days ago",
+					'inclusive' => true,
+				),
+			));
+		}
 		
 	}
 });
+
+/**
+ * Prevent WPML from 302-redirecting frontend search/filter queries to taxonomy archives.
+ * When on a translated language (e.g. /es/), automatically maps taxonomy slugs in query_vars
+ * (such as property_status, property_type, property_feature, property_area) to the active language's term slug.
+ */
+add_filter('request', function($query_vars) {
+	if (is_admin()) {
+		return $query_vars;
+	}
+
+	$current_lang = apply_filters('wpml_current_language', null);
+	if (!$current_lang || $current_lang === 'en') {
+		return $query_vars;
+	}
+
+	$taxonomies_to_check = ['property_status', 'property_type', 'property_feature', 'property_area'];
+	foreach ($taxonomies_to_check as $tax) {
+		if (!empty($query_vars[$tax])) {
+			$slug = $query_vars[$tax];
+			$term = get_term_by('slug', $slug, $tax);
+			if ($term) {
+				$trans_id = apply_filters('wpml_object_id', $term->term_id, $tax, false, $current_lang);
+				if ($trans_id) {
+					$trans_term = get_term($trans_id, $tax);
+					if ($trans_term && !is_wp_error($trans_term)) {
+						$query_vars[$tax] = $trans_term->slug;
+					}
+				}
+			}
+		}
+	}
+
+	return $query_vars;
+}, 1);
+
+/**
+ * Safety net: Prevent unwanted redirects to taxonomy archives during search/filtered queries
+ */
+add_filter('wp_redirect', function($location, $status) {
+	if (isset($_GET['s']) || isset($_GET['new_listings']) || isset($_GET['property_feature']) || isset($_GET['property_type'])) {
+		if (strpos($location, '/property_status/') !== false || strpos($location, '/property_area/') !== false || strpos($location, '/property_type/') !== false) {
+			return false; // Prevent redirection
+		}
+	}
+	return $location;
+}, 1, 2);
 
 
 

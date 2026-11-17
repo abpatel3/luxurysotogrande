@@ -19,7 +19,14 @@ get_header(); ?>
 		        $query_parts = [];
 
 		        if (!empty($_GET['property_status'])) {
-			        $query_parts[] = '<span>' . ucfirst(str_replace('-', ' ', $_GET['property_status'])) . '</span>';
+			        $status_clean = sanitize_text_field($_GET['property_status']);
+			        $status_term = get_term_by('slug', $status_clean, 'property_status');
+			        if (!$status_term) {
+				        $status_clean_no_es = preg_replace('/-es$/', '', $status_clean);
+				        $status_term = get_term_by('slug', $status_clean_no_es, 'property_status');
+			        }
+			        $status_label = $status_term ? $status_term->name : ucfirst(str_replace('-', ' ', preg_replace('/-es$/', '', $status_clean)));
+			        $query_parts[] = '<span>' . esc_html($status_label) . '</span>';
 		        }
 
 		        if (!empty($_GET['property_area'])) {
@@ -52,6 +59,20 @@ get_header(); ?>
 
 		        if (!empty($_GET['property_type'])) {
 			        $query_parts[] = '<span>' . ucfirst(str_replace('-', ' ', $_GET['property_type'])) . '</span>';
+		        }
+
+		        if (!empty($_GET['property_feature'])) {
+			        $feature_title = ucfirst(str_replace('-', ' ', $_GET['property_feature']));
+			        if (strtolower($_GET['property_feature']) === 'seaview') {
+				        $feature_title = 'Seaview';
+			        }
+			        $query_parts[] = '<span>' . $feature_title . '</span>';
+		        }
+
+		        if (!empty($_GET['new_listings'])) {
+			        $current_lang = apply_filters('wpml_current_language', null);
+			        $new_listings_label = ($current_lang === 'es') ? 'Nuevas propiedades' : __('New Listings', 'purple');
+			        $query_parts[] = '<span>' . esc_html($new_listings_label) . '</span>';
 		        }
 
 		        if (!empty($_GET['s'])) {
